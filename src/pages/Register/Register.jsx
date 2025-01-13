@@ -54,7 +54,7 @@ const Register = () => {
                 </label>
                 <input
                   type="password"
-                  placeholder="Password"
+                  placeholder="Enter Your Password"
                   className="grow text-gray-700 text-base input border border-gray-200 rounded-none focus:border-pink-300 focus:outline-none"
                   required
                 />

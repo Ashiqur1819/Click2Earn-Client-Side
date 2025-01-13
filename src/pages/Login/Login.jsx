@@ -1,4 +1,5 @@
 import loginImage from "../../assets/login.jpg";
+import googleImage from "../../assets/google.png"
 
 const Login = () => {
   return (
@@ -27,19 +28,24 @@ const Login = () => {
               </label>
               <input
                 type="password"
-                placeholder="password"
+                placeholder="Enter Your Password"
                 className="grow text-gray-700 text-base input border border-gray-200 rounded-none focus:border-pink-300 focus:outline-none"
                 required
               />
               <label className="label">
                 <a href="#" className="label-text-alt link link-hover">
-                  Forgot password?
+                  Forgot Password?
                 </a>
               </label>
             </div>
-            <div className="form-control mt-6">
+            <div className="form-control mt-3">
               <button className="bg-bg-tertiary px-4 py-2 rounded-sm text-white font-medium transition-all hover:bg-[#e6025b]">
                 Login
+              </button>
+              <div className="divider font-medium">OR</div>
+              <button className="flex items-center gap-3 justify-center px-4 py-2 rounded-sm font-medium border transition-all hover:bg-gray-50">
+                <img src={googleImage} className="w-6" alt="" />
+                <span>Continue With Google</span>
               </button>
             </div>
           </form>
