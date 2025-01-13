@@ -1,8 +1,9 @@
 import loginImage from "../../assets/login.jpg";
+
 const Login = () => {
   return (
     <div className="min-h-screen">
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-6 items-center max-w-5xl mx-auto mt-12 p-12">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-6 items-center max-w-6xl mx-auto mt-12 p-12">
         <div className="card w-full bg-white p-12 h-full rounded-none col-span-3">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black">
             Log in to Your Account
