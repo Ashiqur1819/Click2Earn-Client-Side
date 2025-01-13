@@ -3,7 +3,7 @@ import Navbar from "../shared/Navbar";
 
 const BasicLayout = () => {
   return (
-    <div className="font-roboto">
+    <div className="font-roboto bg-gray-100">
       <header>
         <Navbar></Navbar>
       </header>

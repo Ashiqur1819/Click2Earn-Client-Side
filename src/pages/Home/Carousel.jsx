@@ -6,6 +6,7 @@ import "swiper/css/pagination";
 import slideImage1 from "../../assets/1.png"
 import slideImage2 from "../../assets/2.jpg"
 import slideImage3 from "../../assets/3.jpg"
+import SecondaryButton from "../../components/Buttons/SecondaryButton";
 
 
 
@@ -33,7 +34,7 @@ const Carousel = () => {
             }}
           >
             <div className="mx-24 max-w-2xl">
-              <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold drop-shadow-2xl">
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold drop-shadow-2xl text-black">
                 Top Trending Tasks
               </h2>
               <p className="text-gray-800 mt-6 bg-white p-6 bg-opacity-40 rounded-sm">
@@ -44,9 +45,9 @@ const Carousel = () => {
                 reliable income stream by completing simple tasks that
                 everyone’s talking about!
               </p>
-              <button className="bg-yellow-400 px-4 py-2 rounded-sm font-medium mt-12">
-                Start Earning Now
-              </button>
+              <div className="mt-12">
+                <SecondaryButton label=" Start Earning Now"></SecondaryButton>
+              </div>
             </div>
           </div>
         </SwiperSlide>
@@ -61,7 +62,7 @@ const Carousel = () => {
             }}
           >
             <div className="mx-24 max-w-2xl">
-              <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold drop-shadow-2xl">
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold drop-shadow-2xl text-black">
                 New Opportunities Await
               </h2>
               <p className="text-gray-800 mt-6 bg-white p-6 bg-opacity-40 rounded-sm">
@@ -72,9 +73,9 @@ const Carousel = () => {
                 you can start earning big rewards—your next job is just a swipe
                 away!
               </p>
-              <button className="bg-yellow-400 px-4 py-2 rounded-sm font-medium mt-12">
-                Start Earning Now
-              </button>
+              <div className="mt-12">
+                <SecondaryButton label=" Start Earning Now"></SecondaryButton>
+              </div>
             </div>
           </div>
         </SwiperSlide>
@@ -89,7 +90,7 @@ const Carousel = () => {
             }}
           >
             <div className="mx-24 max-w-2xl">
-              <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold drop-shadow-2xl">
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold drop-shadow-2xl text-black">
                 Earn More, Work Smart
               </h2>
               <p className="text-gray-800 mt-6 bg-white p-6 bg-opacity-40 rounded-sm">
@@ -100,9 +101,9 @@ const Carousel = () => {
                 rewarding. Say goodbye to tedious work and start earning smart
                 with tasks designed for efficiency and quick payouts.
               </p>
-              <button className="bg-yellow-400 px-4 py-2 rounded-sm font-medium mt-12">
-                Start Earning Now
-              </button>
+              <div className="mt-12">
+                <SecondaryButton label=" Start Earning Now"></SecondaryButton>
+              </div>
             </div>
           </div>
         </SwiperSlide>
