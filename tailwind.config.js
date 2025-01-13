@@ -6,10 +6,14 @@ export default {
       backgroundColor: {
         "bg-primary": "#f6f6f6",
         "bg-secondary": "#ececec",
+        "bg-tertiary": "#FF136F",
+      },
+      colors: {
+        "text-primary": "#FF136F",
       },
       fontFamily: {
         roboto: "Roboto",
-      }
+      },
     },
   },
   plugins: [require("daisyui")],
