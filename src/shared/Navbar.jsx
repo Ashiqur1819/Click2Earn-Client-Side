@@ -56,7 +56,7 @@ const Navbar = () => {
           <Link>
             <PrimaryButton label="Join as Developer"></PrimaryButton>
           </Link>
-          <Link>
+          <Link to="/login">
             <button className="underline">Login</button>
           </Link>
           <Link>
