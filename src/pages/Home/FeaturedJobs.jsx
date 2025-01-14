@@ -1,8 +1,18 @@
+import { useQuery } from "@tanstack/react-query";
 import PrimaryButton from "../../components/Buttons/PrimaryButton";
-import SecondaryButton from "../../components/Buttons/SecondaryButton";
 import FeaturedJobCard from "../../components/FeaturedJobCard/FeaturedJobCard";
+import useAxios from "../../hooks/useAxios";
 
 const FeaturedJobs = () => {
+  const axiosInstance = useAxios()
+  const {data: tasks = []} = useQuery({
+    queryKey: ["tasks"],
+    queryFn: async() => {
+    const res = await axiosInstance.get("/tasks")
+      return res.data
+    }
+  })
+
     return (
       <div>
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black text-center">
@@ -14,10 +24,9 @@ const FeaturedJobs = () => {
           to choose from. Find the perfect gig and start earning immediately!
         </p>
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
-          <FeaturedJobCard></FeaturedJobCard>
-          <FeaturedJobCard></FeaturedJobCard>
-          <FeaturedJobCard></FeaturedJobCard>
-          <FeaturedJobCard></FeaturedJobCard>
+          {
+            tasks.map(task => <FeaturedJobCard task={task} key={task._id}></FeaturedJobCard>)
+          }
         </div>
         <div className="flex items-center justify-center mt-12">
           <PrimaryButton label="View All Opportunities"></PrimaryButton>

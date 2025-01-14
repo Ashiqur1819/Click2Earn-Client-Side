@@ -37,7 +37,7 @@ const Carousel = () => {
               <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold drop-shadow-2xl text-black">
                 Top Trending Tasks
               </h2>
-              <p className="text-gray-800 mt-6 bg-white p-6 bg-opacity-40 rounded-sm">
+              <p className="text-gray-800 text-justify mt-6 bg-white p-6 bg-opacity-40 rounded-sm">
                 Browse through the most popular and highly-rated tasks on our
                 platform. These tasks are not only easy to complete but also
                 guarantee quick payments once you submit your proof. Start
@@ -65,7 +65,7 @@ const Carousel = () => {
               <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold drop-shadow-2xl text-black">
                 New Opportunities Await
               </h2>
-              <p className="text-gray-800 mt-6 bg-white p-6 bg-opacity-40 rounded-sm">
+              <p className="text-gray-800 text-justify mt-6 bg-white p-6 bg-opacity-40 rounded-sm">
                 Check out the latest micro-jobs added to our platform, and be
                 among the first to grab them! Whether you’re looking for quick
                 gigs or longer-term tasks, we have plenty of options that offer
@@ -93,7 +93,7 @@ const Carousel = () => {
               <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold drop-shadow-2xl text-black">
                 Earn More, Work Smart
               </h2>
-              <p className="text-gray-800 mt-6 bg-white p-6 bg-opacity-40 rounded-sm">
+              <p className="text-gray-800 text-justify mt-6 bg-white p-6 bg-opacity-40 rounded-sm">
                 Unlock tasks that are perfectly suited to your skills and
                 expertise. With a range of high-paying micro-jobs, you can
                 maximize your earnings without spending hours working. Our
