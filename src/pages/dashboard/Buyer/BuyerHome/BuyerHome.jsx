@@ -1,25 +1,25 @@
 
 
-const WorkerHome = () => {
+const BuyerHome = () => {
     return (
       <div className="p-6">
         <div className="flex items-center gap-6">
-          <div className="bg-blue-200 p-6 text-center rounded-sm min-w-52">
-            <h3 className="text-lg font-semibold">Total Submission</h3>
-            <h2 className="text-5xl text-pink-500 font-bold">15</h2>
-          </div>
           <div className="bg-red-200 p-6 text-center rounded-sm min-w-52">
-            <h3 className="text-lg font-semibold">Total Submission</h3>
-            <h2 className="text-5xl text-pink-500 font-bold">15</h2>
+            <h3 className="text-lg font-semibold">Total Task</h3>
+            <h2 className="text-5xl text-pink-500 font-bold">25</h2>
+          </div>
+          <div className="bg-blue-200 p-6 text-center rounded-sm min-w-52">
+            <h3 className="text-lg font-semibold">Pending Task</h3>
+            <h2 className="text-5xl text-pink-500 font-bold">35</h2>
           </div>
           <div className="bg-green-200 p-6 text-center rounded-sm min-w-52">
-            <h3 className="text-lg font-semibold">Total Submission</h3>
-            <h2 className="text-5xl text-pink-500 font-bold">15</h2>
+            <h3 className="text-lg font-semibold">Total Payment</h3>
+            <h2 className="text-5xl text-pink-500 font-bold">45</h2>
           </div>
         </div>
         <div className="mt-12">
           <h2 className="text-2xl md:text-3xl font-bold">
-            Approved Submission
+            My Added Tasks
           </h2>
           <div className="overflow-x-auto mt-6">
             <table className="table table-zebra">
@@ -62,4 +62,4 @@ const WorkerHome = () => {
     );
 };
 
-export default WorkerHome;
+export default BuyerHome;

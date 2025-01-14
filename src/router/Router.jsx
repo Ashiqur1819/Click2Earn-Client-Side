@@ -9,6 +9,9 @@ import WorkerHome from "../pages/dashboard/Worker/WorkerHome/WorkerHome";
 import DashboardHome from "../pages/dashboard/DashboardHome";
 import TaskList from "../pages/dashboard/Worker/TaskList/TaskList";
 import TaskDetails from "../pages/TaskDetails/TaskDetails";
+import WorkerSubmission from "../pages/dashboard/Worker/WorkerSubmission/WorkerSubmission";
+import BuyerHome from "../pages/dashboard/Buyer/BuyerHome/BuyerHome";
+import AddNewTasks from "../pages/dashboard/Buyer/AddNewTasks/AddNewTasks";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +50,24 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      // For buyer
+      {
+        path: "buyerHome",
+        element: (
+          <PrivateRoute>
+            <BuyerHome></BuyerHome>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "addNewTasks",
+        element: (
+          <PrivateRoute>
+            <AddNewTasks></AddNewTasks>
+          </PrivateRoute>
+        ),
+      },
+      // For Worker
       {
         path: "workerHome",
         element: (
@@ -59,7 +80,15 @@ const router = createBrowserRouter([
         path: "taskList",
         element: (
           <PrivateRoute>
-           <TaskList></TaskList>
+            <TaskList></TaskList>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "workerSubmission",
+        element: (
+          <PrivateRoute>
+            <WorkerSubmission></WorkerSubmission>
           </PrivateRoute>
         ),
       },
@@ -67,7 +96,7 @@ const router = createBrowserRouter([
         path: "taskDetails/:id",
         element: (
           <PrivateRoute>
-           <TaskDetails></TaskDetails>
+            <TaskDetails></TaskDetails>
           </PrivateRoute>
         ),
       },

@@ -17,7 +17,6 @@ const DashboardNav = () => {
             return res.data
         }
     })
-    console.log(currentUser)
 
     const {name, email, photo, role, coins} = currentUser
 
