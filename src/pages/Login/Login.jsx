@@ -6,7 +6,7 @@ import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const { setUser, userLogin, loginWithGoogle } = useAuth();
+  const { setUser, userLogin, loginWithGoogle, setLoading } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
@@ -20,6 +20,7 @@ const Login = () => {
       setUser(result.user);
       toast.success("Login successful! Welcome back!");
       navigate("/");
+      setLoading(false)
     });
     // console.log(email, password)
   };
@@ -29,6 +30,7 @@ const Login = () => {
       setUser(result.user);
       toast.success("Google login successful!");
       navigate("/")
+      setLoading(false)
     });
   };
 

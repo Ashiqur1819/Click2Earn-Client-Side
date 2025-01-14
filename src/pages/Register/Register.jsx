@@ -4,12 +4,19 @@ import useAuth from "../../hooks/useAuth";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import googleImage from "../../assets/google.png";
 
 const Register = () => {
-  const {setUser, createNewUser,updateUserProfile, setLoading } = useAuth();
+  const {
+    setUser,
+    createNewUser,
+    updateUserProfile,
+    setLoading,
+    loginWithGoogle,
+  } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const [selected, setSelected] = useState();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -44,23 +51,29 @@ const Register = () => {
       );
     }
 
-    createNewUser(email, password)
-    .then(result => {
-      setUser(result.user)
-      toast.success(`Registration successful!`)
-      form.reset()
-       updateUserProfile({ displayName: name, photoURL: photo })
-       .then(() => {
+    createNewUser(email, password).then((result) => {
+      setUser(result.user);
+      toast.success(`Registration successful!`);
+      form.reset();
+      updateUserProfile({ displayName: name, photoURL: photo }).then(() => {
         setUser((prev) => ({
           ...prev,
           displayName: name,
           photoURL: photo,
-        }))
-        navigate("/")
+        }));
+        navigate("/");
         setLoading(false);
-       })
-    })
+      });
+    });
     // console.log({ name, email, photo, password, role, coins });
+  };
+
+  const handleLoginWithGoogle = () => {
+    loginWithGoogle().then((result) => {
+      setUser(result.user);
+      toast.success("Google login successful!");
+      navigate("/");
+    });
   };
 
   return (
@@ -147,6 +160,14 @@ const Register = () => {
               </button>
             </div>
           </form>
+          <div className="divider font-medium">OR</div>
+          <button
+            onClick={handleLoginWithGoogle}
+            className="flex items-center gap-3 justify-center px-4 py-2 rounded-sm font-medium border transition-all hover:bg-gray-50"
+          >
+            <img src={googleImage} className="w-6" alt="" />
+            <span>Continue With Google</span>
+          </button>
         </div>
       </div>
     </div>
