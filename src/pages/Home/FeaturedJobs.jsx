@@ -1,3 +1,4 @@
+import PrimaryButton from "../../components/Buttons/PrimaryButton";
 import SecondaryButton from "../../components/Buttons/SecondaryButton";
 import FeaturedJobCard from "../../components/FeaturedJobCard/FeaturedJobCard";
 
@@ -19,7 +20,7 @@ const FeaturedJobs = () => {
           <FeaturedJobCard></FeaturedJobCard>
         </div>
         <div className="flex items-center justify-center mt-12">
-          <SecondaryButton label="View All Opportunities"></SecondaryButton>
+          <PrimaryButton label="View All Opportunities"></PrimaryButton>
         </div>
       </div>
     );

@@ -13,7 +13,7 @@ import SecondaryButton from "../../components/Buttons/SecondaryButton";
 
 const Carousel = () => {
   return (
-    <div>
+    <div className="relative z-0">
       <Swiper
         cssMode={true}
         navigation={true}

@@ -3,7 +3,7 @@
 const SecondaryButton = ({label}) => {
     return (
       <div>
-        <button className="bg-yellow-400 px-4 py-2 rounded-sm text-black font-medium transition-all hover:bg-amber-500">
+        <button className="bg-bg-tertiary px-4 py-2 rounded-sm text-white font-medium transition-all hover:bg-[#e60060]">
           {label}
         </button>
       </div>

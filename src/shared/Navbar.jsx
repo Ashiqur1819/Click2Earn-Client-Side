@@ -1,9 +1,14 @@
 import { Link, NavLink } from "react-router-dom";
 import PrimaryButton from "../components/Buttons/PrimaryButton";
 import { FaCoins } from "react-icons/fa";
+import useAuth from "../hooks/useAuth";
+import SecondaryButton from "../components/Buttons/SecondaryButton";
 
 
 const Navbar = () => {
+
+  const { user, logOut } = useAuth();
+
     return (
       <div className="navbar bg-white px-4 md:px-6 lg:px-8 py-5">
         <div className="navbar-start">
@@ -26,42 +31,152 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              className=" menu-sm dropdown-content bg-white rounded-sm z-[1] mt-3 w-52 p-2 shadow"
             >
+              {user?.email && (
+                <li>
+                  <button className="flex items-center gap-2">
+                    <FaCoins></FaCoins> 1000
+                  </button>
+                </li>
+              )}
+              {user?.email && (
+                <li>
+                  <NavLink>Dashboard</NavLink>
+                </li>
+              )}
+              <li>
+                <Link to="https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-Ashiqur1819" target="_blank">
+                  <PrimaryButton
+                    className="h-full"
+                    label="Join as Developer"
+                  ></PrimaryButton>
+                </Link>
+              </li>
+              {/* <li>
+                {user?.email ? (
+                  <Link to="/">
+                    <button
+                      onClick={logOut}
+                      className="bg-red-600 px-4 py-2 rounded-sm text-white font-medium transition-all hover:bg-red-700"
+                    >
+                      Logout
+                    </button>
+                  </Link>
+                ) : (
+                  <Link to="/login">
+                    <button className="underline">Login</button>
+                  </Link>
+                )}
+              </li>
+              <li>
+                {user?.email ? (
+                  <Link to="register">
+                    <img
+                      src={user?.photoURL}
+                      className="w-10"
+                      referrerPolicy="no-referrer"
+                      alt=""
+                    />
+                  </Link>
+                ) : (
+                  <Link to="register">
+                    <button className="underline">Register</button>
+                  </Link>
+                )}
+              </li> */}
+            </ul>
+          </div>
+          <Link to="/">
+            <span className="text-3xl font-bold">Click2Earn</span>
+          </Link>
+        </div>
+        <div className="navbar-end hidden lg:flex">
+          <ul className="menu-horizontal gap-6 px-1 items-center">
+            {user?.email && (
               <li>
                 <button className="flex items-center gap-2">
                   <FaCoins></FaCoins> 1000
                 </button>
               </li>
+            )}
+            {user?.email && (
               <li>
                 <NavLink>Dashboard</NavLink>
               </li>
-            </ul>
-          </div>
-          <a className="text-2xl font-semibold">Click2Earn</a>
-        </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu-horizontal gap-6 px-1">
+            )}
             <li>
-              <button className="flex items-center gap-2">
-                <FaCoins></FaCoins> 1000
-              </button>
+              <Link to="https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-Ashiqur1819" target="_blank">
+                <PrimaryButton label="Join as Developer"></PrimaryButton>
+              </Link>
             </li>
             <li>
-              <NavLink to="/dashboard">Dashboard</NavLink>
+              {user?.email ? (
+                <Link to="/">
+                  <button
+                    onClick={logOut}
+                    className="bg-red-600 px-4 py-2 rounded-sm text-white font-medium transition-all hover:bg-red-700"
+                  >
+                    Logout
+                  </button>
+                </Link>
+              ) : (
+                <Link to="/login">
+                  <button className="underline">Login</button>
+                </Link>
+              )}
+            </li>
+            <li>
+              {user?.email ? (
+                <Link to="register">
+                  <img
+                    src={user?.photoURL}
+                    className="w-10"
+                    referrerPolicy="no-referrer"
+                    alt=""
+                  />
+                </Link>
+              ) : (
+                <Link to="register">
+                  <button className="underline">Register</button>
+                </Link>
+              )}
             </li>
           </ul>
         </div>
-        <div className="navbar-end gap-6">
-          <Link>
-            <PrimaryButton label="Join as Developer"></PrimaryButton>
-          </Link>
-          <Link to="/login">
-            <button className="underline">Login</button>
-          </Link>
-          <Link to="register">
-            <button className="underline">Register</button>
-          </Link>
+        <div className="navbar-end flex items-center gap-6 lg:hidden">
+          <div>
+            {user?.email ? (
+              <Link to="register">
+                <img
+                  src={user?.photoURL}
+                  className="w-10"
+                  referrerPolicy="no-referrer"
+                  alt=""
+                />
+              </Link>
+            ) : (
+              <Link to="register">
+                <button className="underline">Register</button>
+              </Link>
+            )}
+          </div>
+          <div>
+            {user?.email ? (
+              <Link to="/">
+                <button
+                  onClick={logOut}
+                  className="bg-red-600 px-4 py-2 rounded-sm text-white font-medium transition-all hover:bg-red-700"
+                >
+                  Logout
+                </button>
+              </Link>
+            ) : (
+              <Link to="/login">
+                <SecondaryButton label="Login"></SecondaryButton>
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     );

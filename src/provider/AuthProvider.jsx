@@ -10,6 +10,7 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
+import { toast } from "react-toastify";
 
 
 export const AuthContext = createContext();
@@ -41,6 +42,7 @@ const AuthProvider = ({ children }) => {
   const logOut = () => {
     signOut(auth).then((result) => {
       setUser(result);
+      toast.success("Logout Successful!")
       return;
     });
   };
@@ -67,7 +69,6 @@ const AuthProvider = ({ children }) => {
       unsubscribe();
     };
   }, []);
-
 
   const authInfo = {
     createNewUser,
