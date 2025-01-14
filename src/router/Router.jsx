@@ -15,6 +15,7 @@ import AddNewTasks from "../pages/dashboard/Buyer/AddNewTasks/AddNewTasks";
 import BuyerTasks from "../pages/dashboard/Buyer/BuyerTasks/BuyerTasks";
 import PurchaseCoin from "../pages/dashboard/Buyer/PurchaseCoin/PurchaseCoin";
 import PaymentHistory from "../pages/dashboard/Buyer/PaymentHistory/PaymentHistory";
+import WorkerWithDrawals from "../pages/dashboard/Worker/WorkerWithDrawals/WorkerWithDrawals";
 
 const router = createBrowserRouter([
   {
@@ -116,6 +117,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <WorkerSubmission></WorkerSubmission>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "withDrawals",
+        element: (
+          <PrivateRoute>
+            <WorkerWithDrawals></WorkerWithDrawals>
           </PrivateRoute>
         ),
       },

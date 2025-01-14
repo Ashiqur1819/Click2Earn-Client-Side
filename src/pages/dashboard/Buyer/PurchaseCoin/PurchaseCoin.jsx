@@ -3,7 +3,7 @@ import React from 'react';
 const PurchaseCoin = () => {
     return (
         <div>
-            fdfdfd
+            kdlkfdlkfd
         </div>
     );
 };

@@ -44,7 +44,7 @@ const DashboardLayout = () => {
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink>Withdrawals </NavLink>
+                    <NavLink to="/dashboard/withDrawals">Withdrawals </NavLink>
                   </li>
                 </>
               )}
@@ -56,18 +56,20 @@ const DashboardLayout = () => {
                     <NavLink to="/dashboard/buyerHome">Home</NavLink>
                   </li>
                   <li>
-                    <NavLink to="/dashboard/addNewTasks">
-                      Add New Tasks
-                    </NavLink>
+                    <NavLink to="/dashboard/addNewTasks">Add New Tasks</NavLink>
                   </li>
                   <li>
                     <NavLink to="/dashboard/myTasks">My Tasks</NavLink>
                   </li>
                   <li>
-                    <NavLink to="/dashboard/purchaseCoin">Purchase Coin</NavLink>
+                    <NavLink to="/dashboard/purchaseCoin">
+                      Purchase Coin
+                    </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/dashboard/paymentHistory">Payment History</NavLink>
+                    <NavLink to="/dashboard/paymentHistory">
+                      Payment History
+                    </NavLink>
                   </li>
                 </>
               )}
