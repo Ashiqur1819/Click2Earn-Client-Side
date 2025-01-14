@@ -42,7 +42,7 @@ const Navbar = () => {
               )}
               {user?.email && (
                 <li>
-                  <NavLink>Dashboard</NavLink>
+                  <NavLink to="/dashboard">Dashboard</NavLink>
                 </li>
               )}
               <li>
@@ -102,7 +102,7 @@ const Navbar = () => {
             )}
             {user?.email && (
               <li>
-                <NavLink>Dashboard</NavLink>
+                <NavLink to="/dashboard">Dashboard</NavLink>
               </li>
             )}
             <li>

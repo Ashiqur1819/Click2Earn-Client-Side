@@ -4,11 +4,14 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import useAxios from "../../hooks/useAxios";
+import { toast } from "react-toastify";
 
 const Login = () => {
-  const { setUser, userLogin, loginWithGoogle, setLoading } = useAuth();
+  const {setUser, userLogin, loginWithGoogle, setLoading } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const axiosInstance = useAxios()
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -29,8 +32,18 @@ const Login = () => {
     loginWithGoogle().then((result) => {
       setUser(result.user);
       toast.success("Google login successful!");
-      navigate("/")
-      setLoading(false)
+      navigate("/");
+
+      const name = result.user?.displayName;
+      const email = result.user?.email;
+      const photo = result.user?.photoURL;
+      const role = "Worker";
+      const coins = 10;
+
+      const newUser = { name, email, photo, role, coins };
+      // Save user information in the database
+      axiosInstance.post("/users", newUser);
+      setLoading(false);
     });
   };
 

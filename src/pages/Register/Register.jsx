@@ -9,7 +9,6 @@ import useAxios from "../../hooks/useAxios";
 
 const Register = () => {
   const {
-    user,
     setUser,
     createNewUser,
     updateUserProfile,
@@ -91,9 +90,9 @@ const Register = () => {
       toast.success("Google login successful!");
       navigate("/");
       setUser(result?.user);
-      const name = user?.displayName;
-      const email = user?.email;
-      const photo = user?.photoURL;
+      const name = result?.user?.displayName;
+      const email = result?.user?.email;
+      const photo = result?.user?.photoURL;
       const role = "Worker";
       const coins = 10
 
@@ -101,6 +100,7 @@ const Register = () => {
 
       // Save user information in the database
       axiosInstance.post("/users", newUser);
+      setLoading(false)
     });
   };
 
