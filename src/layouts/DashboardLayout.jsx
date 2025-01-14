@@ -16,7 +16,7 @@ const DashboardLayout = () => {
                 <NavLink to="/dashboard/workerHome">Home</NavLink>
               </li>
               <li>
-                <NavLink>TaskList </NavLink>
+                <NavLink to="/dashboard/taskList">TaskList </NavLink>
               </li>
               <li>
                 <NavLink>My Submissions</NavLink>
