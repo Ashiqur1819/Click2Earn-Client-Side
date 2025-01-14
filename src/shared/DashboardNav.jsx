@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../hooks/useAxios";
+import { FaCoins } from "react-icons/fa";
 
 const DashboardNav = () => {
 
@@ -71,8 +72,8 @@ const DashboardNav = () => {
           <ul className="menu-horizontal gap-6 items-center px-1">
             <div className="flex flex-col gap-3 bg-gray-100 rounded-sm p-3">
               <li>
-                <NavLink className="text-2xl text-text-primary font-medium">
-                  {coins}
+                <NavLink className="flex items-center gap-2 text-2xl text-text-primary font-medium">
+                   <FaCoins></FaCoins>{coins}
                 </NavLink>
               </li>
               <li>
