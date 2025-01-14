@@ -48,7 +48,7 @@ const Register = () => {
     .then(result => {
       setUser(result.user)
       toast.success(`Registration successful!`)
-
+      form.reset()
        updateUserProfile({ displayName: name, photoURL: photo })
        .then(() => {
         setUser((prev) => ({

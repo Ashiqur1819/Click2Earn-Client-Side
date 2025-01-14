@@ -131,7 +131,7 @@ const Navbar = () => {
                 <Link to="register">
                   <img
                     src={user?.photoURL}
-                    className="w-10"
+                    className="w-10 rounded-full"
                     referrerPolicy="no-referrer"
                     alt=""
                   />
@@ -150,7 +150,7 @@ const Navbar = () => {
               <Link to="register">
                 <img
                   src={user?.photoURL}
-                  className="w-10"
+                  className="w-10 rounded-full"
                   referrerPolicy="no-referrer"
                   alt=""
                 />
