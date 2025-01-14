@@ -8,6 +8,7 @@ import DashboardLayout from "../layouts/DashboardLayout";
 import WorkerHome from "../pages/dashboard/Worker/WorkerHome/WorkerHome";
 import DashboardHome from "../pages/dashboard/DashboardHome";
 import TaskList from "../pages/dashboard/Worker/TaskList/TaskList";
+import TaskDetails from "../pages/TaskDetails/TaskDetails";
 
 const router = createBrowserRouter([
   {
@@ -59,6 +60,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
            <TaskList></TaskList>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "taskDetails/:id",
+        element: (
+          <PrivateRoute>
+           <TaskDetails></TaskDetails>
           </PrivateRoute>
         ),
       },
