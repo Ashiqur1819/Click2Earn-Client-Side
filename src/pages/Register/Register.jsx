@@ -5,9 +5,11 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import googleImage from "../../assets/google.png";
+import useAxios from "../../hooks/useAxios";
 
 const Register = () => {
   const {
+    user,
     setUser,
     createNewUser,
     updateUserProfile,
@@ -15,10 +17,11 @@ const Register = () => {
     loginWithGoogle,
   } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
-  const [selected, setSelected] = useState();
+  const [selected, setSelected] = useState("Worker");
   const navigate = useNavigate();
+  const axiosInstance = useAxios();
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
 
     const form = e.target;
@@ -51,28 +54,53 @@ const Register = () => {
       );
     }
 
-    createNewUser(email, password).then((result) => {
-      setUser(result.user);
-      toast.success(`Registration successful!`);
-      form.reset();
-      updateUserProfile({ displayName: name, photoURL: photo }).then(() => {
-        setUser((prev) => ({
-          ...prev,
-          displayName: name,
-          photoURL: photo,
-        }));
-        navigate("/");
-        setLoading(false);
+    const newUser = { name, email, photo, role, coins };
+
+    createNewUser(email, password)
+      .then((result) => {
+        setUser(result.user);
+        form.reset();
+        updateUserProfile({ displayName: name, photoURL: photo }).then(() => {
+          setUser((prev) => ({
+            ...prev,
+            displayName: name,
+            photoURL: photo,
+          }));
+          navigate("/");
+          setLoading(false);
+        });
+      })
+      .catch((err) => {
+        console.log(err);
       });
-    });
-    // console.log({ name, email, photo, password, role, coins });
+
+    // Save user information in the database
+
+    try {
+      const res = await axiosInstance.post("/users", newUser);
+      if (res.data.insertedId) {
+        toast.success(`Registration successful!`);
+      }
+    } catch (err) {
+      toast.error(err?.response?.data);
+    }
   };
 
   const handleLoginWithGoogle = () => {
-    loginWithGoogle().then((result) => {
-      setUser(result.user);
+    loginWithGoogle().then(async(result) => {
       toast.success("Google login successful!");
       navigate("/");
+      setUser(result?.user);
+      const name = user?.displayName;
+      const email = user?.email;
+      const photo = user?.photoURL;
+      const role = "Worker";
+      const coins = 10
+
+      const newUser = {name, email, photo, role, coins}
+
+      // Save user information in the database
+      axiosInstance.post("/users", newUser);
     });
   };
 
