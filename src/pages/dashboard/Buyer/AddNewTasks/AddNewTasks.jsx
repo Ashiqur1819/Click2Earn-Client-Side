@@ -5,8 +5,8 @@ const AddNewTasks = () => {
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold ">
           Added A New Task
         </h2>
-        <form className="mt-6 grid grid-cols-2 gap-6">
-          <div className="form-control mt-1">
+        <form className="mt-6 grid grid-cols-2 gap-3">
+          <div className="form-control">
             <label className="label px-0">
               <span className="label-text font-medium">Title:</span>
             </label>
@@ -18,7 +18,7 @@ const AddNewTasks = () => {
               required
             />
           </div>
-          <div className="form-control mt-1">
+          <div className="form-control">
             <label className="label px-0">
               <span className="label-text font-medium">Photo URL:</span>
             </label>
@@ -30,7 +30,7 @@ const AddNewTasks = () => {
               required
             />
           </div>
-          <div className="form-control mt-1">
+          <div className="form-control">
             <label className="label px-0">
               <span className="label-text font-medium">Required Workers:</span>
             </label>
@@ -42,7 +42,7 @@ const AddNewTasks = () => {
               required
             />
           </div>
-          <div className="form-control relative mt-1">
+          <div className="form-control relative">
             <label className="label px-0">
               <span className="label-text font-medium">Amount:</span>
             </label>
@@ -54,7 +54,7 @@ const AddNewTasks = () => {
               required
             />
           </div>
-          <div className="form-control relative mt-1">
+          <div className="form-control relative">
             <label className="label px-0">
               <span className="label-text font-medium">Date:</span>
             </label>
@@ -66,7 +66,7 @@ const AddNewTasks = () => {
               required
             />
           </div>
-          <div className="form-control relative mt-1">
+          <div className="form-control relative">
             <label className="label px-0">
               <span className="label-text font-medium">Submission Info:</span>
             </label>
@@ -78,7 +78,7 @@ const AddNewTasks = () => {
               required
             />
           </div>
-          <div className="form-control mt-3 col-span-2">
+          <div className="form-control col-span-2">
             <label className="label px-0">
               <span className="label-text font-medium">Description:</span>
             </label>
@@ -87,7 +87,7 @@ const AddNewTasks = () => {
               placeholder="Submission Details"
             ></textarea>
           </div>
-          <div className="form-control mt-6">
+          <div className="form-control mt-3 col-span-2">
             <button className="bg-bg-tertiary px-4 py-2 rounded-sm text-white font-medium transition-all hover:bg-[#e6025b]">
               Register
             </button>
