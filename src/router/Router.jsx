@@ -12,6 +12,8 @@ import TaskDetails from "../pages/TaskDetails/TaskDetails";
 import WorkerSubmission from "../pages/dashboard/Worker/WorkerSubmission/WorkerSubmission";
 import BuyerHome from "../pages/dashboard/Buyer/BuyerHome/BuyerHome";
 import AddNewTasks from "../pages/dashboard/Buyer/AddNewTasks/AddNewTasks";
+import BuyerTasks from "../pages/dashboard/Buyer/BuyerTasks/BuyerTasks";
+import PurchaseCoin from "../pages/dashboard/Buyer/PurchaseCoin/PurchaseCoin";
 
 const router = createBrowserRouter([
   {
@@ -64,6 +66,22 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AddNewTasks></AddNewTasks>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "myTasks",
+        element: (
+          <PrivateRoute>
+            <BuyerTasks></BuyerTasks>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "purchaseCoin",
+        element: (
+          <PrivateRoute>
+           <PurchaseCoin></PurchaseCoin>
           </PrivateRoute>
         ),
       },

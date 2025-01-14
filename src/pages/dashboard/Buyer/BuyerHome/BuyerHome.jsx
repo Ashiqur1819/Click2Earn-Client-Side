@@ -2,7 +2,7 @@
 
 const BuyerHome = () => {
     return (
-      <div className="p-6">
+      <div className="p-6 w-11/12 mx-auto bg-white mt-12 rounded-sm">
         <div className="flex items-center gap-6">
           <div className="bg-red-200 p-6 text-center rounded-sm min-w-52">
             <h3 className="text-lg font-semibold">Total Task</h3>

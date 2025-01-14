@@ -56,15 +56,15 @@ const DashboardLayout = () => {
                     <NavLink to="/dashboard/buyerHome">Home</NavLink>
                   </li>
                   <li>
-                    <NavLink to="/dashboard/addNewTasks">Add New Tasks </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/dashboard/workerSubmission">
-                      My Submissions
+                    <NavLink to="/dashboard/addNewTasks">
+                      Add New Tasks
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink>Withdrawals </NavLink>
+                    <NavLink to="/dashboard/myTasks">My Tasks</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/dashboard/purchaseCoin">Purchase Coin</NavLink>
                   </li>
                 </>
               )}
