@@ -1,12 +1,27 @@
 import { IoNotificationsSharp } from "react-icons/io5";
 import { Link, NavLink } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
+import { useQuery } from "@tanstack/react-query";
+import useAxios from "../hooks/useAxios";
 
 const DashboardNav = () => {
 
-   
+   const {user} = useAuth()
+   const axiosInstance = useAxios()
+
+    const {data: currentUser = {}} = useQuery({
+        queryKey: ["user"],
+        queryFn: async() => {
+            const res = await axiosInstance.get(`/users/${user?.email}`)
+            return res.data
+        }
+    })
+    console.log(currentUser)
+
+    const {name, email, photo, role, coins} = currentUser
 
     return (
-      <div className="navbar bg-base-100 px-3 md:px-4 lg:px-8">
+      <div className="navbar bg-white py-6 px-3 md:px-4 lg:px-8">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -53,26 +68,28 @@ const DashboardNav = () => {
           </Link>
         </div>
         <div className="navbar-end hidden lg:flex ">
-          <ul className="menu-horizontal gap-12 items-center px-1">
-            <div className="flex flex-col gap-3">
+          <ul className="menu-horizontal gap-6 items-center px-1">
+            <div className="flex flex-col gap-3 bg-gray-100 rounded-sm p-3">
               <li>
-                <NavLink>Coin</NavLink>
+                <NavLink className="text-2xl text-text-primary font-medium">
+                  {coins}
+                </NavLink>
               </li>
               <li>
-                <NavLink>Role</NavLink>
-              </li>
-            </div>
-            <div className="flex flex-col gap-3">
-              <li>
-                <NavLink>Coin</NavLink>
-              </li>
-              <li>
-                <NavLink>Role</NavLink>
+                <NavLink className="font-medium">{role}</NavLink>
               </li>
             </div>
-            <div className="flex flex-col items-center gap-3">
-              <IoNotificationsSharp></IoNotificationsSharp>
-              <p>Notifications</p>
+            <div className="flex flex-col gap-1 bg-gray-100 rounded-sm p-3">
+              <li>
+                <img src={photo} className="w-10 rounded-full" alt="" />
+              </li>
+              <li>
+                <NavLink className="font-medium">{name}</NavLink>
+              </li>
+            </div>
+            <div className="flex flex-col items-center bg-gray-100 rounded-sm p-3 gap-3">
+              <IoNotificationsSharp className="text-3xl"></IoNotificationsSharp>
+              <p className="font-medium">Notifications</p>
             </div>
           </ul>
         </div>

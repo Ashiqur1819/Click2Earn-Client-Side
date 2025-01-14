@@ -14,12 +14,7 @@ const DashboardLayout = () => {
               <li>
                 <a>Item 1</a>
               </li>
-              <li>
-                <a>Item 2</a>
-              </li>
-              <li>
-                <a>Item 3</a>
-              </li>
+
             </ul>
           </aside>
           <div className="bg-green-300 col-span-10 min-h-screen">
