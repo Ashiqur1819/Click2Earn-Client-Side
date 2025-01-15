@@ -1,18 +1,18 @@
 import { toast } from "react-toastify";
 import useUser from "../../../../hooks/useUser";
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useAuth from "../../../../hooks/useAuth";
 import useAxios from "../../../../hooks/useAxios";
+import Swal from "sweetalert2";
 
 const AddNewTasks = () => {
+  const [currentUser, refetch] = useUser();
+  const navigate = useNavigate();
+  const { user } = useAuth();
+  const axiosInstance = useAxios();
 
-  const [currentUser] = useUser()
-  const navigate = useNavigate()
-  const {user} = useAuth()
-  const axiosInstance = useAxios()
-
-  const handleAddTask = async(e) => {
-    e.preventDefault()
+  const handleAddTask = async (e) => {
+    e.preventDefault();
 
     const form = e.target;
     const title = form.title.value;
@@ -22,23 +22,45 @@ const AddNewTasks = () => {
     const date = form.date.value;
     const subInfo = form.subInfo.value;
     const description = form.description.value;
-    const totalAmount = workers * amount / 100
+    const totalAmount = (workers * amount) / 100;
     const buyerName = user?.displayName;
-    const buyerEmail = user?.email
+    const buyerEmail = user?.email;
 
-    if(totalAmount > currentUser?.coins){
+    if (totalAmount > currentUser?.coins) {
       toast.error("Not available Coin. Purchase Coin");
       navigate("/dashboard/purchaseCoin");
     }
 
-    const task = {title, photo, workers, amount, date, subInfo, description, totalAmount, buyerName, buyerEmail}
-    
-   // Save task in the database
+    const task = {
+      title,
+      photo,
+      workers,
+      amount,
+      date,
+      subInfo,
+      description,
+      totalAmount,
+      buyerName,
+      buyerEmail,
+    };
 
-        const res = await axiosInstance.post("/tasks", task)
-        console.log(res.data)
-  }
+    const remainingCoins = currentUser?.coins - totalAmount;
 
+    // Save task in the database
+
+    const res = await axiosInstance.post("/tasks", task);
+    if (res.data.insertedId) {
+      const res = await axiosInstance.patch(`/users/${user?.email}`, {remainingCoins,})
+      if(res.data.modifiedCount > 0){
+        Swal.fire({
+          title: "Task Added Successfully!",
+          icon: "success",
+          draggable: true,
+        });
+        refetch()
+      }
+    }
+  };
 
   return (
     <div className="bg-gray-100 mt-12 rounded-sm">
@@ -124,7 +146,7 @@ const AddNewTasks = () => {
               <span className="label-text font-medium">Description:</span>
             </label>
             <textarea
-            name="description"
+              name="description"
               className="textarea h-24 text-gray-700 text-sm input border border-gray-200 rounded-sm focus:border-pink-300 focus:outline-none"
               placeholder="Submission Details"
             ></textarea>

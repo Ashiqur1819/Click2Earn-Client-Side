@@ -7,7 +7,7 @@ const useUser = () => {
     const { user } = useAuth();
     const axiosInstance = useAxios();
 
-    const { data: currentUser = {} } = useQuery({
+    const { data: currentUser = {}, refetch } = useQuery({
       queryKey: ["user"],
       queryFn: async () => {
         const res = await axiosInstance.get(`/users/${user?.email}`);
@@ -15,7 +15,7 @@ const useUser = () => {
       },
     });
 
-    return [currentUser]
+    return [currentUser, refetch]
 };
 
 export default useUser;
