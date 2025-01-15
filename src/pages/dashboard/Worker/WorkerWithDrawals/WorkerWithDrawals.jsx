@@ -42,7 +42,7 @@ const WorkerWithDrawals = () => {
                     Payment System:
                   </span>
                 </label>
-                <select className="select text-gray-700 text-base input border border-gray-200 rounded-none focus:border-pink-300 focus:outline-none">
+                <select className="select text-gray-700 text-sm input border border-gray-200 rounded-none focus:border-pink-300 focus:outline-none">
                   <option className="text-gray-700">Bkash</option>
                   <option className="text-gray-700">Nagad</option>
                   <option className="text-gray-700">Rocket</option>

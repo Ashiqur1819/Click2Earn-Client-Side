@@ -19,17 +19,37 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    userLogin(email, password).then((result) => {
-      setUser(result.user);
-      toast.success("Login successful! Welcome back!");
-      navigate("/");
-      setLoading(false)
-    });
+    if (password.length < 6) {
+      return toast.error("Password must be at least 6 characters long!");
+    }
+    if (!/[A-Z]/.test(password)) {
+      return toast.error(
+        "Password must contain at least one uppercase letter!"
+      );
+    }
+
+    if (!/[a-z]/.test(password)) {
+      return toast.error(
+        "Password must contain at least one lowercase letter!"
+      );
+    }
+
+    userLogin(email, password)
+      .then((result) => {
+        setUser(result.user);
+        toast.success("Login successful! Welcome back!");
+        navigate("/");
+        setLoading(false);
+      })
+      .catch(() => {
+        toast.error("Something went wrong! Please try again later.");
+      });
     // console.log(email, password)
   };
 
   const handleLoginWithGoogle = () => {
-    loginWithGoogle().then((result) => {
+    loginWithGoogle()
+    .then((result) => {
       setUser(result.user);
       toast.success("Google login successful!");
       navigate("/");
@@ -44,7 +64,11 @@ const Login = () => {
       // Save user information in the database
       axiosInstance.post("/users", newUser);
       setLoading(false);
-    });
+    })
+    .catch((err) => {
+      console.log(err)
+      toast.error("Something Went Wrong! Please Try Again Later.")
+    })
   };
 
   return (
