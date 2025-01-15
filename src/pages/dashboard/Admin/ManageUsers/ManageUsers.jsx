@@ -1,18 +1,29 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../../../hooks/useAxios";
-import { Link } from "react-router-dom";
-import { FaCoins, FaEdit, FaTrash } from "react-icons/fa";
+import { FaCoins, FaTrash } from "react-icons/fa";
+import useAuth from "../../../../hooks/useAuth";
 
 
 const ManageUsers = () => {
 const axiosInstance = useAxios()
-  const {data: users = []} = useQuery({
+const {user} = useAuth()
+
+  const {data: users = [], refetch} = useQuery({
     queryKey: ["users"],
     queryFn: async() => {
-      const res = await axiosInstance.get("/users")
+      const res = await axiosInstance.get(`/allUsers/${user?.email}`);
       return res.data
     }
   })
+
+  const handleRoleChange = async (e, id) => {
+    const role = e;
+    const res = await axiosInstance.patch(`/roleUpdate/${id}`, {role});
+     if(res.data.modifiedCount > 0){
+      refetch()
+     }
+  };
+
 
 
     return (
@@ -56,7 +67,13 @@ const axiosInstance = useAxios()
                   </td>
                   <td className="font-medium">{user?.role}</td>
                   <td className="font-medium">
-                    <select className="select text-gray-700 input border border-gray-200 rounded-none focus:border-pink-300 focus:outline-none">
+                    <select
+                      onChange={(e) =>
+                        handleRoleChange(e.target.value, user._id)
+                      }
+                      defaultValue={user?.role}
+                      className="select text-gray-700 input border border-gray-200 rounded-none focus:border-pink-300 focus:outline-none"
+                    >
                       <option className="text-gray-700">Admin</option>
                       <option className="text-gray-700">Buyer</option>
                       <option className="text-gray-700">Worker</option>
