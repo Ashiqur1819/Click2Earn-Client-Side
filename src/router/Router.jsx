@@ -18,6 +18,7 @@ import PaymentHistory from "../pages/dashboard/Buyer/PaymentHistory/PaymentHisto
 import WorkerWithDrawals from "../pages/dashboard/Worker/WorkerWithDrawals/WorkerWithDrawals";
 import AdminHome from "../pages/dashboard/Admin/AdminHome/AdminHome";
 import ManageUsers from "../pages/dashboard/Admin/ManageUsers/ManageUsers";
+import ManageTasks from "../pages/dashboard/Admin/ManageTasks/ManageTasks";
 
 const router = createBrowserRouter([
   {
@@ -69,7 +70,15 @@ const router = createBrowserRouter([
         path: "manageUsers",
         element: (
           <PrivateRoute>
-           <ManageUsers></ManageUsers>
+            <ManageUsers></ManageUsers>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "manageTasks",
+        element: (
+          <PrivateRoute>
+            <ManageTasks></ManageTasks>
           </PrivateRoute>
         ),
       },
