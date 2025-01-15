@@ -1,6 +1,20 @@
+import { useQuery } from "@tanstack/react-query";
+import useAxios from "../../../../hooks/useAxios";
+import useAuth from "../../../../hooks/useAuth";
+import PrimaryButton from "../../../../components/Buttons/PrimaryButton";
 
 
 const BuyerHome = () => {
+const axiosInstance = useAxios()
+const {user} = useAuth()
+  const {data: submittedTasks = []} = useQuery({
+    queryKey: ["submittedTasks"],
+    queryFn: async() => {
+      const res = await axiosInstance.get(`/buyerSubmittedTasks/${user?.email}`);
+      return res.data
+    }
+  })
+
     return (
       <div className="p-6 w-11/12 mx-auto bg-white mt-12 rounded-sm">
         <div className="flex items-center gap-6">
@@ -18,46 +32,80 @@ const BuyerHome = () => {
           </div>
         </div>
         <div className="mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold">
-            My Added Tasks
-          </h2>
+          <h2 className="text-2xl md:text-3xl font-bold">Task To Review</h2>
           <div className="overflow-x-auto mt-6">
             <table className="table table-zebra">
               {/* head */}
               <thead>
                 <tr>
                   <th></th>
-                  <th>Name</th>
-                  <th>Job</th>
-                  <th>Favorite Color</th>
+                  <th className="text-base font-medium text-blue-950">Title</th>
+                  <th className="text-base font-medium text-blue-950">
+                    Worker Name
+                  </th>
+                  <th className="text-base font-medium text-blue-950">
+                    Amount
+                  </th>
+                  <th className="text-base font-medium text-blue-950">
+                    View Submission
+                  </th>
+                  <th className="text-base font-medium text-blue-950">
+                    Action
+                  </th>
                 </tr>
               </thead>
               <tbody>
-                {/* row 1 */}
-                <tr>
-                  <th>1</th>
-                  <td>Cy Ganderton</td>
-                  <td>Quality Control Specialist</td>
-                  <td>Blue</td>
-                </tr>
-                {/* row 2 */}
-                <tr>
-                  <th>2</th>
-                  <td>Hart Hagerty</td>
-                  <td>Desktop Support Technician</td>
-                  <td>Purple</td>
-                </tr>
-                {/* row 3 */}
-                <tr>
-                  <th>3</th>
-                  <td>Brice Swyre</td>
-                  <td>Tax Accountant</td>
-                  <td>Red</td>
-                </tr>
+                {submittedTasks.map((task, index) => (
+                  <tr key={task._id}>
+                    <th>{index + 1}</th>
+                    <td className="font-medium">
+                      {task?.title.substring(0, 25)}...
+                    </td>
+                    <td className="font-medium">{task?.workerName}</td>
+                    <td className="font-medium">
+                      ${(task?.amount / 100).toFixed(3)}
+                    </td>
+                    <td>
+                      <button
+                        onClick={() =>
+                          document.getElementById("my_modal_1").showModal()
+                        }
+                      >
+                        <PrimaryButton
+                          label={"View Submission"}
+                        ></PrimaryButton>
+                      </button>
+                    </td>
+                    {/* Modal */}
+                    <dialog id="my_modal_1" className="modal">
+                      <div className="modal-box">
+                        <h3 className="font-bold text-lg">
+                          Submission Details
+                        </h3>
+                        <p className="py-4">{task.subDetails}</p>
+                        <div className="modal-action">
+                          <form method="dialog">
+                            <button className="btn">Close</button>
+                          </form>
+                        </div>
+                      </div>
+                    </dialog>
+                    <td className="flex items-center gap-3">
+                      <button className="bg-green-600 text-white px-2 py-1 rounded-sm font-medium">
+                        Approve
+                      </button>
+                      <button className="bg-red-600 text-white px-2 py-1 rounded-sm font-medium">
+                        Reject
+                      </button>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
         </div>
+        {/* Modal */}
+        {/* Open the modal using document.getElementById('ID').showModal() method */}
       </div>
     );
 };
