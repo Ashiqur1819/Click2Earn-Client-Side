@@ -41,7 +41,7 @@ const BuyerTasks = () => {
           if (res.data.modifiedCount > 0) {
             Swal.fire({
               title: "Deleted!",
-              text: "Your file has been deleted.",
+              text: "Your file has been deleted successfully.",
               icon: "success",
             });
             refetchUser()

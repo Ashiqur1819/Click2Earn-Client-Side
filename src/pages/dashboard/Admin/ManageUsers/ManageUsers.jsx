@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../../../hooks/useAxios";
 import { FaCoins, FaTrash } from "react-icons/fa";
 import useAuth from "../../../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 
 const ManageUsers = () => {
@@ -23,6 +24,30 @@ const {user} = useAuth()
       refetch()
      }
   };
+
+  const handleDeleteUser = (user) => {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          const res = await axiosInstance.delete(`/users/${user?._id}`);
+          if (res.data.deletedCount > 0) {
+            Swal.fire({
+                title: "Deleted!",
+                text: "User has been deleted successfully.",
+                icon: "success",
+              });
+              refetch()
+            }
+        }
+      });
+    };
 
 
 
@@ -80,7 +105,10 @@ const {user} = useAuth()
                     </select>
                   </td>
                   <td>
-                    <button className="text-lg bg-red-600 text-white p-2 rounded-sm">
+                    <button
+                      onClick={() => handleDeleteUser(user)}
+                      className="text-lg bg-red-600 text-white p-2 rounded-sm"
+                    >
                       <FaTrash></FaTrash>
                     </button>
                   </td>
