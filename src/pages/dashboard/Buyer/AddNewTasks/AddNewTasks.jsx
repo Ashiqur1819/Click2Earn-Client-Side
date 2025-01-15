@@ -44,7 +44,7 @@ const AddNewTasks = () => {
       buyerEmail,
     };
 
-    const remainingCoins = currentUser?.coins - totalAmount;
+    const remainingCoins = currentUser?.coins - (workers * amount);
 
     // Save task in the database
 
@@ -57,6 +57,7 @@ const AddNewTasks = () => {
           icon: "success",
           draggable: true,
         });
+        form.reset()
         refetch()
       }
     }
