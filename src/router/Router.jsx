@@ -17,6 +17,7 @@ import PurchaseCoin from "../pages/dashboard/Buyer/PurchaseCoin/PurchaseCoin";
 import PaymentHistory from "../pages/dashboard/Buyer/PaymentHistory/PaymentHistory";
 import WorkerWithDrawals from "../pages/dashboard/Worker/WorkerWithDrawals/WorkerWithDrawals";
 import AdminHome from "../pages/dashboard/Admin/AdminHome/AdminHome";
+import ManageUsers from "../pages/dashboard/Admin/ManageUsers/ManageUsers";
 
 const router = createBrowserRouter([
   {
@@ -58,7 +59,19 @@ const router = createBrowserRouter([
       // For admin
       {
         path: "adminHome",
-        element: <PrivateRoute><AdminHome></AdminHome></PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <AdminHome></AdminHome>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "manageUsers",
+        element: (
+          <PrivateRoute>
+           <ManageUsers></ManageUsers>
+          </PrivateRoute>
+        ),
       },
 
       // For buyer
