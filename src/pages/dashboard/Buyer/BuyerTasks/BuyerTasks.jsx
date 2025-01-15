@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../../../hooks/useAxios";
 import useAuth from "../../../../hooks/useAuth";
 import { FaEdit, FaTrash } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const BuyerTasks = () => {
   const {user} = useAuth()
@@ -45,9 +46,11 @@ const BuyerTasks = () => {
                   </td>
                   <td className="font-medium">{task?.date}</td>
                   <td className="flex items-center gap-3">
-                    <button className="text-lg bg-yellow-600 text-white p-2 rounded-sm">
-                      <FaEdit></FaEdit>
-                    </button>
+                    <Link to={`/dashboard/updateTask/${task._id}`}>
+                      <button className="text-lg bg-yellow-600 text-white p-2 rounded-sm">
+                        <FaEdit></FaEdit>
+                      </button>
+                    </Link>
                     <button className="text-lg bg-red-600 text-white p-2 rounded-sm">
                       <FaTrash></FaTrash>
                     </button>
