@@ -1,12 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../../../hooks/useAxios";
 import { FaTrash } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 
 const ManageTasks = () => {
 
   const axiosInstance = useAxios();
-  const { data: tasks = [] } = useQuery({
+  const { data: tasks = [], refetch } = useQuery({
     queryKey: ["tasks"],
     queryFn: async () => {
       const res = await axiosInstance.get("/tasks");
