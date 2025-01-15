@@ -50,14 +50,14 @@ const AddNewTasks = () => {
 
     const res = await axiosInstance.post("/tasks", task);
     if (res.data.insertedId) {
-      const res = await axiosInstance.patch(`/users/${user?.email}`, {remainingCoins,})
+      const res = await axiosInstance.patch(`/users/${user?.email}`, {remainingCoins})
       if(res.data.modifiedCount > 0){
         Swal.fire({
           title: "Task Added Successfully!",
           icon: "success",
           draggable: true,
         });
-        form.reset()
+        // form.reset()
         refetch()
       }
     }
