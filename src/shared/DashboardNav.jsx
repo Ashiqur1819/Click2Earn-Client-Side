@@ -18,7 +18,7 @@ const DashboardNav = () => {
         }
     })
 
-    const {name, email, photo, role, coins} = currentUser
+    const {name, photo, role, coins} = currentUser
 
     return (
       <div className="navbar bg-white py-6 px-3 md:px-4 lg:px-8">

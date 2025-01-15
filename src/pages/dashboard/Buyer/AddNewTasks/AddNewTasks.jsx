@@ -1,11 +1,52 @@
+import { toast } from "react-toastify";
+import useUser from "../../../../hooks/useUser";
+import {useNavigate } from "react-router-dom";
+import useAuth from "../../../../hooks/useAuth";
+import useAxios from "../../../../hooks/useAxios";
+
 const AddNewTasks = () => {
+
+  const [currentUser] = useUser()
+  const navigate = useNavigate()
+  const {user} = useAuth()
+  const axiosInstance = useAxios()
+
+  const handleAddTask = async(e) => {
+    e.preventDefault()
+
+    const form = e.target;
+    const title = form.title.value;
+    const photo = form.photo.value;
+    const workers = parseFloat(form.workers.value);
+    const amount = parseFloat(form.amount.value);
+    const date = form.date.value;
+    const subInfo = form.subInfo.value;
+    const description = form.description.value;
+    const totalAmount = workers * amount / 100
+    const buyerName = user?.displayName;
+    const buyerEmail = user?.email
+
+    if(totalAmount > currentUser?.coins){
+      toast.error("Not available Coin. Purchase Coin");
+      navigate("/dashboard/purchaseCoin");
+    }
+
+    const task = {title, photo, workers, amount, date, subInfo, description, totalAmount, buyerName, buyerEmail}
+    
+   // Save task in the database
+
+        const res = await axiosInstance.post("/tasks", task)
+        console.log(res.data)
+  }
+
+
   return (
     <div className="bg-gray-100 mt-12 rounded-sm">
       <div className="card w-5/6 mx-auto bg-white p-12 rounded-sm col-span-3">
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold ">
           Added A New Task
         </h2>
-        <form className="mt-6 grid grid-cols-2 gap-3">
+        <form onSubmit={handleAddTask} className="mt-6 grid grid-cols-2 gap-3">
           <div className="form-control">
             <label className="label px-0">
               <span className="label-text font-medium">Title:</span>
@@ -71,7 +112,7 @@ const AddNewTasks = () => {
               <span className="label-text font-medium">Submission Info:</span>
             </label>
             <input
-              type="url"
+              type="text"
               name="subInfo"
               placeholder="Submission Info"
               className="grow text-gray-700 text-sm input border border-gray-200 rounded-none focus:border-pink-300 focus:outline-none"
@@ -83,6 +124,7 @@ const AddNewTasks = () => {
               <span className="label-text font-medium">Description:</span>
             </label>
             <textarea
+            name="description"
               className="textarea h-24 text-gray-700 text-sm input border border-gray-200 rounded-sm focus:border-pink-300 focus:outline-none"
               placeholder="Submission Details"
             ></textarea>
