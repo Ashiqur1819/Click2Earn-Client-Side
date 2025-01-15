@@ -14,7 +14,7 @@ const TaskList = () => {
       },
     });
 
-    const filteredTasks = tasks.filter((task) => task.required_workers > 0);
+    const filteredTasks = tasks.filter((task) => task.workers > 0);
     
 
     return (

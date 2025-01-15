@@ -4,7 +4,7 @@ import SecondaryButton from "../Buttons/SecondaryButton";
 const FeaturedJobCard = ({task}) => {
   const {
     _id,
-   title, photo, workers, amount, date, subInfo, description, totalAmount, buyerName, buyerEmail
+   title, photo, workers, amount, date, subInfo, description, buyerName, 
   } = task;
     return (
       <div className="card bg-white rounded-sm">
