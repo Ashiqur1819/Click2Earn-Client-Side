@@ -60,9 +60,9 @@ const BuyerTasks = () => {
           <thead>
             <tr>
               <th></th>
-              <th className="text-base font-medium text-blue-950">Name</th>
+              <th className="text-base font-medium text-blue-950">Title</th>
               <th className="text-base font-medium text-blue-950">
-                Total Amount
+                 Amount
               </th>
               <th className="text-base font-medium text-blue-950">Date</th>
               <th className="text-base font-medium text-blue-950">Action</th>
@@ -76,7 +76,7 @@ const BuyerTasks = () => {
                   {task?.title.substring(0, 25)}...
                 </td>
                 <td className="font-medium text-lg text-text-primary">
-                  ${task?.totalAmount}
+                  ${(task?.amount / 100).toFixed(3)}
                 </td>
                 <td className="font-medium">{task?.date}</td>
                 <td className="flex items-center gap-3">
