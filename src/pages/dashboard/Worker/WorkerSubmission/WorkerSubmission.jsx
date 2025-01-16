@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../../../hooks/useAxios";
 import useAuth from "../../../../hooks/useAuth";
+import { FaCoins } from "react-icons/fa";
 
 
 const WorkerSubmission = () => {
@@ -41,8 +42,8 @@ const WorkerSubmission = () => {
                     {submission?.title.substring(0, 25)}...
                   </td>
                   <td className="font-medium">{submission?.buyerEmail}</td>
-                  <td className="font-medium text-lg text-text-primary">
-                    ${(submission?.amount / 100).toFixed(3)}
+                  <td className="font-medium text-lg text-text-primary flex items-center gap-2">
+                    <FaCoins></FaCoins>{submission?.amount}
                   </td>
                   <td className={`font-medium`}>
                     <p

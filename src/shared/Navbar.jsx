@@ -36,7 +36,7 @@ const Navbar = () => {
               {user?.email && (
                 <li>
                   <button className="flex items-center gap-2">
-                    <FaCoins></FaCoins> 1000
+                    <FaCoins></FaCoins> Add korte hobe
                   </button>
                 </li>
               )}
@@ -46,7 +46,10 @@ const Navbar = () => {
                 </li>
               )}
               <li>
-                <Link to="https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-Ashiqur1819" target="_blank">
+                <Link
+                  to="https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-Ashiqur1819"
+                  target="_blank"
+                >
                   <PrimaryButton
                     className="h-full"
                     label="Join as Developer"
@@ -96,7 +99,7 @@ const Navbar = () => {
             {user?.email && (
               <li>
                 <button className="flex items-center gap-2">
-                  <FaCoins></FaCoins> 1000
+                  <FaCoins></FaCoins> Add korte hobe
                 </button>
               </li>
             )}
@@ -106,7 +109,10 @@ const Navbar = () => {
               </li>
             )}
             <li>
-              <Link to="https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-Ashiqur1819" target="_blank">
+              <Link
+                to="https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-Ashiqur1819"
+                target="_blank"
+              >
                 <PrimaryButton label="Join as Developer"></PrimaryButton>
               </Link>
             </li>

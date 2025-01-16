@@ -4,6 +4,7 @@ import useAuth from "../../../../hooks/useAuth";
 import PrimaryButton from "../../../../components/Buttons/PrimaryButton";
 import useUser from "../../../../hooks/useUser";
 import Swal from "sweetalert2";
+import { FaCoins } from "react-icons/fa";
 
 const BuyerHome = () => {
   const axiosInstance = useAxios();
@@ -118,8 +119,8 @@ const BuyerHome = () => {
                     {task?.title.substring(0, 25)}...
                   </td>
                   <td className="font-medium">{task?.workerName}</td>
-                  <td className="font-medium">
-                    ${(task?.amount / 100).toFixed(3)}
+                  <td className="font-medium flex items-center gap-2 text-text-primary">
+                    <FaCoins></FaCoins>{task?.amount}
                   </td>
                   <td>
                     <button

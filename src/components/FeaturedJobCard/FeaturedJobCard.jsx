@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import SecondaryButton from "../Buttons/SecondaryButton";
+import { FaCoins } from "react-icons/fa";
 
 const FeaturedJobCard = ({task}) => {
   const {
@@ -26,8 +27,8 @@ const FeaturedJobCard = ({task}) => {
             <span className="">Buyer:</span> {buyerName}
           </p>
           <div className="card-actions justify-between items-center mt-3">
-            <h3 className="text-2xl md:text-3xl font-medium text-text-primary">
-              ${(amount / 100).toFixed(3)}
+            <h3 className="text-2xl md:text-3xl font-medium text-text-primary flex items-center gap-2">
+              <FaCoins></FaCoins>{amount}
             </h3>
             <Link to={`/dashboard/taskDetails/${_id}`}>
               <SecondaryButton label="View Details"></SecondaryButton>

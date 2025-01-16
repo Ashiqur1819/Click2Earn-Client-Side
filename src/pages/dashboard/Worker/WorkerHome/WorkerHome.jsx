@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../../../hooks/useAxios";
 import useAuth from "../../../../hooks/useAuth";
+import { FaCoins } from "react-icons/fa";
 
 
 const WorkerHome = () => {
@@ -60,8 +61,8 @@ const WorkerHome = () => {
                     <td className="font-medium">
                       {approveTask?.title.substring(0, 25)}...
                     </td>
-                    <td className="font-medium text-lg text-text-primary">
-                      ${(approveTask?.amount / 100).toFixed(3)}
+                    <td className="font-medium text-lg text-text-primary flex items-center gap-2">
+                      <FaCoins></FaCoins>{approveTask?.amount}
                     </td>
                     <td className="font-medium">{approveTask?.buyerEmail}</td>
                     <td className={`font-medium`}>

@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../../../hooks/useAxios";
 import useAuth from "../../../../hooks/useAuth";
-import { FaEdit, FaTrash } from "react-icons/fa";
+import { FaCoins, FaEdit, FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import useUser from "../../../../hooks/useUser";
@@ -34,7 +34,7 @@ const BuyerTasks = () => {
         const res = await axiosInstance.delete(`/tasks/${task?._id}`);
         if (res.data.deletedCount > 0) {
           refetch()
-          const remainingCoins = task?.totalAmount * 100 + currentUser?.coins;
+          const remainingCoins = task?.totalAmount + currentUser?.coins;
           const res = await axiosInstance.patch(`/users/${user?.email}`, {
             remainingCoins,
           });
@@ -75,8 +75,8 @@ const BuyerTasks = () => {
                 <td className="font-medium">
                   {task?.title.substring(0, 25)}...
                 </td>
-                <td className="font-medium text-lg text-text-primary">
-                  ${(task?.amount / 100).toFixed(3)}
+                <td className="font-medium text-lg text-text-primary flex items-center gap-2">
+                  <FaCoins></FaCoins>{task?.totalAmount}
                 </td>
                 <td className="font-medium">{task?.date}</td>
                 <td className="flex items-center gap-3">

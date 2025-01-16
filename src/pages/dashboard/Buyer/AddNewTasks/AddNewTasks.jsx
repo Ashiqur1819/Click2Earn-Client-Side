@@ -22,7 +22,7 @@ const AddNewTasks = () => {
     const date = form.date.value;
     const subInfo = form.subInfo.value;
     const description = form.description.value;
-    const totalAmount = (workers * amount) / 100;
+    const totalAmount = workers * amount
     const buyerName = user?.displayName;
     const buyerEmail = user?.email;
 
