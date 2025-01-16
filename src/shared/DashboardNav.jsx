@@ -78,7 +78,7 @@ const DashboardNav = () => {
             </div>
             <div className="flex flex-col gap-1 bg-gray-100 rounded-sm p-3">
               <li>
-                <img src={photo} className="w-10 rounded-full" alt="" />
+                <img src={photo} referrerPolicy="no-referrer" className="w-10 rounded-full" alt="" />
               </li>
               <li className="font-medium">
                 {name}

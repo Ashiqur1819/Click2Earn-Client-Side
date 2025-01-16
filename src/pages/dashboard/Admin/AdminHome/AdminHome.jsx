@@ -15,18 +15,24 @@ const AdminHome = () => {
 
   const handleApproveWithdraw = async (withdraw) => {
     const worker = await axiosInstance.get(`/users/${withdraw?.workerEmail}`);
-    
-    const remainingCoins = (worker?.data?.coins) - (withdraw?.withdrawlCoins);
+    const remainingCoins = worker?.data?.coins - withdraw?.withdrawlCoins;
 
     const res = await axiosInstance.patch(`/users/${withdraw?.workerEmail}`, {
       remainingCoins,
     });
     if (res.data.modifiedCount > 0) {
-      Swal.fire({
-        title: "Withdraw has been Approved!",
-        icon: "success",
-        draggable: true,
+      const res = await axiosInstance.patch(`/updateStatus/${withdraw._id}`, {
+        status: "Approved",
       });
+      console.log(res)
+      if (res.data.modifiedCount > 0) {
+        Swal.fire({
+          title: "Withdraw has been Approved!",
+          icon: "success",
+          draggable: true,
+        });
+        refetch()
+      }
     }
   };
 
@@ -85,9 +91,6 @@ const AdminHome = () => {
                       } ${
                         withdraw?.status === "Approved" &&
                         "bg-green-100 text-green-600"
-                      } ${
-                        withdraw?.status === "Rejected" &&
-                        "bg-red-100 text-red-600"
                       }`}
                     >
                       {withdraw?.status}
