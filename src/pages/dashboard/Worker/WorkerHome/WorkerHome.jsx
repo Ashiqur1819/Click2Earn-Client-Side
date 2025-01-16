@@ -1,6 +1,20 @@
+import { useQuery } from "@tanstack/react-query";
+import useAxios from "../../../../hooks/useAxios";
+import useAuth from "../../../../hooks/useAuth";
 
 
 const WorkerHome = () => {
+
+  const axiosInstance = useAxios();
+  const { user } = useAuth();
+  const { data: approveTasks = [] } = useQuery({
+    queryKey: ["approveTasks"],
+    queryFn: async () => {
+      const res = await axiosInstance.get(`/approveTasks/${user?.email}`);
+      return res.data;
+    },
+  });
+
     return (
       <div className="p-6 w-11/12 mx-auto mt-12 bg-white">
         <div className="flex items-center gap-6">
@@ -27,33 +41,38 @@ const WorkerHome = () => {
               <thead>
                 <tr>
                   <th></th>
-                  <th>Name</th>
-                  <th>Job</th>
-                  <th>Favorite Color</th>
+                  <th className="text-base font-medium text-blue-950">Title</th>
+                  <th className="text-base font-medium text-blue-950">
+                    Amount
+                  </th>
+                  <th className="text-base font-medium text-blue-950">
+                    Buyer Name
+                  </th>
+                  <th className="text-base font-medium text-blue-950">
+                    Status
+                  </th>
                 </tr>
               </thead>
               <tbody>
-                {/* row 1 */}
-                <tr>
-                  <th>1</th>
-                  <td>Cy Ganderton</td>
-                  <td>Quality Control Specialist</td>
-                  <td>Blue</td>
-                </tr>
-                {/* row 2 */}
-                <tr>
-                  <th>2</th>
-                  <td>Hart Hagerty</td>
-                  <td>Desktop Support Technician</td>
-                  <td>Purple</td>
-                </tr>
-                {/* row 3 */}
-                <tr>
-                  <th>3</th>
-                  <td>Brice Swyre</td>
-                  <td>Tax Accountant</td>
-                  <td>Red</td>
-                </tr>
+                {approveTasks.map((approveTask, index) => (
+                  <tr key={approveTask._id}>
+                    <th>{index + 1}</th>
+                    <td className="font-medium">
+                      {approveTask?.title.substring(0, 25)}...
+                    </td>
+                    <td className="font-medium text-lg text-text-primary">
+                      ${(approveTask?.amount / 100).toFixed(3)}
+                    </td>
+                    <td className="font-medium">{approveTask?.buyerEmail}</td>
+                    <td className={`font-medium`}>
+                      <p
+                        className={`p-2 text-center rounded-sm bg-green-100 text-green-600`}
+                      >
+                        {approveTask?.status}
+                      </p>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
