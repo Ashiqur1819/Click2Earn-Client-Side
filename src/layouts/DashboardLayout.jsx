@@ -28,23 +28,41 @@ const DashboardLayout = () => {
         </header>
         <main className="grid grid-cols-12 ">
           <aside className="bg-gray-50 col-span-2 min-h-screen">
-            <ul className="flex flex-col gap-6 p-8">
+            <ul className="flex flex-col gap-3 w-full">
               {/* For Worker */}
               {role === "Worker" && (
                 <>
-                  <li>
-                    <NavLink to="/dashboard/workerHome">Home</NavLink>
+                  <li className="btn bg-gray-100 border-none rounded-none text-base hover:bg-gray-200 p-0">
+                    <NavLink
+                      className="w-full h-full flex items-center justify-center"
+                      to="/dashboard/workerHome"
+                    >
+                      Home
+                    </NavLink>
                   </li>
-                  <li>
-                    <NavLink to="/dashboard/taskList">TaskList </NavLink>
+                  <li className="btn bg-gray-100 border-none rounded-none text-base hover:bg-gray-200 p-0">
+                    <NavLink
+                      className="w-full h-full flex items-center justify-center"
+                      to="/dashboard/taskList"
+                    >
+                      TaskList{" "}
+                    </NavLink>
                   </li>
-                  <li>
-                    <NavLink to="/dashboard/workerSubmission">
+                  <li className="btn bg-gray-100 border-none rounded-none text-base hover:bg-gray-200 p-0">
+                    <NavLink
+                      className="w-full h-full flex items-center justify-center"
+                      to="/dashboard/workerSubmission"
+                    >
                       My Submissions
                     </NavLink>
                   </li>
-                  <li>
-                    <NavLink to="/dashboard/withDrawals">Withdrawals </NavLink>
+                  <li className="btn bg-gray-100 border-none rounded-none text-base hover:bg-gray-200 p-0">
+                    <NavLink
+                      className="w-full h-full flex items-center justify-center"
+                      to="/dashboard/withDrawals"
+                    >
+                      Withdrawals{" "}
+                    </NavLink>
                   </li>
                 </>
               )}
@@ -52,22 +70,43 @@ const DashboardLayout = () => {
               {/* For Buyer */}
               {role === "Buyer" && (
                 <>
-                  <li>
-                    <NavLink to="/dashboard/buyerHome">Home</NavLink>
+                  <li className="btn bg-gray-100 border-none rounded-none text-base hover:bg-gray-200 p-0">
+                    <NavLink
+                      className="w-full h-full flex items-center justify-center"
+                      to="/dashboard/buyerHome"
+                    >
+                      Home
+                    </NavLink>
                   </li>
-                  <li>
-                    <NavLink to="/dashboard/addNewTasks">Add New Tasks</NavLink>
+                  <li className="btn bg-gray-100 border-none rounded-none text-base hover:bg-gray-200 p-0">
+                    <NavLink
+                      className="w-full h-full flex items-center justify-center"
+                      to="/dashboard/addNewTasks"
+                    >
+                      Add New Tasks
+                    </NavLink>
                   </li>
-                  <li>
-                    <NavLink to="/dashboard/myTasks">My Tasks</NavLink>
+                  <li className="btn bg-gray-100 border-none rounded-none text-base hover:bg-gray-200 p-0">
+                    <NavLink
+                      className="w-full h-full flex items-center justify-center"
+                      to="/dashboard/myTasks"
+                    >
+                      My Tasks
+                    </NavLink>
                   </li>
-                  <li>
-                    <NavLink to="/dashboard/purchaseCoin">
+                  <li className="btn bg-gray-100 border-none rounded-none text-base hover:bg-gray-200 p-0">
+                    <NavLink
+                      className="w-full h-full flex items-center justify-center"
+                      to="/dashboard/purchaseCoin"
+                    >
                       Purchase Coin
                     </NavLink>
                   </li>
-                  <li>
-                    <NavLink to="/dashboard/paymentHistory">
+                  <li className="btn bg-gray-100 border-none rounded-none text-base hover:bg-gray-200 p-0">
+                    <NavLink
+                      className="w-full h-full flex items-center justify-center"
+                      to="/dashboard/paymentHistory"
+                    >
                       Payment History
                     </NavLink>
                   </li>
@@ -77,14 +116,29 @@ const DashboardLayout = () => {
               {/* For Admin */}
               {role === "Admin" && (
                 <>
-                  <li>
-                    <NavLink to="/dashboard/adminHome">Home</NavLink>
+                  <li className="btn bg-gray-100 border-none rounded-none text-base hover:bg-gray-200 p-0">
+                    <NavLink
+                      className="w-full h-full flex items-center justify-center"
+                      to="/dashboard/adminHome"
+                    >
+                      Home
+                    </NavLink>
                   </li>
-                  <li>
-                    <NavLink to="/dashboard/manageUsers">Manage Users</NavLink>
+                  <li className="btn bg-gray-100 border-none rounded-none text-base hover:bg-gray-200 p-0">
+                    <NavLink
+                      className="w-full h-full flex items-center justify-center"
+                      to="/dashboard/manageUsers"
+                    >
+                      Manage Users
+                    </NavLink>
                   </li>
-                  <li>
-                    <NavLink to="/dashboard/manageTasks">Manage Tasks</NavLink>
+                  <li className="btn bg-gray-100 border-none rounded-none text-base hover:bg-gray-200 p-0">
+                    <NavLink
+                      className="w-full h-full flex items-center justify-center"
+                      to="/dashboard/manageTasks"
+                    >
+                      Manage Tasks
+                    </NavLink>
                   </li>
                 </>
               )}

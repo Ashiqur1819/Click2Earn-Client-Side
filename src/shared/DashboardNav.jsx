@@ -70,21 +70,18 @@ const DashboardNav = () => {
         <div className="navbar-end hidden lg:flex ">
           <ul className="menu-horizontal gap-6 items-center px-1">
             <div className="flex flex-col gap-3 bg-gray-100 rounded-sm p-3">
-              <li>
-                <NavLink className="flex items-center gap-2 text-2xl text-text-primary font-medium">
-                   <FaCoins></FaCoins>{coins}
-                </NavLink>
+              <li className="flex items-center gap-2 text-2xl text-text-primary font-medium">
+                <FaCoins></FaCoins>
+                {coins}
               </li>
-              <li>
-                <NavLink className="font-medium">{role}</NavLink>
-              </li>
+              <li className="font-medium">{role}</li>
             </div>
             <div className="flex flex-col gap-1 bg-gray-100 rounded-sm p-3">
               <li>
                 <img src={photo} className="w-10 rounded-full" alt="" />
               </li>
-              <li>
-                <NavLink className="font-medium">{name}</NavLink>
+              <li className="font-medium">
+                {name}
               </li>
             </div>
             <div className="flex flex-col items-center bg-gray-100 rounded-sm p-3 gap-3">
