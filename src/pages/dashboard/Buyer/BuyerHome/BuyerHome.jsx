@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 
 const BuyerHome = () => {
   const axiosInstance = useAxios();
-  const [currentUser, refetchUser] = useUser();
+  const [, refetchUser] = useUser();
   const { user } = useAuth();
   const { data: submittedTasks = [], refetch } = useQuery({
     queryKey: ["submittedTasks"],
@@ -20,7 +20,9 @@ const BuyerHome = () => {
   });
 
   const handleApproveTask = async (task) => {
-    const res = await axiosInstance.patch(`/statusUpdate/${task._id}`);
+    const res = await axiosInstance.patch(`/statusUpdate/${task._id}`, {
+      status: "Approved",
+    });
     if (res.data.modifiedCount > 0) {
       refetch();
       const worker = await axiosInstance.get(`/users/${task?.workerEmail}`);
@@ -37,6 +39,40 @@ const BuyerHome = () => {
         refetchUser();
       }
     }
+  };
+
+  const handleRejectTask = async (task) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const res = await axiosInstance.patch(`/statusUpdate/${task._id}`, {
+          status: "Rejected",
+        });
+        if (res.data.modifiedCount > 0) {
+          refetch();
+          const workers = await axiosInstance.get(`/tasks/${task?.taskId}`);
+          const remainingWorkers = workers.data.workers + 1;
+          const res = await axiosInstance.patch(`/tasks/${task?.taskId}`, {
+            remainingWorkers,
+          });
+        }
+        if (res.data.deletedCount > 0) {
+          Swal.fire({
+            title: "Deleted!",
+            text: "User has been deleted successfully.",
+            icon: "success",
+          });
+          refetch();
+        }
+      }
+    });
   };
 
   return (
@@ -113,7 +149,10 @@ const BuyerHome = () => {
                     >
                       Approve
                     </button>
-                    <button className="bg-red-600 text-white px-2 py-1 rounded-sm font-medium">
+                    <button
+                      onClick={() => handleRejectTask(task)}
+                      className="bg-red-600 text-white px-2 py-1 rounded-sm font-medium"
+                    >
                       Reject
                     </button>
                   </td>
