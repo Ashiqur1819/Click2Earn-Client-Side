@@ -24,10 +24,13 @@ const BestWorkers = () => {
           professionalism. These top performers set the standard for excellence
           on our platform.
         </p>
-        <div>
-            {
-                bestWorkers.map(bestWorker => <BestWorkersCard bestWorker={bestWorker} key={bestWorker._id}></BestWorkersCard>)
-            }
+        <div className="grid md:grid-cols-3 gap-6 mt-12">
+          {bestWorkers.map((bestWorker) => (
+            <BestWorkersCard
+              bestWorker={bestWorker}
+              key={bestWorker._id}
+            ></BestWorkersCard>
+          ))}
         </div>
       </div>
     );
