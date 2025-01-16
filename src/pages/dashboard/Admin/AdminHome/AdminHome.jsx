@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../../../hooks/useAxios";
-import { FaCoins, FaTrash } from "react-icons/fa";
+import { FaCoins } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const AdminHome = () => {
   const axiosInstance = useAxios();
@@ -11,6 +12,23 @@ const AdminHome = () => {
       return res.data;
     },
   });
+
+  const handleApproveWithdraw = async (withdraw) => {
+    const worker = await axiosInstance.get(`/users/${withdraw?.workerEmail}`);
+    
+    const remainingCoins = (worker?.data?.coins) - (withdraw?.withdrawlCoins);
+
+    const res = await axiosInstance.patch(`/users/${withdraw?.workerEmail}`, {
+      remainingCoins,
+    });
+    if (res.data.modifiedCount > 0) {
+      Swal.fire({
+        title: "Withdraw has been Approved!",
+        icon: "success",
+        draggable: true,
+      });
+    }
+  };
 
   return (
     <div className="p-6 w-11/12 mx-auto bg-white mt-12 rounded-sm">
@@ -29,9 +47,7 @@ const AdminHome = () => {
         </div>
       </div>
       <div className="mt-12">
-        <h2 className="text-2xl md:text-3xl font-bold">
-           Withdrawal Requests
-        </h2>
+        <h2 className="text-2xl md:text-3xl font-bold">Withdrawal Requests</h2>
         <div className="overflow-x-auto mt-6">
           <table className="table table-zebra">
             {/* head */}
@@ -78,7 +94,10 @@ const AdminHome = () => {
                     </p>
                   </td>
                   <td className="font-medium">
-                    <button className="text-base bg-green-600 text-white px-4 py-2 rounded-sm hover:bg-green-700">
+                    <button
+                      onClick={() => handleApproveWithdraw(withdraw)}
+                      className="text-base bg-green-600 text-white px-4 py-2 rounded-sm hover:bg-green-700"
+                    >
                       Approve
                     </button>
                   </td>
