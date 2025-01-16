@@ -12,7 +12,7 @@ const BestWorkersCard = ({bestWorker}) => {
             <img src={winingImage} className="w-24 h-24 object-cover" alt="" />
         </div>
         <div className="p-6 relative">
-          <img src={photo} referrerPolicy="no-referrer" className="w-20 absolute -top-12 rounded-full" alt="" />
+          <img src={photo} referrerPolicy="no-referrer" className="w-20 absolute -top-10 rounded-full" alt="" />
           <div className="mt-10 flex items-center justify-between ">
             <div>
               <h2 className="text-xl font-semibold">{name}</h2>

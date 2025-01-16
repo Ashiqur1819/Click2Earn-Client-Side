@@ -20,6 +20,7 @@ import AdminHome from "../pages/dashboard/Admin/AdminHome/AdminHome";
 import ManageUsers from "../pages/dashboard/Admin/ManageUsers/ManageUsers";
 import ManageTasks from "../pages/dashboard/Admin/ManageTasks/ManageTasks";
 import UpdateTask from "../pages/dashboard/Buyer/UpdateTask/UpdateTask";
+import CheckOutForm from "../pages/dashboard/Buyer/CheckOutForm/CheckOutForm";
 
 const router = createBrowserRouter([
   {
@@ -122,6 +123,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <PurchaseCoin></PurchaseCoin>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "checkOut",
+        element: (
+          <PrivateRoute>
+            <CheckOutForm></CheckOutForm>
           </PrivateRoute>
         ),
       },

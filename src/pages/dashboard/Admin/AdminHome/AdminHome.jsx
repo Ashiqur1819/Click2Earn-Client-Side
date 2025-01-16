@@ -24,7 +24,6 @@ const AdminHome = () => {
       const res = await axiosInstance.patch(`/updateStatus/${withdraw._id}`, {
         status: "Approved",
       });
-      console.log(res)
       if (res.data.modifiedCount > 0) {
         Swal.fire({
           title: "Withdraw has been Approved!",

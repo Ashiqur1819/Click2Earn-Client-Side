@@ -8,6 +8,10 @@ const WorkerHome = () => {
 
   const axiosInstance = useAxios();
   const { user } = useAuth();
+
+  // const res = await axiosInstance.get(`/workerStats/${user?.email}`);
+  // console.log(res.data)
+
   const { data: approveTasks = [] } = useQuery({
     queryKey: ["approveTasks"],
     queryFn: async () => {
