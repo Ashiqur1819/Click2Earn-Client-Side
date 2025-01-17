@@ -22,6 +22,7 @@ import ManageTasks from "../pages/dashboard/Admin/ManageTasks/ManageTasks";
 import UpdateTask from "../pages/dashboard/Buyer/UpdateTask/UpdateTask";
 import CheckOutForm from "../pages/dashboard/Buyer/CheckOutForm/CheckOutForm";
 import AdminRoute from "./AdminRoute";
+import BuyerRoute from "./BuyerRoute";
 
 const router = createBrowserRouter([
   {
@@ -97,7 +98,9 @@ const router = createBrowserRouter([
         path: "buyerHome",
         element: (
           <PrivateRoute>
-            <BuyerHome></BuyerHome>
+            <BuyerRoute>
+              <BuyerHome></BuyerHome>
+            </BuyerRoute>
           </PrivateRoute>
         ),
       },
@@ -105,7 +108,9 @@ const router = createBrowserRouter([
         path: "addNewTasks",
         element: (
           <PrivateRoute>
-            <AddNewTasks></AddNewTasks>
+            <BuyerRoute>
+              <AddNewTasks></AddNewTasks>
+            </BuyerRoute>
           </PrivateRoute>
         ),
       },
@@ -113,7 +118,9 @@ const router = createBrowserRouter([
         path: "myTasks",
         element: (
           <PrivateRoute>
-            <BuyerTasks></BuyerTasks>
+            <BuyerRoute>
+              <BuyerTasks></BuyerTasks>
+            </BuyerRoute>
           </PrivateRoute>
         ),
       },
@@ -121,7 +128,9 @@ const router = createBrowserRouter([
         path: "updateTask/:id",
         element: (
           <PrivateRoute>
-            <UpdateTask></UpdateTask>
+            <BuyerRoute>
+              <UpdateTask></UpdateTask>
+            </BuyerRoute>
           </PrivateRoute>
         ),
       },
@@ -129,7 +138,9 @@ const router = createBrowserRouter([
         path: "purchaseCoin",
         element: (
           <PrivateRoute>
-            <PurchaseCoin></PurchaseCoin>
+            <BuyerRoute>
+              <PurchaseCoin></PurchaseCoin>
+            </BuyerRoute>
           </PrivateRoute>
         ),
       },
@@ -137,7 +148,9 @@ const router = createBrowserRouter([
         path: "checkOut",
         element: (
           <PrivateRoute>
-            <CheckOutForm></CheckOutForm>
+            <BuyerRoute>
+              <CheckOutForm></CheckOutForm>
+            </BuyerRoute>
           </PrivateRoute>
         ),
       },
@@ -145,7 +158,9 @@ const router = createBrowserRouter([
         path: "paymentHistory",
         element: (
           <PrivateRoute>
-            <PaymentHistory></PaymentHistory>
+            <BuyerRoute>
+              <PaymentHistory></PaymentHistory>
+            </BuyerRoute>
           </PrivateRoute>
         ),
       },
