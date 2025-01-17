@@ -1,16 +1,17 @@
 import { useState } from "react";
 import moneyImage from "../../../../assets/money.webp"
-import useUser from "../../../../hooks/useUser";
-import { toast } from "react-toastify";
 import useAxios from "../../../../hooks/useAxios";
 import useAuth from "../../../../hooks/useAuth";
 import Swal from "sweetalert2";
+import useUser from "../../../../hooks/useUser";
 
 const WorkerWithDrawals = () => {
 
     const {user} = useAuth()
+    const [currentUser] = useUser()
     const [coin, setCoin] = useState()
     const axiosInstance = useAxios()
+    console.log(user)
     
   const handleCoinChange = e => {
     setCoin(e);
@@ -64,7 +65,7 @@ const WorkerWithDrawals = () => {
           </div>
           <div>
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-violet-600 ">
-              Total Earning : ${user?.coins / 20}
+              Total Earning : ${currentUser?.coins / 20}
             </h2>
             <div className="divider"></div>
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold ">
@@ -129,9 +130,7 @@ const WorkerWithDrawals = () => {
               </div>
               <div className="form-control mt-6 col-span-2">
                 {coin >= 200 ? (
-                  <button
-                    className="btn text-base bg-bg-tertiary px-4 py-2 rounded-sm text-white font-medium transition-all hover:bg-[#e6025b]"
-                  >
+                  <button className="btn text-base bg-bg-tertiary px-4 py-2 rounded-sm text-white font-medium transition-all hover:bg-[#e6025b]">
                     Withdraw
                   </button>
                 ) : (

@@ -3,11 +3,13 @@ import PrimaryButton from "../components/Buttons/PrimaryButton";
 import { FaCoins } from "react-icons/fa";
 import useAuth from "../hooks/useAuth";
 import SecondaryButton from "../components/Buttons/SecondaryButton";
+import useUser from "../hooks/useUser";
 
 
 const Navbar = () => {
 
   const { user, logOut } = useAuth();
+  const [currentUser] = useUser()
 
     return (
       <div className="navbar bg-white px-4 md:px-6 lg:px-8 py-5">
@@ -99,7 +101,7 @@ const Navbar = () => {
             {user?.email && (
               <li>
                 <button className="flex items-center gap-2">
-                  <FaCoins></FaCoins> Add korte hobe
+                  <FaCoins></FaCoins> {currentUser?.coins}
                 </button>
               </li>
             )}
