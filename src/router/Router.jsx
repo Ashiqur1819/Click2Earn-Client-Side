@@ -23,6 +23,7 @@ import UpdateTask from "../pages/dashboard/Buyer/UpdateTask/UpdateTask";
 import CheckOutForm from "../pages/dashboard/Buyer/CheckOutForm/CheckOutForm";
 import AdminRoute from "./AdminRoute";
 import BuyerRoute from "./BuyerRoute";
+import WorkerRoute from "./WorkerRoute";
 
 const router = createBrowserRouter([
   {
@@ -169,7 +170,9 @@ const router = createBrowserRouter([
         path: "workerHome",
         element: (
           <PrivateRoute>
-            <WorkerHome></WorkerHome>
+            <WorkerRoute>
+              <WorkerHome></WorkerHome>
+            </WorkerRoute>
           </PrivateRoute>
         ),
       },
@@ -177,7 +180,9 @@ const router = createBrowserRouter([
         path: "taskList",
         element: (
           <PrivateRoute>
-            <TaskList></TaskList>
+            <WorkerRoute>
+              <TaskList></TaskList>
+            </WorkerRoute>
           </PrivateRoute>
         ),
       },
@@ -185,7 +190,9 @@ const router = createBrowserRouter([
         path: "workerSubmission",
         element: (
           <PrivateRoute>
-            <WorkerSubmission></WorkerSubmission>
+            <WorkerRoute>
+              <WorkerSubmission></WorkerSubmission>
+            </WorkerRoute>
           </PrivateRoute>
         ),
       },
@@ -193,7 +200,9 @@ const router = createBrowserRouter([
         path: "withDrawals",
         element: (
           <PrivateRoute>
-            <WorkerWithDrawals></WorkerWithDrawals>
+            <WorkerRoute>
+              <WorkerWithDrawals></WorkerWithDrawals>
+            </WorkerRoute>
           </PrivateRoute>
         ),
       },
@@ -201,7 +210,9 @@ const router = createBrowserRouter([
         path: "taskDetails/:id",
         element: (
           <PrivateRoute>
-            <TaskDetails></TaskDetails>
+            <WorkerRoute>
+              <TaskDetails></TaskDetails>
+            </WorkerRoute>
           </PrivateRoute>
         ),
       },
