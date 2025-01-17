@@ -56,8 +56,14 @@ const Register = () => {
     const newUser = { name, email, photo, role, coins };
 
     createNewUser(email, password)
-      .then((result) => {
+      .then(async (result) => {
         setUser(result.user);
+        const res = await axiosInstance.get(`/users/${result?.user?.email}`);
+        if (res.data?.role == "Worker") {
+          navigate("/dashboard/workerHome");
+        } else {
+          navigate("/dashboard/buyerHome");
+        }
         form.reset();
         updateUserProfile({ displayName: name, photoURL: photo }).then(() => {
           setUser((prev) => ({
@@ -65,18 +71,18 @@ const Register = () => {
             displayName: name,
             photoURL: photo,
           }));
-          navigate("/");
           setLoading(false);
         });
       })
       .catch((err) => {
+        toast.error(err.message);
         console.log(err);
       });
-
     // Save user information in the database
 
     try {
       const res = await axiosInstance.post("/users", newUser);
+      console.log(res);
       if (res.data.insertedId) {
         toast.success(`Registration successful!`);
       }
@@ -86,21 +92,26 @@ const Register = () => {
   };
 
   const handleLoginWithGoogle = () => {
-    loginWithGoogle().then(async(result) => {
+    loginWithGoogle().then(async (result) => {
       toast.success("Google login successful!");
-      navigate("/");
+      const res = await axiosInstance.get(`/users/${result?.user?.email}`);
+      if (res.data?.role == "Worker") {
+        navigate("/dashboard/workerHome");
+      } else {
+        navigate("/dashboard/buyerHome");
+      }
       setUser(result?.user);
       const name = result?.user?.displayName;
       const email = result?.user?.email;
       const photo = result?.user?.photoURL;
       const role = "Worker";
-      const coins = 10
+      const coins = 10;
 
-      const newUser = {name, email, photo, role, coins}
+      const newUser = { name, email, photo, role, coins };
 
       // Save user information in the database
       axiosInstance.post("/users", newUser);
-      setLoading(false)
+      setLoading(false);
     });
   };
 

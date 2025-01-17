@@ -21,6 +21,7 @@ import ManageUsers from "../pages/dashboard/Admin/ManageUsers/ManageUsers";
 import ManageTasks from "../pages/dashboard/Admin/ManageTasks/ManageTasks";
 import UpdateTask from "../pages/dashboard/Buyer/UpdateTask/UpdateTask";
 import CheckOutForm from "../pages/dashboard/Buyer/CheckOutForm/CheckOutForm";
+import AdminRoute from "./AdminRoute";
 
 const router = createBrowserRouter([
   {
@@ -64,7 +65,9 @@ const router = createBrowserRouter([
         path: "adminHome",
         element: (
           <PrivateRoute>
-            <AdminHome></AdminHome>
+            <AdminRoute>
+              <AdminHome></AdminHome>
+            </AdminRoute>
           </PrivateRoute>
         ),
       },
@@ -72,7 +75,9 @@ const router = createBrowserRouter([
         path: "manageUsers",
         element: (
           <PrivateRoute>
-            <ManageUsers></ManageUsers>
+            <AdminRoute>
+              <ManageUsers></ManageUsers>
+            </AdminRoute>
           </PrivateRoute>
         ),
       },
@@ -80,7 +85,9 @@ const router = createBrowserRouter([
         path: "manageTasks",
         element: (
           <PrivateRoute>
-            <ManageTasks></ManageTasks>
+            <AdminRoute>
+              <ManageTasks></ManageTasks>
+            </AdminRoute>
           </PrivateRoute>
         ),
       },

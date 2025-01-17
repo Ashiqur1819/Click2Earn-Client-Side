@@ -53,7 +53,7 @@ const Testimonials = () => {
                 supplement their income.
               </p>
               <div>
-                <img src={reviewImage} className="w-52" alt="" />
+                <img src={reviewImage} className="w-40" alt="" />
               </div>
               <div className="flex items-center gap-3">
                 <img
@@ -77,7 +77,7 @@ const Testimonials = () => {
                 provides a great way to earn on the side. Highly recommended!
               </p>
               <div>
-                <img src={reviewImage} className="w-52" alt="" />
+                <img src={reviewImage} className="w-40" alt="" />
               </div>
               <div className="flex items-center gap-3">
                 <img
@@ -101,7 +101,7 @@ const Testimonials = () => {
                 higher-paying tasks. Overall, a trustworthy and reliable site.
               </p>
               <div>
-                <img src={reviewImage} className="w-52" alt="" />
+                <img src={reviewImage} className="w-40" alt="" />
               </div>
               <div className="flex items-center gap-3">
                 <img
@@ -126,7 +126,7 @@ const Testimonials = () => {
                 helpful. A great experience overall!
               </p>
               <div>
-                <img src={reviewImage} className="w-52" alt="" />
+                <img src={reviewImage} className="w-40" alt="" />
               </div>
               <div className="flex items-center gap-3">
                 <img
@@ -150,7 +150,7 @@ const Testimonials = () => {
                 withdrawal process would make it even better.
               </p>
               <div>
-                <img src={reviewImage} className="w-52" alt="" />
+                <img src={reviewImage} className="w-40" alt="" />
               </div>
               <div className="flex items-center gap-3">
                 <img
@@ -175,7 +175,7 @@ const Testimonials = () => {
                 must-try for anyone looking to make money online!
               </p>
               <div>
-                <img src={reviewImage} className="w-52" alt="" />
+                <img src={reviewImage} className="w-40" alt="" />
               </div>
               <div className="flex items-center gap-3">
                 <img
@@ -200,7 +200,7 @@ const Testimonials = () => {
                 time and want quick returns!
               </p>
               <div>
-                <img src={reviewImage} className="w-52" alt="" />
+                <img src={reviewImage} className="w-40" alt="" />
               </div>
               <div className="flex items-center gap-3">
                 <img

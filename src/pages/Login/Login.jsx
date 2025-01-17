@@ -8,12 +8,13 @@ import useAxios from "../../hooks/useAxios";
 import { toast } from "react-toastify";
 
 const Login = () => {
-  const {setUser, userLogin, loginWithGoogle, setLoading } = useAuth();
+  const { setUser, userLogin, loginWithGoogle, setLoading } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
-  const axiosInstance = useAxios()
+  const axiosInstance = useAxios();
 
-  const handleLogin = (e) => {
+
+  const handleLogin = async (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
@@ -35,40 +36,48 @@ const Login = () => {
     }
 
     userLogin(email, password)
-      .then((result) => {
+      .then(async (result) => {
         setUser(result.user);
+        const res = await axiosInstance.get(`/users/${result?.user?.email}`);
+        if (res.data?.role == "Worker") {
+          navigate("/dashboard/workerHome");
+        } else {
+          navigate("/dashboard/buyerHome");
+        }
         toast.success("Login successful! Welcome back!");
-        navigate("/");
         setLoading(false);
       })
       .catch(() => {
         toast.error("Something went wrong! Please try again later.");
       });
-    // console.log(email, password)
   };
 
   const handleLoginWithGoogle = () => {
     loginWithGoogle()
-    .then((result) => {
-      setUser(result.user);
-      toast.success("Google login successful!");
-      navigate("/");
+      .then(async(result) => {
+        setUser(result.user);
+         const res = await axiosInstance.get(`/users/${result?.user?.email}`);
+        if (res.data?.role == "Worker") {
+          navigate("/dashboard/workerHome");
+        } else {
+          navigate("/dashboard/buyerHome");
+        }
+        toast.success("Google login successful!");
+        const name = result.user?.displayName;
+        const email = result.user?.email;
+        const photo = result.user?.photoURL;
+        const role = "Worker";
+        const coins = 10;
 
-      const name = result.user?.displayName;
-      const email = result.user?.email;
-      const photo = result.user?.photoURL;
-      const role = "Worker";
-      const coins = 10;
-
-      const newUser = { name, email, photo, role, coins };
-      // Save user information in the database
-      axiosInstance.post("/users", newUser);
-      setLoading(false);
-    })
-    .catch((err) => {
-      console.log(err)
-      toast.error("Something Went Wrong! Please Try Again Later.")
-    })
+        const newUser = { name, email, photo, role, coins };
+        // Save user information in the database
+        axiosInstance.post("/users", newUser);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("Something Went Wrong! Please Try Again Later.");
+      });
   };
 
   return (
