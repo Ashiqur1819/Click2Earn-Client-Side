@@ -28,6 +28,16 @@ const BuyerHome = () => {
     },
   });
 
+   const { data: payments = [] } = useQuery({
+     queryKey: ["payments"],
+     queryFn: async () => {
+       const res = await axiosInstance.get(`/payments/${user?.email}`);
+       console.log(res.data)
+     },
+   });
+
+  const pendingTasks = tasks.reduce((total, current) => total + current.workers, 0)
+
 
   const handleApproveTask = async (task) => {
     const res = await axiosInstance.patch(`/statusUpdate/${task._id}`, {
@@ -94,11 +104,11 @@ const BuyerHome = () => {
         </div>
         <div className="bg-blue-200 p-6 text-center rounded-sm min-w-52">
           <h3 className="text-lg font-semibold">Pending Task</h3>
-          <h2 className="text-5xl text-pink-500 font-bold">35</h2>
+          <h2 className="text-5xl text-pink-500 font-bold">{pendingTasks}</h2>
         </div>
         <div className="bg-green-200 p-6 text-center rounded-sm min-w-52">
           <h3 className="text-lg font-semibold">Total Payment</h3>
-          <h2 className="text-5xl text-pink-500 font-bold">45</h2>
+          <h2 className="text-5xl text-pink-500 font-bold">{payments.length}</h2>
         </div>
       </div>
       <div className="mt-12">

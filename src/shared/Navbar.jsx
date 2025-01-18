@@ -9,8 +9,13 @@ import { motion } from "motion/react";
 
 const Navbar = () => {
 
-  const { user, logOut } = useAuth();
+  const { user, logOut, loading } = useAuth();
   const [currentUser] = useUser()
+  console.log(currentUser)
+
+  if(loading){
+    return <p>Loading</p>
+  }
 
     return (
       <div className="navbar bg-white px-4 md:px-6 lg:px-8 py-5">
