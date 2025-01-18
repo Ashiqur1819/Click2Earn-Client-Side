@@ -17,16 +17,11 @@ import reviewImage from "../../assets/review.png"
 
 const Testimonials = () => {
   return (
-    <div>
+    <div className="">
       <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black text-center">
         What Our Users Say
       </h2>
-      <p className="max-w-3xl mx-auto text-center mt-3 text-gray-800">
-        Your feedback matters! See what others are saying about their experience
-        on Click2Earn. Share your own review and help us improve while guiding
-        new users. Let’s grow together!
-      </p>
-      <div className="mt-12">
+      <div className="mt-6">
         <Swiper
           effect={"coverflow"}
           grabCursor={true}

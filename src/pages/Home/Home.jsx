@@ -1,5 +1,6 @@
 import BestWorkers from "./BestWorkers";
 import Carousel from "./Carousel";
+import FAQs from "./FAQs";
 import FeaturedJobs from "./FeaturedJobs";
 import Testimonials from "./Testimonials";
 
@@ -17,9 +18,12 @@ const Home = () => {
           <div className="mt-20">
             <FeaturedJobs></FeaturedJobs>
           </div>
-          <div className="mt-20">
-            <Testimonials></Testimonials>
-          </div>
+        </div>
+        <div className="mt-20">
+          <Testimonials></Testimonials>
+        </div>
+        <div className="mt-20">
+          <FAQs></FAQs>
         </div>
       </div>
     );

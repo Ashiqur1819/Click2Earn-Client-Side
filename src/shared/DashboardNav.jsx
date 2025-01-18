@@ -70,7 +70,7 @@ const DashboardNav = () => {
         </div>
         <div className="navbar-end hidden lg:flex ">
           <ul className="menu-horizontal gap-3 items-center px-1">
-            <div className="flex flex-col gap-3 bg-gray-100 rounded-sm p-3">
+            <div className="flex flex-col gap-3 bg-gray-100 rounded-sm p-4">
               <li className="flex items-center gap-2 text-2xl text-text-primary font-medium">
                 <FaCoins></FaCoins>
                 {coins}
@@ -85,7 +85,7 @@ const DashboardNav = () => {
                 {name}
               </li>
             </div>
-            <div className="flex flex-col items-center bg-gray-100 rounded-sm p-3 gap-3">
+            <div className="flex flex-col items-center bg-gray-100 rounded-sm p-4 gap-3">
               <IoNotificationsSharp className="text-3xl"></IoNotificationsSharp>
               <p className="font-medium">Notifications</p>
             </div>

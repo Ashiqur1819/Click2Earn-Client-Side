@@ -4,6 +4,7 @@ import { NavLink, Outlet } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 import { useQuery } from '@tanstack/react-query';
 import useAxios from '../hooks/useAxios';
+import Footer from '../shared/Footer';
 
 const DashboardLayout = () => {
 
@@ -27,7 +28,7 @@ const DashboardLayout = () => {
           <DashboardNav></DashboardNav>
         </header>
         <main className="lg:grid grid-cols-12 ">
-          <aside className="bg-gray-50 col-span-2 min-h-screen">
+          <aside className="bg-gray-50 col-span-2  min-h-screen">
             <ul className="flex flex-col gap-3 w-full">
               {/* For Worker */}
               {role === "Worker" && (
@@ -144,8 +145,13 @@ const DashboardLayout = () => {
               )}
             </ul>
           </aside>
-          <div className="bg-gray-100 col-span-10 min-h-screen">
-            <Outlet></Outlet>
+          <div className="bg-gray-100 col-span-10 flex flex-col">
+            <div className="flex-grow">
+              <Outlet></Outlet>
+            </div>
+            <div className="mt-20">
+              <Footer></Footer>
+            </div>
           </div>
         </main>
       </div>
