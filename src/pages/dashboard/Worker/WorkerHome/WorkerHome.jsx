@@ -9,9 +9,6 @@ const WorkerHome = () => {
   const axiosInstance = useAxios();
   const { user } = useAuth();
 
-  // const res = await axiosInstance.get(`/workerStats/${user?.email}`);
-  // console.log(res.data)
-
   const { data: approveTasks = [] } = useQuery({
     queryKey: ["approveTasks"],
     queryFn: async () => {
@@ -20,20 +17,52 @@ const WorkerHome = () => {
     },
   });
 
+  const { data: submissions = [] } = useQuery({
+    queryKey: ["submissions"],
+    queryFn: async () => {
+      const res = await axiosInstance.get(`/submittedTasks/${user?.email}`);
+      return res.data;
+    },
+  });
+
+  const { data: pendingSubmissions = [] } = useQuery({
+    queryKey: ["pendingSubmissions"],
+    queryFn: async () => {
+      const res = await axiosInstance.get(`/pendingSubmissions/${user?.email}`);
+      return res.data;
+    },
+  });
+
+  const { data: approveSubmissions = [] } = useQuery({
+    queryKey: ["approveSubmissions"],
+    queryFn: async () => {
+      const res = await axiosInstance.get(`/approveSubmissions/${user?.email}`);
+      return res.data;
+    },
+  });
+
+  const totalEarning = approveSubmissions.reduce((total, current) => total + current.amount, 0)
+
+
+
     return (
       <div className="p-6 w-11/12 mx-auto mt-12 bg-white">
         <div className="lg:flex items-center gap-6">
           <div className="bg-blue-200 p-6 text-center rounded-sm min-w-52">
             <h3 className="text-lg font-semibold">Total Submission</h3>
-            <h2 className="text-5xl text-pink-500 font-bold">15</h2>
+            <h2 className="text-5xl text-pink-500 font-bold">
+              {submissions.length}
+            </h2>
           </div>
           <div className="bg-red-200 p-6 text-center rounded-sm min-w-52">
-            <h3 className="text-lg font-semibold">Total Submission</h3>
-            <h2 className="text-5xl text-pink-500 font-bold">15</h2>
+            <h3 className="text-lg font-semibold">Total Pending Submission</h3>
+            <h2 className="text-5xl text-pink-500 font-bold">
+              {pendingSubmissions.length}
+            </h2>
           </div>
           <div className="bg-green-200 p-6 text-center rounded-sm min-w-52">
-            <h3 className="text-lg font-semibold">Total Submission</h3>
-            <h2 className="text-5xl text-pink-500 font-bold">15</h2>
+            <h3 className="text-lg font-semibold">Total Earning</h3>
+            <h2 className="text-5xl text-pink-500 font-bold">{totalEarning}</h2>
           </div>
         </div>
         <div className="mt-12">
@@ -66,7 +95,8 @@ const WorkerHome = () => {
                       {approveTask?.title.substring(0, 25)}...
                     </td>
                     <td className="font-medium text-lg text-text-primary flex items-center gap-2">
-                      <FaCoins></FaCoins>{approveTask?.amount}
+                      <FaCoins></FaCoins>
+                      {approveTask?.amount}
                     </td>
                     <td className="font-medium">{approveTask?.buyerEmail}</td>
                     <td className={`font-medium`}>
