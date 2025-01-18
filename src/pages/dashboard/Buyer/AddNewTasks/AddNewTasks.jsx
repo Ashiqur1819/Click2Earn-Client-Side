@@ -59,6 +59,7 @@ const AddNewTasks = () => {
           draggable: true,
         });
         form.reset()
+        navigate("/dashboard/myTasks")
         refetch()
       }
     }

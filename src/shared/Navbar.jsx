@@ -16,10 +16,10 @@ const Navbar = () => {
       <div className="navbar bg-white px-4 md:px-6 lg:px-8 py-5">
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <div tabIndex={0} role="button" className="lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
+                className="h-7 w-7"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -34,25 +34,28 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className=" menu-sm dropdown-content bg-white rounded-sm z-[1] mt-3 w-52 p-2 shadow"
+              className=" menu-sm dropdown-content bg-white rounded-sm z-[1] mt-6 w-52 p-3 shadow"
             >
               {user?.email && (
                 <li>
-                  <button className="flex items-center gap-2">
-                    <FaCoins></FaCoins> Add korte hobe
-                  </button>
+                  <p className="flex items-center w-full gap-2 py-2 px-4 bg-gray-100 border-none rounded-none text-base font-medium">
+                    <FaCoins className="text-text-primary"></FaCoins>{" "}
+                    {currentUser.coins}
+                  </p>
                 </li>
               )}
               {user?.email && (
-                <li>
+                <li className=" bg-gray-100 border-none rounded-none text-base hover:bg-gray-200 font-medium py-2 px-4 mt-2">
                   <NavLink
-                    to={`${
-                      currentUser?.role == "Worker" && "/dashboard/workerHome"
-                    } ${
-                      currentUser?.role == "Buyer" && "/dashboard/buyerHome"
-                    } ${
-                      currentUser?.role == "Admin" && "/dashboard/adminHome"
-                    }`}
+                    to={
+                      currentUser?.role === "Worker"
+                        ? "/dashboard/workerHome"
+                        : currentUser?.role === "Buyer"
+                        ? "/dashboard/buyerHome"
+                        : currentUser?.role === "Admin"
+                        ? "/dashboard/adminHome"
+                        : "/dashboard"
+                    }
                   >
                     Dashboard
                   </NavLink>
@@ -63,10 +66,7 @@ const Navbar = () => {
                   to="https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-Ashiqur1819"
                   target="_blank"
                 >
-                  <PrimaryButton
-                    className="h-full"
-                    label="Join as Developer"
-                  ></PrimaryButton>
+                  <button className=" bg-yellow-400 w-full border-none rounded-none text-base hover:bg-gray-200 font-medium py-2 px-4 mt-2 -ml-3">Join As Developer</button>
                 </Link>
               </li>
               {/* <li>
@@ -111,13 +111,12 @@ const Navbar = () => {
           <ul className="menu-horizontal gap-3 px-1 items-center">
             {user?.email && (
               <li>
-                <button className="flex items-center gap-2 py-2 px-4 bg-gray-100 border-none rounded-none text-base font-medium hover:bg-gray-200">
+                <p className="flex items-center gap-2 py-2 px-4 bg-gray-100 border-none rounded-none text-base font-medium">
                   <FaCoins className="text-text-primary"></FaCoins>{" "}
                   {currentUser.coins}
-                </button>
+                </p>
               </li>
             )}
-            {/* className="btn bg-gray-100 border-none rounded-none text-base hover:bg-gray-200 p-0" */}
             {user?.email && (
               <li className=" bg-gray-100 border-none rounded-none text-base hover:bg-gray-200 font-medium py-2 px-4 ">
                 <NavLink
@@ -163,14 +162,12 @@ const Navbar = () => {
             </li>
             <li>
               {user?.email ? (
-                <Link to="register">
-                  <img
-                    src={user?.photoURL}
-                    className="w-12 h-12 object-cover rounded-full border-2 border-text-primary"
-                    referrerPolicy="no-referrer"
-                    alt=""
-                  />
-                </Link>
+                <img
+                  src={user?.photoURL}
+                  className="w-12 h-12 object-cover rounded-full border-2 border-text-primary"
+                  referrerPolicy="no-referrer"
+                  alt=""
+                />
               ) : (
                 <Link to="register">
                   <button className="bg-blue-500 px-4 py-2 rounded-sm text-white font-medium transition-all hover:bg-blue-600">
@@ -203,7 +200,7 @@ const Navbar = () => {
               <Link to="/">
                 <button
                   onClick={logOut}
-                  className="bg-red-600 px-4 py-2 rounded-sm text-white font-medium transition-all hover:bg-red-700"
+                  className="bg-red-600 px-4 py-2 rounded-sm text-sm text-white font-medium transition-all hover:bg-red-700"
                 >
                   Logout
                 </button>

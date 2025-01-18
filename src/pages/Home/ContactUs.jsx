@@ -6,7 +6,7 @@ const ContactUs = () => {
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black text-center">
           Contact Us
         </h2>
-        <div className="lg:grid grid-cols-2 gap-6 mt-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-12">
           <form className="mt-6">
             <div className="form-control">
               <label className="label px-0">
@@ -44,7 +44,7 @@ const ContactUs = () => {
             </div>
             <div className="form-control mt-3 col-span-2">
               <button className="bg-bg-tertiary px-4 py-2 rounded-sm text-white font-medium transition-all hover:bg-[#e6025b]">
-                Add Task
+                Send Message
               </button>
             </div>
           </form>

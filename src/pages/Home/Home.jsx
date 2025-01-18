@@ -19,15 +19,15 @@ const Home = () => {
           <div className="mt-20">
             <FeaturedJobs></FeaturedJobs>
           </div>
-        <div className="mt-20">
-          <Testimonials></Testimonials>
-        </div>
+          <div className="mt-20">
+            <Testimonials></Testimonials>
+          </div>
         </div>
         <div className="mt-20">
           <FAQs></FAQs>
         </div>
-        <div className="mt-20">
-         <ContactUs></ContactUs>
+        <div className="mt-20 px-4 md:px-6 lg:px-8">
+          <ContactUs></ContactUs>
         </div>
       </div>
     );

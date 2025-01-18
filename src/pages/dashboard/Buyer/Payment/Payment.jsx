@@ -1,6 +1,6 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import SecondaryButton from "../../../../components/Buttons/SecondaryButton";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useAxios from "../../../../hooks/useAxios";
 import useAuth from "../../../../hooks/useAuth";
@@ -17,6 +17,7 @@ const Payment = () => {
           const [transactionId, setTransactionId] = useState();
   const {money, coins} = location.state
   const axiosInstance = useAxios()
+  const navigate = useNavigate()
 
 
   useEffect(() => {
@@ -91,9 +92,9 @@ const Payment = () => {
                 icon: "success",
                 draggable: true,
               });
+              navigate("/dashboard/paymentHistory");
               refetch()
             }
-            // navigate("/dashboard/paymentHistory");
           }
         }
       }
@@ -118,13 +119,10 @@ const Payment = () => {
           },
         }}
       />
-      <div className="w-full bg-bg-tertiary flex items-center justify-center mt-3">
-        <SecondaryButton
-        className="hover:bg-bg-tertiary"
-          type="submit"
-          disabled={!stripe}
-          label="Pay"
-        ></SecondaryButton>
+      <div className="w-full flex items-center justify-center mt-3">
+        <button className="bg-bg-tertiary w-full px-4 py-2 rounded-sm text-white font-medium transition-all hover:bg-[#e60060]">
+          Pay
+        </button>
       </div>
     </form>
   );

@@ -13,6 +13,42 @@ const AdminHome = () => {
     },
   });
 
+  const {data: workers = []} = useQuery({
+    queryKey: ["workers"],
+    queryFn: async() => {
+      const res = await axiosInstance.get(`/allWorkers`);
+      return res.data
+    }
+  })
+
+  const { data: buyers = [] } = useQuery({
+    queryKey: ["buyers"],
+    queryFn: async () => {
+      const res = await axiosInstance.get(`/allbuyers`);
+      return res.data;
+    },
+  });
+
+  const { data: users = [] } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => {
+      const res = await axiosInstance.get(`/users`);
+      return res.data;
+    },
+  });
+
+  const { data: payments = [] } = useQuery({
+    queryKey: ["payments"],
+    queryFn: async () => {
+      const res = await axiosInstance.get(`/payments`);
+      console.log(res.data)
+      return res.data;
+    },
+  });
+
+  const totalCoins = users.reduce((total, current) => total + current.coins, 0)
+
+
   const handleApproveWithdraw = async (withdraw) => {
     const worker = await axiosInstance.get(`/users/${withdraw?.workerEmail}`);
     const remainingCoins = worker?.data?.coins - withdraw?.withdrawlCoins;
@@ -37,18 +73,22 @@ const AdminHome = () => {
 
   return (
     <div className="p-6 w-11/12 mx-auto bg-white mt-12 rounded-sm">
-      <div className="flex items-center gap-6">
+      <div className="flex flex-col md:flex-row flex-wrap items-center gap-6">
         <div className="bg-green-200 p-6 text-center rounded-sm min-w-52">
           <h3 className="text-lg font-semibold">Total Worker</h3>
-          <h2 className="text-5xl text-pink-500 font-bold">25</h2>
+          <h2 className="text-5xl text-pink-500 font-bold">{workers.length}</h2>
         </div>
         <div className="bg-blue-200 p-6 text-center rounded-sm min-w-52">
           <h3 className="text-lg font-semibold">Total Buyer</h3>
-          <h2 className="text-5xl text-pink-500 font-bold">35</h2>
+          <h2 className="text-5xl text-pink-500 font-bold">{buyers.length}</h2>
         </div>
         <div className="bg-red-200 p-6 text-center rounded-sm min-w-52">
           <h3 className="text-lg font-semibold">Total Coins</h3>
-          <h2 className="text-5xl text-pink-500 font-bold">45</h2>
+          <h2 className="text-5xl text-pink-500 font-bold">{totalCoins}</h2>
+        </div>
+        <div className="bg-yellow-200 p-6 text-center rounded-sm min-w-52">
+          <h3 className="text-lg font-semibold">Total Payments</h3>
+          <h2 className="text-5xl text-pink-500 font-bold">{payments.length}</h2>
         </div>
       </div>
       <div className="mt-12">

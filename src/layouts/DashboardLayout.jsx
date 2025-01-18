@@ -24,11 +24,11 @@ const DashboardLayout = () => {
 
     return (
       <div className="font-roboto">
-        <header>
+        <header className='sticky top-0 z-10'>
           <DashboardNav></DashboardNav>
         </header>
-        <main className="lg:grid grid-cols-12 ">
-          <aside className="bg-gray-50 col-span-2  min-h-screen">
+        <main className="md:grid grid-cols-12 ">
+          <aside className="bg-gray-50 col-span-2  lg:min-h-screen">
             <ul className="flex flex-col gap-3 w-full">
               {/* For Worker */}
               {role === "Worker" && (
