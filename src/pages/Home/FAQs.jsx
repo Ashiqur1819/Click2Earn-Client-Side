@@ -1,9 +1,17 @@
 import faqImage from "../../assets/faq.jpg"
-
+import { motion } from "motion/react";
 const FAQs = () => {
     return (
       <div className="lg:grid grid-cols-2 gap-3 items-center bg-white">
-        <div className="p-4 md:p-6 lg:p-8">
+        <motion.div
+          initial={{ opacity: 0, scale: 0 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{
+            duration: 1,
+          }}
+          viewport={{ once: true, amount: 0.5 }}
+          className="p-4 md:p-6 lg:p-8"
+        >
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black">
             FAQ
           </h2>
@@ -12,8 +20,16 @@ const FAQs = () => {
             everything you need to know in our FAQ section.
           </p>
           <img src={faqImage} alt="" />
-        </div>
-        <div className="p-4 md:p-6 lg:p-8">
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, scale: 0 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{
+            duration: 1,
+          }}
+          viewport={{ once: true, amount: 0.5 }}
+          className="p-4 md:p-6 lg:p-8"
+        >
           <div className="collapse collapse-arrow bg-gray-50 rounded-none">
             <input type="radio" name="my-accordion-2" defaultChecked />
             <div className="collapse-title text-lg font-medium">
@@ -111,7 +127,7 @@ const FAQs = () => {
               </p>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     );
 };

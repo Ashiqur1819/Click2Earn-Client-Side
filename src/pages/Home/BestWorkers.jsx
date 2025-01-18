@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../hooks/useAxios";
 import BestWorkersCard from "../../components/BestWorkersCard/BestWorkersCard";
+import { motion } from "motion/react";
 
 const BestWorkers = () => {
 
@@ -14,7 +15,8 @@ const BestWorkers = () => {
     })
 
     return (
-      <div>
+      <div
+      >
         <h2 className="text-2xl md:text-3xl lg:text-4xl text-black font-bold text-center">
           Our Best Taskmasters
         </h2>

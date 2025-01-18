@@ -3,6 +3,7 @@ import PrimaryButton from "../../components/Buttons/PrimaryButton";
 import FeaturedJobCard from "../../components/FeaturedJobCard/FeaturedJobCard";
 import useAxios from "../../hooks/useAxios";
 import { Link } from "react-router-dom";
+import { motion } from "motion/react";
 
 const FeaturedJobs = () => {
   const axiosInstance = useAxios()
@@ -15,7 +16,14 @@ const FeaturedJobs = () => {
   })
 
     return (
-      <div>
+      <motion.div
+        initial={{ transform: "translateY(300px)" }}
+        animate={{ transform: "translateY(0px)" }}
+        transition={{
+          ease: "easeOut",
+          duration: 1,
+        }}
+      >
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black text-center">
           Featured Opportunities
         </h2>
@@ -34,7 +42,7 @@ const FeaturedJobs = () => {
             <PrimaryButton label="View All Opportunities"></PrimaryButton>
           </Link>
         </div>
-      </div>
+      </motion.div>
     );
 };
 

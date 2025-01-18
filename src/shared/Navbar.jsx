@@ -5,7 +5,7 @@ import useAuth from "../hooks/useAuth";
 import SecondaryButton from "../components/Buttons/SecondaryButton";
 import useUser from "../hooks/useUser";
 import logo from "../assets/logo.png"
-
+import { motion } from "motion/react";
 
 const Navbar = () => {
 
@@ -14,7 +14,15 @@ const Navbar = () => {
 
     return (
       <div className="navbar bg-white px-4 md:px-6 lg:px-8 py-5">
-        <div className="navbar-start">
+        <motion.div
+          initial={{ transform: "translateX(-500px)" }}
+          animate={{ transform: "translateX(0px)" }}
+          transition={{
+            ease: "easeOut",
+            duration: 1,
+          }}
+          className="navbar-start"
+        >
           <div className="dropdown">
             <div tabIndex={0} role="button" className="lg:hidden">
               <svg
@@ -40,7 +48,7 @@ const Navbar = () => {
                 <li>
                   <p className="flex items-center w-full gap-2 py-2 px-4 bg-gray-100 border-none rounded-none text-base font-medium">
                     <FaCoins className="text-text-primary"></FaCoins>{" "}
-                    {currentUser.coins}
+                    {currentUser?.coins}
                   </p>
                 </li>
               )}
@@ -54,7 +62,7 @@ const Navbar = () => {
                         ? "/dashboard/buyerHome"
                         : currentUser?.role === "Admin"
                         ? "/dashboard/adminHome"
-                        : "/dashboard"
+                        : "/"
                     }
                   >
                     Dashboard
@@ -66,7 +74,9 @@ const Navbar = () => {
                   to="https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-Ashiqur1819"
                   target="_blank"
                 >
-                  <button className=" bg-yellow-400 w-full border-none rounded-none text-base hover:bg-gray-200 font-medium py-2 px-4 mt-2 -ml-3">Join As Developer</button>
+                  <button className=" bg-yellow-400 w-full border-none rounded-none text-base hover:bg-gray-200 font-medium py-2 px-4 mt-2 -ml-3">
+                    Join As Developer
+                  </button>
                 </Link>
               </li>
               {/* <li>
@@ -106,8 +116,16 @@ const Navbar = () => {
           <Link to="/">
             <img src={logo} className="w-60 object-cover" alt="" />
           </Link>
-        </div>
-        <div className="navbar-end hidden lg:flex">
+        </motion.div>
+        <motion.div
+          initial={{ transform: "translateX(500px)" }}
+          animate={{ transform: "translateX(0px)" }}
+          transition={{
+            ease: "easeOut",
+            duration: 1,
+          }}
+          className="navbar-end hidden lg:flex"
+        >
           <ul className="menu-horizontal gap-3 px-1 items-center">
             {user?.email && (
               <li>
@@ -121,13 +139,13 @@ const Navbar = () => {
               <li className=" bg-gray-100 border-none rounded-none text-base hover:bg-gray-200 font-medium py-2 px-4 ">
                 <NavLink
                   to={
-                    currentUser?.role === "Worker"
+                    currentUser.role === "Worker"
                       ? "/dashboard/workerHome"
-                      : currentUser?.role === "Buyer"
+                      : currentUser.role === "Buyer"
                       ? "/dashboard/buyerHome"
-                      : currentUser?.role === "Admin"
+                      : currentUser.role === "Admin"
                       ? "/dashboard/adminHome"
-                      : "/dashboard"
+                      : "/"
                   }
                 >
                   Dashboard
@@ -177,7 +195,7 @@ const Navbar = () => {
               )}
             </li>
           </ul>
-        </div>
+        </motion.div>
         <div className="navbar-end flex items-center gap-6 lg:hidden">
           <div>
             {user?.email ? (

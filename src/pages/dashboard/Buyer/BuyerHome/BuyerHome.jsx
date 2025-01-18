@@ -20,6 +20,15 @@ const BuyerHome = () => {
     },
   });
 
+  const { data: tasks = [] } = useQuery({
+    queryKey: ["tasks"],
+    queryFn: async () => {
+      const res = await axiosInstance.get(`/buyerTasks/${user?.email}`);
+      return res.data;
+    },
+  });
+
+
   const handleApproveTask = async (task) => {
     const res = await axiosInstance.patch(`/statusUpdate/${task._id}`, {
       status: "Approved",
@@ -81,7 +90,7 @@ const BuyerHome = () => {
       <div className="md:flex items-center gap-6">
         <div className="bg-red-200 p-6 text-center rounded-sm min-w-52">
           <h3 className="text-lg font-semibold">Total Task</h3>
-          <h2 className="text-5xl text-pink-500 font-bold">25</h2>
+          <h2 className="text-5xl text-pink-500 font-bold">{tasks.length}</h2>
         </div>
         <div className="bg-blue-200 p-6 text-center rounded-sm min-w-52">
           <h3 className="text-lg font-semibold">Pending Task</h3>

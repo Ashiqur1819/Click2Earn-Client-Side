@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import SecondaryButton from "../Buttons/SecondaryButton";
 import { FaCoins } from "react-icons/fa";
+import { motion } from "motion/react";
 
 const FeaturedJobCard = ({task}) => {
   const {
@@ -8,7 +9,15 @@ const FeaturedJobCard = ({task}) => {
    title, photo, workers, amount, date, subInfo, description, buyerName, 
   } = task;
     return (
-      <div className="card bg-white rounded-sm">
+      <motion.div
+        initial={{ opacity: 0, scale: 0 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{
+          duration: 1,
+        }}
+        viewport={{ once: true, amount: 0.5 }}
+        className="card bg-white rounded-sm"
+      >
         <figure>
           <img src={photo} className="h-40 w-full object-cover" alt={title} />
         </figure>
@@ -28,14 +37,15 @@ const FeaturedJobCard = ({task}) => {
           </p>
           <div className="card-actions justify-between items-center mt-3">
             <h3 className="text-2xl md:text-3xl font-medium text-text-primary flex items-center gap-2">
-              <FaCoins></FaCoins>{amount}
+              <FaCoins></FaCoins>
+              {amount}
             </h3>
             <Link to={`/dashboard/taskDetails/${_id}`}>
               <SecondaryButton label="View Details"></SecondaryButton>
             </Link>
           </div>
         </div>
-      </div>
+      </motion.div>
     );
 };
 

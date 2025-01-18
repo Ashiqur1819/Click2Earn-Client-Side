@@ -1,4 +1,5 @@
 import contactImage from "../../assets/contact.png"
+import { motion } from "motion/react";
 
 const ContactUs = () => {
     return (
@@ -7,7 +8,15 @@ const ContactUs = () => {
           Contact Us
         </h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-12">
-          <form className="mt-6">
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{
+              duration: 1,
+            }}
+            viewport={{ once: true, amount: 0.5 }}
+            className="mt-6"
+          >
             <div className="form-control">
               <label className="label px-0">
                 <span className="label-text font-medium">Name:</span>
@@ -47,10 +56,17 @@ const ContactUs = () => {
                 Send Message
               </button>
             </div>
-          </form>
-          <div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{
+              duration: 1,
+            }}
+            viewport={{ once: true, amount: 0.5 }}
+          >
             <img src={contactImage} alt="" />
-          </div>
+          </motion.div>
         </div>
       </div>
     );

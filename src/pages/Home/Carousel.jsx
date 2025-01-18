@@ -7,6 +7,7 @@ import slideImage1 from "../../assets/slide1.png"
 import slideImage2 from "../../assets/slide2.jpg"
 import slideImage3 from "../../assets/slide3.jpg"
 import SecondaryButton from "../../components/Buttons/SecondaryButton";
+import { motion } from "motion/react";
 
 
 
@@ -33,7 +34,14 @@ const Carousel = () => {
               backgroundSize: "cover",
             }}
           >
-            <div className="lg:mx-24 lg:max-w-2xl">
+            <motion.div
+              initial={{ transform: "translateX(-500px)", }}
+              animate={{ transform: "translateX(0px)" }}
+              transition={{
+                 ease: "easeOut", duration: 1 }
+              }
+              className="lg:mx-24 lg:max-w-2xl"
+            >
               <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold drop-shadow-2xl text-black">
                 Top Trending Tasks
               </h2>
@@ -48,7 +56,7 @@ const Carousel = () => {
               <div className="lg:mt-12">
                 <SecondaryButton label=" Start Earning Now"></SecondaryButton>
               </div>
-            </div>
+            </motion.div>
           </div>
         </SwiperSlide>
         <SwiperSlide>
