@@ -25,7 +25,7 @@ const FeaturedJobs = () => {
         </p>
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
           {
-            tasks.map(task => <FeaturedJobCard task={task} key={task._id}></FeaturedJobCard>)
+            tasks.slice(0,8).map(task => <FeaturedJobCard task={task} key={task._id}></FeaturedJobCard>)
           }
         </div>
         <div className="flex items-center justify-center mt-12">

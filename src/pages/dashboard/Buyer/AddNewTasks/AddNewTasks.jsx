@@ -29,6 +29,7 @@ const AddNewTasks = () => {
     if (totalAmount > currentUser?.coins) {
       toast.error("Not available Coin. Purchase Coin");
       navigate("/dashboard/purchaseCoin");
+      return
     }
 
     const task = {
@@ -57,7 +58,7 @@ const AddNewTasks = () => {
           icon: "success",
           draggable: true,
         });
-        // form.reset()
+        form.reset()
         refetch()
       }
     }

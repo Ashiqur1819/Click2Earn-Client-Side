@@ -4,6 +4,7 @@ import { FaCoins } from "react-icons/fa";
 import useAuth from "../hooks/useAuth";
 import SecondaryButton from "../components/Buttons/SecondaryButton";
 import useUser from "../hooks/useUser";
+import logo from "../assets/logo.png"
 
 
 const Navbar = () => {
@@ -44,7 +45,17 @@ const Navbar = () => {
               )}
               {user?.email && (
                 <li>
-                  <NavLink to="/dashboard">Dashboard</NavLink>
+                  <NavLink
+                    to={`${
+                      currentUser?.role == "Worker" && "/dashboard/workerHome"
+                    } ${
+                      currentUser?.role == "Buyer" && "/dashboard/buyerHome"
+                    } ${
+                      currentUser?.role == "Admin" && "/dashboard/adminHome"
+                    }`}
+                  >
+                    Dashboard
+                  </NavLink>
                 </li>
               )}
               <li>
@@ -93,21 +104,35 @@ const Navbar = () => {
             </ul>
           </div>
           <Link to="/">
-            <span className="text-3xl font-bold">Click2Earn</span>
+            <img src={logo} className="w-60 object-cover" alt="" />
           </Link>
         </div>
         <div className="navbar-end hidden lg:flex">
-          <ul className="menu-horizontal gap-6 px-1 items-center">
+          <ul className="menu-horizontal gap-3 px-1 items-center">
             {user?.email && (
               <li>
-                <button className="flex items-center gap-2">
-                  <FaCoins></FaCoins> {currentUser?.coins}
+                <button className="flex items-center gap-2 py-2 px-4 bg-gray-100 border-none rounded-none text-base font-medium hover:bg-gray-200">
+                  <FaCoins className="text-text-primary"></FaCoins>{" "}
+                  {currentUser.coins}
                 </button>
               </li>
             )}
+            {/* className="btn bg-gray-100 border-none rounded-none text-base hover:bg-gray-200 p-0" */}
             {user?.email && (
-              <li>
-                <NavLink to="/dashboard">Dashboard</NavLink>
+              <li className=" bg-gray-100 border-none rounded-none text-base hover:bg-gray-200 font-medium py-2 px-4 ">
+                <NavLink
+                  to={
+                    currentUser?.role === "Worker"
+                      ? "/dashboard/workerHome"
+                      : currentUser?.role === "Buyer"
+                      ? "/dashboard/buyerHome"
+                      : currentUser?.role === "Admin"
+                      ? "/dashboard/adminHome"
+                      : "/dashboard"
+                  }
+                >
+                  Dashboard
+                </NavLink>
               </li>
             )}
             <li>
@@ -130,7 +155,9 @@ const Navbar = () => {
                 </Link>
               ) : (
                 <Link to="/login">
-                  <button className="underline">Login</button>
+                  <button className="bg-green-600 px-4 py-2 rounded-sm text-white font-medium transition-all hover:bg-green-700">
+                    Login
+                  </button>
                 </Link>
               )}
             </li>
@@ -139,14 +166,16 @@ const Navbar = () => {
                 <Link to="register">
                   <img
                     src={user?.photoURL}
-                    className="w-10 rounded-full"
+                    className="w-12 h-12 object-cover rounded-full border-2 border-text-primary"
                     referrerPolicy="no-referrer"
                     alt=""
                   />
                 </Link>
               ) : (
                 <Link to="register">
-                  <button className="underline">Register</button>
+                  <button className="bg-blue-500 px-4 py-2 rounded-sm text-white font-medium transition-all hover:bg-blue-600">
+                    Register
+                  </button>
                 </Link>
               )}
             </li>

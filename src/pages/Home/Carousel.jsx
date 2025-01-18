@@ -3,9 +3,9 @@ import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import slideImage1 from "../../assets/1.png"
-import slideImage2 from "../../assets/2.jpg"
-import slideImage3 from "../../assets/3.jpg"
+import slideImage1 from "../../assets/slide1.png"
+import slideImage2 from "../../assets/slide2.jpg"
+import slideImage3 from "../../assets/slide3.jpg"
 import SecondaryButton from "../../components/Buttons/SecondaryButton";
 
 

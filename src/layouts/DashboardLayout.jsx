@@ -26,7 +26,7 @@ const DashboardLayout = () => {
         <header>
           <DashboardNav></DashboardNav>
         </header>
-        <main className="grid grid-cols-12 ">
+        <main className="lg:grid grid-cols-12 ">
           <aside className="bg-gray-50 col-span-2 min-h-screen">
             <ul className="flex flex-col gap-3 w-full">
               {/* For Worker */}

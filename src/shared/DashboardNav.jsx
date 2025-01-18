@@ -4,6 +4,7 @@ import useAuth from "../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../hooks/useAxios";
 import { FaCoins } from "react-icons/fa";
+import logo from "../assets/logo.png";
 
 const DashboardNav = () => {
 
@@ -21,7 +22,7 @@ const DashboardNav = () => {
     const {name, photo, role, coins} = currentUser || {}
 
     return (
-      <div className="navbar bg-white py-6 px-3 md:px-4 lg:px-8">
+      <div className="navbar bg-white px-3 md:px-4 lg:px-8">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -64,11 +65,11 @@ const DashboardNav = () => {
             </ul>
           </div>
           <Link to="/">
-            <span className="text-3xl font-bold">Click2Earn</span>
+            <img src={logo} className="w-60" alt="" />
           </Link>
         </div>
         <div className="navbar-end hidden lg:flex ">
-          <ul className="menu-horizontal gap-6 items-center px-1">
+          <ul className="menu-horizontal gap-3 items-center px-1">
             <div className="flex flex-col gap-3 bg-gray-100 rounded-sm p-3">
               <li className="flex items-center gap-2 text-2xl text-text-primary font-medium">
                 <FaCoins></FaCoins>
@@ -78,7 +79,7 @@ const DashboardNav = () => {
             </div>
             <div className="flex flex-col gap-1 bg-gray-100 rounded-sm p-3">
               <li>
-                <img src={photo} referrerPolicy="no-referrer" className="w-10 rounded-full" alt="" />
+                <img src={photo} referrerPolicy="no-referrer" className="w-12 h-12 object-cover border-2 border-text-primary rounded-full" alt="" />
               </li>
               <li className="font-medium">
                 {name}
