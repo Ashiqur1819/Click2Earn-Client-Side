@@ -56,6 +56,8 @@ const AdminHome = () => {
       remainingCoins,
     });
     if (res.data.modifiedCount > 0) {
+      // send notification
+      
       const res = await axiosInstance.patch(`/updateStatus/${withdraw._id}`, {
         status: "Approved",
       });
@@ -65,7 +67,7 @@ const AdminHome = () => {
           icon: "success",
           draggable: true,
         });
-        refetch()
+        refetch();
       }
     }
   };

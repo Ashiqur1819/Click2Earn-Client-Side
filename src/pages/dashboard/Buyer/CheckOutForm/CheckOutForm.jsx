@@ -5,8 +5,6 @@ import { Elements } from "@stripe/react-stripe-js";
 import paymentImage from "../../../../assets/payment.webp"
 
 const CheckOutForm = () => {
-  const location = useLocation();
-  const { money, coins } = location.state || {};
 const stripePromise = loadStripe(import.meta.env.VITE_stripePK);
 
 return (

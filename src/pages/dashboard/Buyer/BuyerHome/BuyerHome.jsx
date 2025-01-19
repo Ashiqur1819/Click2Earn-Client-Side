@@ -43,6 +43,17 @@ const BuyerHome = () => {
       status: "Approved",
     });
     if (res.data.modifiedCount > 0) {
+      // send notification
+      const taskTitle = task.title;
+      const buyerName = task.buyerName;
+      const workerEmail = user?.email;
+      const amount = task.amount;
+      const notification = { taskTitle, buyerName, workerEmail, amount };
+      const result = await axiosInstance.post(
+        "/approveTasksNotifications",
+        notification
+      );
+
       refetch();
       const worker = await axiosInstance.get(`/users/${task?.workerEmail}`);
       const remainingCoins = task?.amount + worker?.data?.coins;
