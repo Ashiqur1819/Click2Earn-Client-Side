@@ -11,7 +11,6 @@ const WorkerWithDrawals = () => {
     const [currentUser] = useUser()
     const [coin, setCoin] = useState()
     const axiosInstance = useAxios()
-    console.log(user)
     
   const handleCoinChange = e => {
     setCoin(e);

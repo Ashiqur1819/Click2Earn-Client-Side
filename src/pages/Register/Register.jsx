@@ -76,13 +76,11 @@ const Register = () => {
       })
       .catch((err) => {
         toast.error(err.message);
-        console.log(err);
       });
     // Save user information in the database
 
     try {
       const res = await axiosInstance.post("/users", newUser);
-      console.log(res);
       if (res.data.insertedId) {
         toast.success(`Registration successful!`);
       }

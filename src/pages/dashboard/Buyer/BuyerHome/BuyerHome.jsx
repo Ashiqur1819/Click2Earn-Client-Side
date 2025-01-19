@@ -32,7 +32,6 @@ const BuyerHome = () => {
      queryKey: ["payments"],
      queryFn: async () => {
        const res = await axiosInstance.get(`/payments/${user?.email}`);
-       console.log(res.data)
      },
    });
 

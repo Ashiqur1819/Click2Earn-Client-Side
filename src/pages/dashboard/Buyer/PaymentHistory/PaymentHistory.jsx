@@ -15,8 +15,6 @@ const PaymentHistory = () => {
     },
   });
 
-  console.log(payments)
-
     return (
       <div className="mt-12 p-6 w-11/12 mx-auto bg-white rounded-sm">
         <h2 className="text-2xl md:text-3xl font-bold">Payment History</h2>

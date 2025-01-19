@@ -52,7 +52,7 @@ const DashboardLayout = () => {
                   <li className="btn bg-gray-100 border-none rounded-none text-base hover:bg-gray-200 p-0">
                     <NavLink
                       className="w-full h-full flex items-center justify-center"
-                      to="/dashboard/workerSubmission"
+                      to="/dashboard/workerSubmissions"
                     >
                       My Submissions
                     </NavLink>

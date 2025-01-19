@@ -1,0 +1,50 @@
+/* Container styles */
+.pagination {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 0;
+}
+
+/* Individual page buttons */
+.pagination li {
+  margin: 0 7px;
+}
+
+/* Links inside buttons */
+.pagination li a {
+  display: block;
+  padding: 8px 12px;
+  font-size: 14px;
+  text-decoration: none;
+  color: #e90076;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Hover effect */
+.pagination li a:hover {
+  background-color: #e90076;
+  color: #fff;
+}
+
+/* Active page */
+.pagination .active a {
+  background-color: #e90076;
+  color: #fff;
+  border-color: #e90076;
+}
+
+/* Disabled buttons */
+.pagination .disabled a {
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Previous/Next buttons */
+.pagination .previous a,
+.pagination .next a {
+  font-weight: bold;
+}

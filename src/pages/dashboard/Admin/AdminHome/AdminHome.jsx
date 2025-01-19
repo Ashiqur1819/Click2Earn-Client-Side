@@ -41,7 +41,6 @@ const AdminHome = () => {
     queryKey: ["payments"],
     queryFn: async () => {
       const res = await axiosInstance.get(`/payments`);
-      console.log(res.data)
       return res.data;
     },
   });

@@ -24,6 +24,7 @@ import CheckOutForm from "../pages/dashboard/Buyer/CheckOutForm/CheckOutForm";
 import AdminRoute from "./AdminRoute";
 import BuyerRoute from "./BuyerRoute";
 import WorkerRoute from "./WorkerRoute";
+import WorkerSubmissions from "../pages/dashboard/Worker/WorkerSubmission/WorkerSubmissions";
 
 const router = createBrowserRouter([
   {
@@ -187,11 +188,11 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "workerSubmission",
+        path: "workerSubmissions",
         element: (
           <PrivateRoute>
             <WorkerRoute>
-              <WorkerSubmission></WorkerSubmission>
+              <WorkerSubmissions></WorkerSubmissions>
             </WorkerRoute>
           </PrivateRoute>
         ),

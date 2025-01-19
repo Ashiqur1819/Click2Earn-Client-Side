@@ -50,7 +50,7 @@ const Payment = () => {
     });
 
     if (error) {
-      console.log("[error]", error);
+      return
     }
 
     // confirm payment
@@ -67,7 +67,7 @@ const Payment = () => {
 
 
       if (confirmError) {
-        console.log("Confirm error");
+        return
       } else {
         if (paymentIntent.status === "succeeded") {
           setTransactionId(paymentIntent.id);
