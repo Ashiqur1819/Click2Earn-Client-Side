@@ -57,7 +57,15 @@ const AdminHome = () => {
     });
     if (res.data.modifiedCount > 0) {
       // send notification
-      
+           const workerEmail = withdraw?.workerEmail;
+           const amount = withdraw.withdrawlAmount;
+           const notification = {workerEmail, amount};
+           const result = await axiosInstance.post(
+             "/approveWithdrawalNotifications",
+             notification
+           );
+           console.log(result.data)
+
       const res = await axiosInstance.patch(`/updateStatus/${withdraw._id}`, {
         status: "Approved",
       });

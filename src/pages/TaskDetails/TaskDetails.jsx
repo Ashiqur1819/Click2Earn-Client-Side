@@ -58,6 +58,8 @@ const TaskDetails = () => {
     // Save submission data to db
     const res = await axiosInstance.post("/submittedTasks", submission);
     if (res.data.insertedId) {
+      // Send notifications
+      
       Swal.fire({
         title: "Submission Successful!",
         icon: "success",
