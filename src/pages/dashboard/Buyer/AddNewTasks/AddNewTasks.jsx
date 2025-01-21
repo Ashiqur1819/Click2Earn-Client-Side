@@ -5,6 +5,9 @@ import useAuth from "../../../../hooks/useAuth";
 import useAxios from "../../../../hooks/useAxios";
 import Swal from "sweetalert2";
 
+const imageApiKey = import.meta.env.VITE_imageApiKey
+const imageApiURL = `https://api.imgbb.com/1/upload?key=${imageApiKey}`;
+
 const AddNewTasks = () => {
   const [currentUser, refetch] = useUser();
   const navigate = useNavigate();
@@ -15,8 +18,17 @@ const AddNewTasks = () => {
     e.preventDefault();
 
     const form = e.target;
+
     const title = form.title.value;
-    const photo = form.photo.value;
+    const imageFile = form.photo.files[0];
+    const formData = new FormData();
+    formData.append("image", imageFile);
+    const result = await axiosInstance.post(imageApiURL, formData, {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    });
+    const photo = result?.data?.data?.url
     const workers = parseFloat(form.workers.value);
     const amount = parseFloat(form.amount.value);
     const date = form.date.value;
@@ -88,12 +100,17 @@ const AddNewTasks = () => {
             <label className="label px-0">
               <span className="label-text font-medium">Photo URL:</span>
             </label>
-            <input
+            {/* <input
               type="url"
               name="photo"
               placeholder="Photo URL"
               className="grow text-gray-700 text-sm input border border-gray-200 rounded-none focus:border-pink-300 focus:outline-none"
               required
+            /> */}
+            <input
+            name="photo"
+              type="file"
+              className="file-input file-input-bordered w-full text-sm"
             />
           </div>
           <div className="form-control">
