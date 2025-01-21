@@ -7,6 +7,9 @@ import { useNavigate } from "react-router-dom";
 import googleImage from "../../assets/google.png";
 import useAxios from "../../hooks/useAxios";
 
+const imageApiKey = import.meta.env.VITE_imageApiKey;
+const imageApiURL = `https://api.imgbb.com/1/upload?key=${imageApiKey}`;
+
 const Register = () => {
   const {
     setUser,
@@ -27,7 +30,16 @@ const Register = () => {
 
     const name = form.name.value;
     const email = form.email.value;
-    const photo = form.photo.value;
+     const imageFile = form.photo.files[0];
+     const formData = new FormData();
+     formData.append("image", imageFile);
+     const result = await axiosInstance.post(imageApiURL, formData, {
+       headers: {
+         "content-type": "multipart/form-data",
+       },
+     });
+     const photo = result?.data?.data?.url;
+     console.log(photo)
     const password = form.password.value;
     const role = selected;
     let coins = null;
@@ -150,14 +162,12 @@ const Register = () => {
             </div>
             <div className="form-control mt-1">
               <label className="label px-0">
-                <span className="label-text font-medium">Photo URL:</span>
+                <span className="label-text font-medium">Photo:</span>
               </label>
               <input
-                type="url"
                 name="photo"
-                placeholder="Enter Your Photo URL"
-                className="grow text-gray-700 text-base input border border-gray-200 rounded-none focus:border-pink-300 focus:outline-none"
-                required
+                type="file"
+                className="file-input file-input-bordered rounded-none w-full text-sm"
               />
             </div>
             <div className="form-control relative mt-1">

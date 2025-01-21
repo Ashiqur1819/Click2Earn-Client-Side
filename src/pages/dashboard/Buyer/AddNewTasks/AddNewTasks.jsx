@@ -98,19 +98,12 @@ const AddNewTasks = () => {
           </div>
           <div className="form-control">
             <label className="label px-0">
-              <span className="label-text font-medium">Photo URL:</span>
+              <span className="label-text font-medium">Photo:</span>
             </label>
-            {/* <input
-              type="url"
-              name="photo"
-              placeholder="Photo URL"
-              className="grow text-gray-700 text-sm input border border-gray-200 rounded-none focus:border-pink-300 focus:outline-none"
-              required
-            /> */}
             <input
             name="photo"
               type="file"
-              className="file-input file-input-bordered w-full text-sm"
+              className="file-input file-input-bordered rounded-none w-full text-sm"
             />
           </div>
           <div className="form-control">
