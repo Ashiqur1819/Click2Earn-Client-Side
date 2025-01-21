@@ -3,7 +3,6 @@ import useAxios from "../../../../hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 
-
 const UpdateTask = () => {
   const { id } = useParams();
   const axiosInstance = useAxios();
@@ -29,7 +28,7 @@ const UpdateTask = () => {
     buyerEmail,
   } = task;
 
-  const handleUpdateTask = async(e) => {
+  const handleUpdateTask = async (e) => {
     e.preventDefault();
 
     const form = e.target;
@@ -37,20 +36,29 @@ const UpdateTask = () => {
     const subInfo = form.subInfo.value;
     const description = form.description.value;
 
+    const updatedTask = {
+      title,
+      photo,
+      workers,
+      amount,
+      date,
+      subInfo,
+      description,
+      totalAmount,
+      buyerName,
+      buyerEmail,
+    };
 
-    const updatedTask = {title, photo, workers, amount, date, subInfo, description, totalAmount, buyerName, buyerEmail }
-
-    const res = await axiosInstance.put(`/tasks/${id}`, updatedTask)
-    if(res.data.modifiedCount > 0){
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Task has been updated!",
-          showConfirmButton: false,
-          timer: 1500,
-        });
+    const res = await axiosInstance.put(`/tasks/${id}`, updatedTask);
+    if (res.data.modifiedCount > 0) {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Task has been updated!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     }
-
   };
 
   return (

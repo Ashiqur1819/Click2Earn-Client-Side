@@ -5,7 +5,7 @@ import useAuth from "../../../../hooks/useAuth";
 import useAxios from "../../../../hooks/useAxios";
 import Swal from "sweetalert2";
 
-const imageApiKey = import.meta.env.VITE_imageApiKey
+const imageApiKey = import.meta.env.VITE_imageApiKey;
 const imageApiURL = `https://api.imgbb.com/1/upload?key=${imageApiKey}`;
 
 const AddNewTasks = () => {
@@ -28,20 +28,20 @@ const AddNewTasks = () => {
         "content-type": "multipart/form-data",
       },
     });
-    const photo = result?.data?.data?.url
+    const photo = result?.data?.data?.url;
     const workers = parseFloat(form.workers.value);
     const amount = parseFloat(form.amount.value);
     const date = form.date.value;
     const subInfo = form.subInfo.value;
     const description = form.description.value;
-    const totalAmount = workers * amount
+    const totalAmount = workers * amount;
     const buyerName = user?.displayName;
     const buyerEmail = user?.email;
 
     if (totalAmount > currentUser?.coins) {
       toast.error("Not available Coin. Purchase Coin");
       navigate("/dashboard/purchaseCoin");
-      return
+      return;
     }
 
     const task = {
@@ -57,22 +57,24 @@ const AddNewTasks = () => {
       buyerEmail,
     };
 
-    const remainingCoins = currentUser?.coins - (workers * amount);
+    const remainingCoins = currentUser?.coins - workers * amount;
 
     // Save task in the database
 
     const res = await axiosInstance.post("/tasks", task);
     if (res.data.insertedId) {
-      const res = await axiosInstance.patch(`/users/${user?.email}`, {remainingCoins})
-      if(res.data.modifiedCount > 0){
+      const res = await axiosInstance.patch(`/users/${user?.email}`, {
+        remainingCoins,
+      });
+      if (res.data.modifiedCount > 0) {
         Swal.fire({
           title: "Task Added Successfully!",
           icon: "success",
           draggable: true,
         });
-        form.reset()
-        navigate("/dashboard/myTasks")
-        refetch()
+        form.reset();
+        navigate("/dashboard/myTasks");
+        refetch();
       }
     }
   };
@@ -101,7 +103,7 @@ const AddNewTasks = () => {
               <span className="label-text font-medium">Photo:</span>
             </label>
             <input
-            name="photo"
+              name="photo"
               type="file"
               className="file-input file-input-bordered rounded-none w-full text-sm"
             />

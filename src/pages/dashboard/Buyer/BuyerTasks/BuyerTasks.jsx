@@ -33,7 +33,7 @@ const BuyerTasks = () => {
       if (result.isConfirmed) {
         const res = await axiosInstance.delete(`/tasks/${task?._id}`);
         if (res.data.deletedCount > 0) {
-          refetch()
+          refetch();
           const remainingCoins = task?.totalAmount + currentUser?.coins;
           const res = await axiosInstance.patch(`/users/${user?.email}`, {
             remainingCoins,
@@ -44,7 +44,7 @@ const BuyerTasks = () => {
               text: "Your file has been deleted successfully.",
               icon: "success",
             });
-            refetchUser()
+            refetchUser();
           }
         }
       }
@@ -56,7 +56,6 @@ const BuyerTasks = () => {
       <h2 className="text-2xl md:text-3xl font-bold">My Tasks</h2>
       <div className="overflow-x-auto mt-6">
         <table className="table table-zebra">
-          {/* head */}
           <thead>
             <tr>
               <th></th>

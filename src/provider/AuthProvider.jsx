@@ -12,7 +12,6 @@ import {
 } from "firebase/auth";
 import { toast } from "react-toastify";
 
-
 export const AuthContext = createContext();
 const googleProvider = new GoogleAuthProvider();
 
@@ -42,7 +41,7 @@ const AuthProvider = ({ children }) => {
   const logOut = () => {
     signOut(auth).then((result) => {
       setUser(result);
-      toast.success("Logout Successful!")
+      toast.success("Logout Successful!");
       return;
     });
   };
@@ -80,7 +79,7 @@ const AuthProvider = ({ children }) => {
     logOut,
     loading,
     setLoading,
-    forgetPassword
+    forgetPassword,
   };
 
   return (

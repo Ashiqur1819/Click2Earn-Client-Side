@@ -13,7 +13,6 @@ const Login = () => {
   const navigate = useNavigate();
   const axiosInstance = useAxios();
 
-
   const handleLogin = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -54,9 +53,9 @@ const Login = () => {
 
   const handleLoginWithGoogle = () => {
     loginWithGoogle()
-      .then(async(result) => {
+      .then(async (result) => {
         setUser(result.user);
-         const res = await axiosInstance.get(`/users/${result?.user?.email}`);
+        const res = await axiosInstance.get(`/users/${result?.user?.email}`);
         if (res.data?.role == "Worker") {
           navigate("/dashboard/workerHome");
         } else {
@@ -81,8 +80,8 @@ const Login = () => {
 
   return (
     <div className="min-h-screen">
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-6 items-center max-w-6xl mx-auto mt-12 p-12">
-        <div className="card w-full bg-white p-12 h-full rounded-none col-span-3">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-6 items-center max-w-6xl mx-auto mt-12 p-4 md:p-6 lg:p-12">
+        <div className="card w-full bg-white p-4 md:p-6 lg:p-12 h-full rounded-none col-span-3">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black">
             Log in to Your Account
           </h2>
@@ -138,7 +137,7 @@ const Login = () => {
             <span>Continue With Google</span>
           </button>
         </div>
-        <div className="col-span-2 bg-white h-full flex items-center justify-center">
+        <div className="col-span-3 md:col-span-2 bg-white h-full flex items-center justify-center">
           <img src={loginImage} alt="Login image" />
         </div>
       </div>

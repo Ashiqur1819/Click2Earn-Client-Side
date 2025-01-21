@@ -30,16 +30,16 @@ const Register = () => {
 
     const name = form.name.value;
     const email = form.email.value;
-     const imageFile = form.photo.files[0];
-     const formData = new FormData();
-     formData.append("image", imageFile);
-     const result = await axiosInstance.post(imageApiURL, formData, {
-       headers: {
-         "content-type": "multipart/form-data",
-       },
-     });
-     const photo = result?.data?.data?.url;
-     console.log(photo)
+    const imageFile = form.photo.files[0];
+    const formData = new FormData();
+    formData.append("image", imageFile);
+    const result = await axiosInstance.post(imageApiURL, formData, {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    });
+    const photo = result?.data?.data?.url;
+    console.log(photo);
     const password = form.password.value;
     const role = selected;
     let coins = null;
@@ -127,11 +127,11 @@ const Register = () => {
 
   return (
     <div className="min-h-screen">
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-6 items-center max-w-6xl mx-auto mt-12 p-12">
-        <div className="col-span-2 bg-white h-full flex items-center justify-center">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-6 items-center max-w-6xl mx-auto mt-12 p-4 md:p-6 lg:p-12">
+        <div className="col-span-3 md:col-span-2 bg-white h-full flex items-center justify-center">
           <img src={registerImage} alt="Login image" />
         </div>
-        <div className="card w-full bg-white p-12 h-full rounded-none col-span-3">
+        <div className="card w-full bg-white p-4 md:p-6 lg:p-12 h-full rounded-none col-span-3">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black">
             Create Your Account
           </h2>

@@ -3,14 +3,11 @@ import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import slideImage1 from "../../assets/slide1.png"
-import slideImage2 from "../../assets/slide2.jpg"
-import slideImage3 from "../../assets/slide3.jpg"
+import slideImage1 from "../../assets/slide1.png";
+import slideImage2 from "../../assets/slide2.jpg";
+import slideImage3 from "../../assets/slide3.jpg";
 import SecondaryButton from "../../components/Buttons/SecondaryButton";
 import { motion } from "motion/react";
-
-
-
 
 const Carousel = () => {
   return (
@@ -35,11 +32,12 @@ const Carousel = () => {
             }}
           >
             <motion.div
-              initial={{ transform: "translateX(-500px)", }}
+              initial={{ transform: "translateX(-500px)" }}
               animate={{ transform: "translateX(0px)" }}
               transition={{
-                 ease: "easeOut", duration: 1 }
-              }
+                ease: "easeOut",
+                duration: 1,
+              }}
               className="lg:mx-24 lg:max-w-2xl"
             >
               <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold drop-shadow-2xl text-black">

@@ -1,19 +1,17 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectCoverflow, Navigation, Pagination } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import { RiDoubleQuotesL } from "react-icons/ri";
-import client1 from "../../assets/1.jfif"
-import client2 from "../../assets/2.jpg"
-import client3 from "../../assets/3.jpg"
-import client4 from "../../assets/4.jpg"
-import client5 from "../../assets/5.jfif"
-import client6 from "../../assets/6.jfif"
-import client7 from "../../assets/7.jfif"
-import reviewImage from "../../assets/review.png"
-
-
+import client1 from "../../assets/1.jfif";
+import client2 from "../../assets/2.jpg";
+import client3 from "../../assets/3.jpg";
+import client4 from "../../assets/4.jpg";
+import client5 from "../../assets/5.jfif";
+import client6 from "../../assets/6.jfif";
+import client7 from "../../assets/7.jfif";
+import reviewImage from "../../assets/review.png";
 
 const Testimonials = () => {
   return (

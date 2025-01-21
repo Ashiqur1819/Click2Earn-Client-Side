@@ -1,11 +1,11 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "https://click-2-earn-server-side.vercel.app",
 });
 
 const useAxios = () => {
-  return axiosInstance
+  return axiosInstance;
 };
 
 export default useAxios;

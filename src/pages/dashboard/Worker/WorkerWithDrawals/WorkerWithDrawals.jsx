@@ -48,7 +48,6 @@ const WorkerWithDrawals = () => {
         workerName,
         workerEmail,
         withdrawlAmount,
-
       };
       const result = await axiosInstance.post(
         "/withdrawRequests",

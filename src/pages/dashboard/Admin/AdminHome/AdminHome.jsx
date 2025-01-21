@@ -13,13 +13,13 @@ const AdminHome = () => {
     },
   });
 
-  const {data: workers = []} = useQuery({
+  const { data: workers = [] } = useQuery({
     queryKey: ["workers"],
-    queryFn: async() => {
+    queryFn: async () => {
       const res = await axiosInstance.get(`/allWorkers`);
-      return res.data
-    }
-  })
+      return res.data;
+    },
+  });
 
   const { data: buyers = [] } = useQuery({
     queryKey: ["buyers"],
@@ -45,10 +45,7 @@ const AdminHome = () => {
     },
   });
 
-  const totalCoins = users.reduce((total, current) => total + current.coins, 0)
-
-  
-
+  const totalCoins = users.reduce((total, current) => total + current.coins, 0);
 
   const handleApproveWithdraw = async (withdraw) => {
     const worker = await axiosInstance.get(`/users/${withdraw?.workerEmail}`);
@@ -59,13 +56,13 @@ const AdminHome = () => {
     });
     if (res.data.modifiedCount > 0) {
       // send notification
-           const workerEmail = withdraw?.workerEmail;
-           const amount = withdraw.withdrawlAmount;
-           const notification = {workerEmail, amount};
-           const result = await axiosInstance.post(
-             "/approveWithdrawalNotifications",
-             notification
-           );
+      const workerEmail = withdraw?.workerEmail;
+      const amount = withdraw.withdrawlAmount;
+      const notification = { workerEmail, amount };
+      const result = await axiosInstance.post(
+        "/approveWithdrawalNotifications",
+        notification
+      );
 
       const res = await axiosInstance.patch(`/updateStatus/${withdraw._id}`, {
         status: "Approved",
@@ -107,7 +104,6 @@ const AdminHome = () => {
         <h2 className="text-2xl md:text-3xl font-bold">Withdrawal Requests</h2>
         <div className="overflow-x-auto mt-6">
           <table className="table table-zebra">
-            {/* head */}
             <thead>
               <tr>
                 <th></th>

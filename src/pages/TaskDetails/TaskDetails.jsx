@@ -1,4 +1,4 @@
-import { data, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../hooks/useAuth";
@@ -23,7 +23,6 @@ const TaskDetails = () => {
     photo,
     workers,
     amount,
-    totalAmount,
     date,
     subInfo,
     description,
@@ -33,7 +32,7 @@ const TaskDetails = () => {
 
   const handleAddSubmission = async (e) => {
     e.preventDefault();
-    const form = e.target
+    const form = e.target;
     const subDetails = form.subDetails.value;
     const taskId = _id;
     const workerName = user?.displayName;
@@ -60,7 +59,7 @@ const TaskDetails = () => {
     if (res.data.insertedId) {
       // send notification
       const taskTitle = title;
-      const notification = {taskTitle, buyerEmail}
+      const notification = { taskTitle, buyerEmail };
       const result = await axiosInstance.post(
         "/submitTaskNotification",
         notification

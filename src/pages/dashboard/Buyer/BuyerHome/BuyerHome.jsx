@@ -28,14 +28,17 @@ const BuyerHome = () => {
     },
   });
 
-   const { data: payments = [] } = useQuery({
-     queryKey: ["payments"],
-     queryFn: async () => {
-       const res = await axiosInstance.get(`/payments/${user?.email}`);
-     },
-   });
+  const { data: payments = [] } = useQuery({
+    queryKey: ["payments"],
+    queryFn: async () => {
+      const res = await axiosInstance.get(`/payments/${user?.email}`);
+    },
+  });
 
-  const pendingTasks = tasks.reduce((total, current) => total + current.workers, 0)
+  const pendingTasks = tasks.reduce(
+    (total, current) => total + current.workers,
+    0
+  );
 
   const handleApproveTask = async (task) => {
     const res = await axiosInstance.patch(`/statusUpdate/${task._id}`, {
@@ -45,9 +48,11 @@ const BuyerHome = () => {
       // send notification
       const taskTitle = task.title;
       const buyerName = task.buyerName;
-      const workerEmail = submittedTasks.map(submittedTask => submittedTask.workerEmail);
+      const workerEmail = submittedTasks.map(
+        (submittedTask) => submittedTask.workerEmail
+      );
       const amount = task.amount;
-      const status = "Approved"
+      const status = "Approved";
       const notification = {
         taskTitle,
         buyerName,
@@ -99,8 +104,14 @@ const BuyerHome = () => {
             (submittedTask) => submittedTask.workerEmail
           );
           const amount = task.amount;
-          const status = "Rejected"
-          const notification = { taskTitle, buyerName, workerEmail, amount, status };
+          const status = "Rejected";
+          const notification = {
+            taskTitle,
+            buyerName,
+            workerEmail,
+            amount,
+            status,
+          };
           const result = await axiosInstance.post(
             "/updateTasksNotifications",
             notification
@@ -146,7 +157,6 @@ const BuyerHome = () => {
         <h2 className="text-2xl md:text-3xl font-bold">Task To Review</h2>
         <div className="overflow-x-auto mt-6">
           <table className="table table-zebra">
-            {/* head */}
             <thead>
               <tr>
                 <th></th>

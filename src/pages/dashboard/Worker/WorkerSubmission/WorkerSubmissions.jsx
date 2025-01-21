@@ -4,15 +4,15 @@ import useAuth from "../../../../hooks/useAuth";
 import useAxios from "../../../../hooks/useAxios";
 import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
-import "./Paginations.css"
+import "./Paginations.css";
 
 const WorkerSubmissions = () => {
   const axiosInstance = useAxios();
   const { user } = useAuth();
-    const itemsPerPage = 5;
-    const [currentItems, setCurrentItems] = useState([]);
-    const [pageCount, setPageCount] = useState(0);
-    const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 5;
+  const [currentItems, setCurrentItems] = useState([]);
+  const [pageCount, setPageCount] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
 
   // Fetch submissions using react-query
   const { data: submissions = [] } = useQuery({
@@ -23,7 +23,6 @@ const WorkerSubmissions = () => {
     },
   });
 
-
   // Update pagination on data fetch
   useEffect(() => {
     setPageCount(Math.ceil(submissions.length / itemsPerPage));
@@ -32,8 +31,8 @@ const WorkerSubmissions = () => {
 
   // Handle page change
   const handlePageClick = (event) => {
-      const selectedPage = event.selected;
-      setCurrentPage(selectedPage);
+    const selectedPage = event.selected;
+    setCurrentPage(selectedPage);
     const newOffset = event.selected * itemsPerPage;
     setCurrentItems(submissions.slice(newOffset, newOffset + itemsPerPage));
   };

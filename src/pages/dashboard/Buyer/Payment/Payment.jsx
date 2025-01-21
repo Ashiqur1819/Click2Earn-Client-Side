@@ -9,15 +9,14 @@ import useUser from "../../../../hooks/useUser";
 const Payment = () => {
   const stripe = useStripe();
   const elements = useElements();
-  const location = useLocation()
-  const {user} = useAuth()
-  const [currentUser, refetch] = useUser()
-      const [clientSecret, setClientSecres] = useState();
-          const [transactionId, setTransactionId] = useState();
-  const {money, coins} = location.state
-  const axiosInstance = useAxios()
-  const navigate = useNavigate()
-
+  const location = useLocation();
+  const { user } = useAuth();
+  const [currentUser, refetch] = useUser();
+  const [clientSecret, setClientSecres] = useState();
+  const [transactionId, setTransactionId] = useState();
+  const { money, coins } = location.state;
+  const axiosInstance = useAxios();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (money > 0) {
@@ -28,7 +27,6 @@ const Payment = () => {
         });
     }
   }, [axiosInstance, money]);
-
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -43,13 +41,13 @@ const Payment = () => {
       return;
     }
 
-    const { error} = await stripe.createPaymentMethod({
+    const { error } = await stripe.createPaymentMethod({
       type: "card",
       card,
     });
 
     if (error) {
-      return
+      return;
     }
 
     // confirm payment
@@ -64,40 +62,40 @@ const Payment = () => {
         },
       });
 
+    if (confirmError) {
+      return;
+    } else {
+      if (paymentIntent.status === "succeeded") {
+        setTransactionId(paymentIntent.id);
+        const date = new Date();
+        const formattedDate = date.toISOString().split("T")[0];
+        // save the payment in database
+        const payment = {
+          email: user.email,
+          price: money,
+          transactionId: paymentIntent.id,
+          date: formattedDate,
+        };
 
-      if (confirmError) {
-        return
-      } else {
-        if (paymentIntent.status === "succeeded") {
-          setTransactionId(paymentIntent.id);
-          const date = new Date()
-          const formattedDate = date.toISOString().split("T")[0];
-          // save the payment in database
-          const payment = {
-            email: user.email,
-            price: money,
-            transactionId: paymentIntent.id,
-            date: formattedDate,
-          };
-
-          const res = await axiosInstance.post("/payments", payment);
-          if (res.data.insertedId) {
-
-            const remainingCoins = currentUser?.coins + coins
-            const {data} = await axiosInstance.patch(`/users/${user?.email}`, {remainingCoins})
-            if (data.modifiedCount > 0){
-              Swal.fire({
-                title: "Payment Successful!",
-                icon: "success",
-                draggable: true,
-              });
-              navigate("/dashboard/paymentHistory");
-              refetch()
-            }
+        const res = await axiosInstance.post("/payments", payment);
+        if (res.data.insertedId) {
+          const remainingCoins = currentUser?.coins + coins;
+          const { data } = await axiosInstance.patch(`/users/${user?.email}`, {
+            remainingCoins,
+          });
+          if (data.modifiedCount > 0) {
+            Swal.fire({
+              title: "Payment Successful!",
+              icon: "success",
+              draggable: true,
+            });
+            navigate("/dashboard/paymentHistory");
+            refetch();
           }
         }
       }
-  }
+    }
+  };
 
   return (
     <form onSubmit={handleSubmit}>
