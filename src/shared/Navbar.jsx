@@ -27,7 +27,7 @@ const Navbar = () => {
             <div tabIndex={0} role="button" className="lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-7 w-7"
+                className="h-10 md:h-12 w-10 md:w-12"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -114,7 +114,11 @@ const Navbar = () => {
             </ul>
           </div>
           <Link to="/">
-            <img src={logo} className="w-60 object-cover" alt="" />
+            <img
+              src={logo}
+              className="w-36 md:w-44 lg:w-52 object-cover ml-2"
+              alt=""
+            />
           </Link>
         </motion.div>
         <motion.div
@@ -196,7 +200,7 @@ const Navbar = () => {
             </li>
           </ul>
         </motion.div>
-        <div className="navbar-end flex items-center gap-6 lg:hidden">
+        <div className="navbar-end flex items-center gap-3 md:gap-6 lg:hidden">
           <div>
             {user?.email ? (
               <Link to="register">
@@ -209,7 +213,9 @@ const Navbar = () => {
               </Link>
             ) : (
               <Link to="register">
-                <button className="underline">Register</button>
+                <button className="bg-blue-500 px-4 py-2 rounded-sm text-white font-medium transition-all hover:bg-blue-600">
+                  Register
+                </button>
               </Link>
             )}
           </div>

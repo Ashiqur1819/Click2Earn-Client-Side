@@ -26,7 +26,7 @@ const BestWorkers = () => {
           professionalism. These top performers set the standard for excellence
           on our platform.
         </p>
-        <div className="grid md:grid-cols-3 gap-3 mt-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3 mt-12">
           {bestWorkers.map((bestWorker) => (
             <BestWorkersCard
               bestWorker={bestWorker}

@@ -48,7 +48,7 @@ const ContactUs = () => {
               <textarea
                 name="description"
                 className="textarea h-24 text-gray-700 text-sm input border border-gray-200 rounded-sm focus:border-pink-300 focus:outline-none"
-                placeholder="Submission Details"
+                placeholder="Description"
               ></textarea>
             </div>
             <div className="form-control mt-3 col-span-2">
@@ -65,7 +65,7 @@ const ContactUs = () => {
             }}
             viewport={{ once: true, amount: 0.5 }}
           >
-            <img src={contactImage} alt="" />
+            <img src={contactImage} className="w-full" alt="" />
           </motion.div>
         </div>
       </div>

@@ -52,7 +52,7 @@ const BuyerTasks = () => {
   };
 
   return (
-    <div className="mt-12 p-6 w-11/12 mx-auto bg-white rounded-sm">
+    <div className="mt-12 p-4 md:p-6 w-11/12 mx-auto bg-white rounded-sm">
       <h2 className="text-2xl md:text-3xl font-bold">My Tasks</h2>
       <div className="overflow-x-auto mt-6">
         <table className="table table-zebra">
@@ -61,9 +61,7 @@ const BuyerTasks = () => {
             <tr>
               <th></th>
               <th className="text-base font-medium text-blue-950">Title</th>
-              <th className="text-base font-medium text-blue-950">
-                 Amount
-              </th>
+              <th className="text-base font-medium text-blue-950">Amount</th>
               <th className="text-base font-medium text-blue-950">Date</th>
               <th className="text-base font-medium text-blue-950">Action</th>
             </tr>
@@ -76,7 +74,8 @@ const BuyerTasks = () => {
                   {task?.title.substring(0, 25)}...
                 </td>
                 <td className="font-medium text-lg text-text-primary flex items-center gap-2">
-                  <FaCoins></FaCoins>{task?.totalAmount}
+                  <FaCoins></FaCoins>
+                  {task?.totalAmount}
                 </td>
                 <td className="font-medium">{task?.date}</td>
                 <td className="flex items-center gap-3">

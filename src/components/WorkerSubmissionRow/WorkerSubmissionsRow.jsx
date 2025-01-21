@@ -9,7 +9,7 @@ const WorkerSubmissionsRow = ({submission, index}) => {
         <td className="font-medium">{submission?.buyerEmail}</td>
         <td className="font-medium text-lg text-text-primary flex items-center gap-2">
           <FaCoins></FaCoins>
-          {submission?.amount}
+          {submission?.amount} 
         </td>
         <td className={`font-medium`}>
           <p

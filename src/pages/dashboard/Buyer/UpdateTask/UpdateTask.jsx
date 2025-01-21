@@ -55,7 +55,7 @@ const UpdateTask = () => {
 
   return (
     <div className="bg-gray-100 mt-12 rounded-sm">
-      <div className="card w-5/6 mx-auto bg-white p-12 rounded-sm col-span-3">
+      <div className="card w-11/12 mx-auto bg-white p-4 md:p-6 lg:p-12 rounded-sm col-span-3">
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold ">
           Update A Task
         </h2>

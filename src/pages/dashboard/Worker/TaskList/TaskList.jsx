@@ -18,7 +18,7 @@ const TaskList = () => {
     
 
     return (
-      <div className="p-6 mt-6">
+      <div className="p-4 md:p-6 mt-6">
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center">
           Featured Opportunities
         </h2>

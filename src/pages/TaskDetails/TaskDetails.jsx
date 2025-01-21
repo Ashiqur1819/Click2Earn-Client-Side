@@ -58,19 +58,26 @@ const TaskDetails = () => {
     // Save submission data to db
     const res = await axiosInstance.post("/submittedTasks", submission);
     if (res.data.insertedId) {
-      // Send notifications
-      
+      // send notification
+      const taskTitle = title;
+      const notification = {taskTitle, buyerEmail}
+      const result = await axiosInstance.post(
+        "/submitTaskNotification",
+        notification
+      );
+      console.log(result.data);
+
       Swal.fire({
         title: "Submission Successful!",
         icon: "success",
         draggable: true,
       });
-      form.reset()
+      form.reset();
     }
   };
 
   return (
-    <div className="grid md:grid-cols-2 gap-6 w-11/12 mx-auto bg-white mt-12 p-6 rounded-sm shadow-sm">
+    <div className="grid lg:grid-cols-2 gap-6 w-11/12 mx-auto bg-white mt-12 p-4 md:p-6 rounded-sm shadow-sm">
       <div>
         <img src={photo} className="rounded-sm" alt={title} />
         <form onSubmit={handleAddSubmission}>
@@ -86,7 +93,7 @@ const TaskDetails = () => {
           </button>
         </form>
       </div>
-      <div className="text-justify space-y-1">
+      <div className="space-y-1">
         <h2 className="text-2xl text-left font-bold mb-3 text-sky-900">
           {title}
         </h2>
@@ -96,11 +103,11 @@ const TaskDetails = () => {
         </p>
         <p>
           <span className="font-semibold">Payable Amount:</span>{" "}
-          <span className=" text-gray-600">${(amount / 100).toFixed(3)}</span>
+          <span className=" text-gray-600">{amount}</span>
         </p>
-        <p>
+        <p className="text-justify ">
           <span className="font-semibold">Submission Info:</span>{" "}
-          <span className=" text-gray-600">{subInfo}</span>
+          <span className=" text-gray-600 ">{subInfo}</span>
         </p>
         <p>
           <span className="font-semibold">Buyer Name:</span>{" "}
@@ -114,7 +121,7 @@ const TaskDetails = () => {
           <span className="font-semibold">Completion Date:</span>{" "}
           <span className=" text-gray-600">{date}</span>
         </p>
-        <p>
+        <p className="text-justify ">
           <span className="font-semibold">Description:</span>{" "}
           <span className=" text-gray-600">{description}</span>
         </p>

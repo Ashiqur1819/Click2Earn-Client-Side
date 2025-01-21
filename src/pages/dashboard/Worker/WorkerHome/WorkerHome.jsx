@@ -46,7 +46,7 @@ const WorkerHome = () => {
 
 
     return (
-      <div className="p-6 w-11/12 mx-auto mt-12 bg-white">
+      <div className="p-4 md:p-6 w-11/12 mx-auto mt-12 bg-white">
         <div className="lg:flex items-center gap-6">
           <div className="bg-blue-200 p-6 text-center rounded-sm min-w-52">
             <h3 className="text-lg font-semibold">Total Submission</h3>

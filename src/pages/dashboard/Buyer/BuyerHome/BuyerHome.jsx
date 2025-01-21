@@ -37,7 +37,6 @@ const BuyerHome = () => {
 
   const pendingTasks = tasks.reduce((total, current) => total + current.workers, 0)
 
-
   const handleApproveTask = async (task) => {
     const res = await axiosInstance.patch(`/statusUpdate/${task._id}`, {
       status: "Approved",
@@ -46,11 +45,18 @@ const BuyerHome = () => {
       // send notification
       const taskTitle = task.title;
       const buyerName = task.buyerName;
-      const workerEmail = user?.email;
+      const workerEmail = submittedTasks.map(submittedTask => submittedTask.workerEmail);
       const amount = task.amount;
-      const notification = { taskTitle, buyerName, workerEmail, amount };
+      const status = "Approved"
+      const notification = {
+        taskTitle,
+        buyerName,
+        workerEmail,
+        amount,
+        status,
+      };
       const result = await axiosInstance.post(
-        "/approveTasksNotifications",
+        "/updateTasksNotifications",
         notification
       );
 
@@ -86,6 +92,19 @@ const BuyerHome = () => {
           status: "Rejected",
         });
         if (res.data.modifiedCount > 0) {
+          // send notification
+          const taskTitle = task.title;
+          const buyerName = task.buyerName;
+          const workerEmail = submittedTasks.map(
+            (submittedTask) => submittedTask.workerEmail
+          );
+          const amount = task.amount;
+          const status = "Rejected"
+          const notification = { taskTitle, buyerName, workerEmail, amount, status };
+          const result = await axiosInstance.post(
+            "/updateTasksNotifications",
+            notification
+          );
           refetch();
           const workers = await axiosInstance.get(`/tasks/${task?.taskId}`);
           const remainingWorkers = workers.data.workers + 1;
@@ -106,8 +125,8 @@ const BuyerHome = () => {
   };
 
   return (
-    <div className="p-6 w-11/12 mx-auto bg-white mt-12 rounded-sm">
-      <div className="md:flex items-center gap-6">
+    <div className="p-4 md:p-6 w-11/12 mx-auto bg-white mt-12 rounded-sm">
+      <div className="md:flex items-center flex-wrap gap-6">
         <div className="bg-red-200 p-6 text-center rounded-sm min-w-52">
           <h3 className="text-lg font-semibold">Total Task</h3>
           <h2 className="text-5xl text-pink-500 font-bold">{tasks.length}</h2>
@@ -118,7 +137,9 @@ const BuyerHome = () => {
         </div>
         <div className="bg-green-200 p-6 text-center rounded-sm min-w-52">
           <h3 className="text-lg font-semibold">Total Payment</h3>
-          <h2 className="text-5xl text-pink-500 font-bold">{payments.length}</h2>
+          <h2 className="text-5xl text-pink-500 font-bold">
+            {payments.length}
+          </h2>
         </div>
       </div>
       <div className="mt-12">
@@ -149,7 +170,8 @@ const BuyerHome = () => {
                   </td>
                   <td className="font-medium">{task?.workerName}</td>
                   <td className="font-medium flex items-center gap-2 text-text-primary">
-                    <FaCoins></FaCoins>{task?.amount}
+                    <FaCoins></FaCoins>
+                    {task?.amount}
                   </td>
                   <td>
                     <button

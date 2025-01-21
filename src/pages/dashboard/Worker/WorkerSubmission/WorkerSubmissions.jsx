@@ -39,7 +39,7 @@ const WorkerSubmissions = () => {
   };
 
   return (
-    <div className="mt-12 p-6 w-11/12 mx-auto bg-white">
+    <div className="mt-12 p-4 md:p-6 w-11/12 mx-auto bg-white">
       <h2 className="text-2xl md:text-3xl font-bold">My Submissions</h2>
       <div className="overflow-x-auto mt-6">
         <table className="table table-zebra">

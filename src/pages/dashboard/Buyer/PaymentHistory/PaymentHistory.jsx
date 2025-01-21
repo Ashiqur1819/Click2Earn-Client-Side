@@ -16,7 +16,7 @@ const PaymentHistory = () => {
   });
 
     return (
-      <div className="mt-12 p-6 w-11/12 mx-auto bg-white rounded-sm">
+      <div className="mt-12 p-4 md:p-6 w-11/12 mx-auto bg-white rounded-sm">
         <h2 className="text-2xl md:text-3xl font-bold">Payment History</h2>
         <div className="overflow-x-auto mt-6">
           <table className="table table-zebra">
@@ -25,7 +25,9 @@ const PaymentHistory = () => {
               <tr>
                 <th></th>
                 <th className="text-base font-medium text-blue-950">Email</th>
-                <th className="text-base font-medium text-blue-950">Transaction ID</th>
+                <th className="text-base font-medium text-blue-950">
+                  Transaction ID
+                </th>
                 <th className="text-base font-medium text-blue-950">Date</th>
                 <th className="text-base font-medium text-blue-950">Price</th>
               </tr>
@@ -34,10 +36,16 @@ const PaymentHistory = () => {
               {payments.map((payment, index) => (
                 <tr key={payment._id}>
                   <th className="font-medium text-gray-600">{index + 1}</th>
-                  <td className="font-medium text-gray-600">{payment?.email}</td>
-                  <td className="font-medium text-gray-600">{payment?.transactionId}</td>
+                  <td className="font-medium text-gray-600">
+                    {payment?.email}
+                  </td>
+                  <td className="font-medium text-gray-600">
+                    {payment?.transactionId}
+                  </td>
                   <td className="font-medium text-gray-600">{payment?.date}</td>
-                  <td className="font-medium text-gray-600">${payment?.price}</td>
+                  <td className="font-medium text-text-primary">
+                    ${payment?.price}
+                  </td>
                 </tr>
               ))}
             </tbody>

@@ -21,6 +21,16 @@ const DashboardNav = () => {
 
     const {name, photo, role, coins} = currentUser || {}
 
+     const { data: notifications = [] } = useQuery({
+       queryKey: ["notifications"],
+       queryFn: async () => {
+         const res = await axiosInstance.get(`/notifications/${user?.email}`);
+         return res.data;
+       },
+     });
+     console.log(notifications)
+
+
     return (
       <div className="navbar bg-white px-3 md:px-4 lg:px-8">
         <div className="navbar-start">
@@ -79,21 +89,58 @@ const DashboardNav = () => {
             </div>
             <div className="flex flex-col gap-1 bg-gray-100 rounded-sm p-3">
               <li>
-                <img src={photo} referrerPolicy="no-referrer" className="w-12 h-12 object-cover border-2 border-text-primary rounded-full" alt="" />
+                <img
+                  src={photo}
+                  referrerPolicy="no-referrer"
+                  className="w-12 h-12 object-cover border-2 border-text-primary rounded-full"
+                  alt=""
+                />
               </li>
-              <li className="font-medium">
-                {name}
-              </li>
+              <li className="font-medium">{name}</li>
             </div>
             <div className="flex flex-col items-center bg-gray-100 rounded-sm p-4 gap-3">
-              <IoNotificationsSharp className="text-3xl"></IoNotificationsSharp>
-              <p className="font-medium">Notifications</p>
+
+              <div className="navbar">
+                <div className="flex-none">
+                  <div className="dropdown dropdown-end">
+                    <div
+                      tabIndex={0}
+                      role="button"
+                      className="btn btn-ghost btn-circle"
+                    >
+                      <div className="indicator">
+                        <IoNotificationsSharp className="text-2xl"></IoNotificationsSharp>
+                        <span className="badge badge-sm rounded-full bg-bg-tertiary text-white indicator-item">
+                          {notifications.length}
+                        </span>
+                      </div>
+                    </div>
+                    <ul
+                      tabIndex={0}
+                      className="menu menu-lg dropdown-content bg-base-100 rounded-lg z-[1] mt-6 w-96 p-2 shadow"
+                    >
+                      {notifications?.map((notification) => (
+                        <div
+                          className="mb-1 border-b p-2"
+                          key={notification._id}
+                        >
+                          <h3 className="text-base font-bold text-justify">
+                            {notification.message}
+                          </h3>
+                          <Link to={notification.actionRoute}>
+                            <button className="text-text-primary underline">
+                              View Details
+                            </button>
+                          </Link>
+                        </div>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
           </ul>
         </div>
-        {/* <div className="navbar-end">
-          <a className="btn">Button</a>
-        </div> */}
       </div>
     );
 };

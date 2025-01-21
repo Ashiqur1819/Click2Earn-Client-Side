@@ -52,7 +52,7 @@ const {user} = useAuth()
 
 
     return (
-      <div className="mt-12 p-6 w-11/12 mx-auto bg-white rounded-sm">
+      <div className="mt-12 p-4 md:p-6 w-11/12 mx-auto bg-white rounded-sm">
         <h2 className="text-2xl md:text-3xl font-bold">Manage Users</h2>
         <div className="overflow-x-auto mt-6">
           <table className="table">

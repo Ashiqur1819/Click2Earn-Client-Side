@@ -47,6 +47,8 @@ const AdminHome = () => {
 
   const totalCoins = users.reduce((total, current) => total + current.coins, 0)
 
+  
+
 
   const handleApproveWithdraw = async (withdraw) => {
     const worker = await axiosInstance.get(`/users/${withdraw?.workerEmail}`);
@@ -64,7 +66,6 @@ const AdminHome = () => {
              "/approveWithdrawalNotifications",
              notification
            );
-           console.log(result.data)
 
       const res = await axiosInstance.patch(`/updateStatus/${withdraw._id}`, {
         status: "Approved",
@@ -81,8 +82,8 @@ const AdminHome = () => {
   };
 
   return (
-    <div className="p-6 w-11/12 mx-auto bg-white mt-12 rounded-sm">
-      <div className="flex flex-col md:flex-row flex-wrap items-center gap-6">
+    <div className="p-4 md:p-6 w-11/12 mx-auto bg-white mt-12 rounded-sm">
+      <div className="md:flex items-center flex-wrap gap-6">
         <div className="bg-green-200 p-6 text-center rounded-sm min-w-52">
           <h3 className="text-lg font-semibold">Total Worker</h3>
           <h2 className="text-5xl text-pink-500 font-bold">{workers.length}</h2>
@@ -97,7 +98,9 @@ const AdminHome = () => {
         </div>
         <div className="bg-yellow-200 p-6 text-center rounded-sm min-w-52">
           <h3 className="text-lg font-semibold">Total Payments</h3>
-          <h2 className="text-5xl text-pink-500 font-bold">{payments.length}</h2>
+          <h2 className="text-5xl text-pink-500 font-bold">
+            {payments.length}
+          </h2>
         </div>
       </div>
       <div className="mt-12">
