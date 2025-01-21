@@ -6,7 +6,6 @@ import Register from "../pages/Register/Register";
 import PrivateRoute from "./PrivateRoute";
 import DashboardLayout from "../layouts/DashboardLayout";
 import WorkerHome from "../pages/dashboard/Worker/WorkerHome/WorkerHome";
-import DashboardHome from "../pages/dashboard/DashboardHome";
 import TaskList from "../pages/dashboard/Worker/TaskList/TaskList";
 import TaskDetails from "../pages/TaskDetails/TaskDetails";
 import BuyerHome from "../pages/dashboard/Buyer/BuyerHome/BuyerHome";
@@ -54,14 +53,6 @@ const router = createBrowserRouter([
     ),
     errorElement: <p>Dashboard error</p>,
     children: [
-      {
-        path: "dashboard",
-        element: (
-          <PrivateRoute>
-            <DashboardHome></DashboardHome>
-          </PrivateRoute>
-        ),
-      },
       // For admin
       {
         path: "adminHome",
