@@ -41,7 +41,7 @@ const FeaturedJobCard = ({ task }) => {
             <FaCoins></FaCoins>
             {amount}
           </h3>
-          {currentUser.role === "Worker" && (
+          {(currentUser.role === "Worker" || currentUser == '' )&& (
             <Link to={`/dashboard/taskDetails/${_id}`}>
               <SecondaryButton label="View Details"></SecondaryButton>
             </Link>
