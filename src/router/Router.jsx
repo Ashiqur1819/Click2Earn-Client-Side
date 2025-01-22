@@ -23,12 +23,13 @@ import AdminRoute from "./AdminRoute";
 import BuyerRoute from "./BuyerRoute";
 import WorkerRoute from "./WorkerRoute";
 import WorkerSubmissions from "../pages/dashboard/Worker/WorkerSubmission/WorkerSubmissions";
+import Error from "../pages/Error/Error";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <BasicLayout></BasicLayout>,
-    errorElement: <p>Error page</p>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: "/",
@@ -51,7 +52,7 @@ const router = createBrowserRouter([
         <DashboardLayout></DashboardLayout>
       </PrivateRoute>
     ),
-    errorElement: <p>Dashboard error</p>,
+    errorElement: <Error></Error>,
     children: [
       // For admin
       {

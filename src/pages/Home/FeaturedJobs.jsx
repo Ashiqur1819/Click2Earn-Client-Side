@@ -4,6 +4,7 @@ import FeaturedJobCard from "../../components/FeaturedJobCard/FeaturedJobCard";
 import useAxios from "../../hooks/useAxios";
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
+import useUser from "../../hooks/useUser";
 
 const FeaturedJobs = () => {
   const axiosInstance = useAxios();
@@ -14,35 +15,42 @@ const FeaturedJobs = () => {
       return res.data;
     },
   });
+  const [currentUser] = useUser()
+
+  
 
   return (
-    <motion.div
-      initial={{ transform: "translateY(300px)" }}
-      animate={{ transform: "translateY(0px)" }}
-      transition={{
-        ease: "easeOut",
-        duration: 1,
-      }}
-    >
-      <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black text-center">
-        Featured Opportunities
-      </h2>
-      <p className="max-w-3xl mx-auto text-center mt-3 text-gray-800">
-        Explore the best job opportunities handpicked just for you. These tasks
-        offer high pay, quick completion times, and a variety of options to
-        choose from. Find the perfect gig and start earning immediately!
-      </p>
-      <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
-        {tasks.slice(0, 8).map((task) => (
-          <FeaturedJobCard task={task} key={task._id}></FeaturedJobCard>
-        ))}
-      </div>
-      <div className="flex items-center justify-center mt-12">
-        <Link to="/dashboard/taskList">
-          <PrimaryButton label="View All Opportunities"></PrimaryButton>
-        </Link>
-      </div>
-    </motion.div>
+    <div>
+      <motion.div
+        initial={{ transform: "translateY(300px)" }}
+        animate={{ transform: "translateY(0px)" }}
+        transition={{
+          ease: "easeOut",
+          duration: 1,
+        }}
+      >
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black text-center">
+          Featured Opportunities
+        </h2>
+        <p className="max-w-3xl mx-auto text-center mt-3 text-gray-800">
+          Explore the best job opportunities handpicked just for you. These
+          tasks offer high pay, quick completion times, and a variety of options
+          to choose from. Find the perfect gig and start earning immediately!
+        </p>
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+          {tasks.slice(0, 8).map((task) => (
+            <FeaturedJobCard task={task} key={task._id}></FeaturedJobCard>
+          ))}
+        </div>
+        <div className="flex items-center justify-center mt-12">
+          {currentUser.role === "Worker" && (
+            <Link to="/dashboard/taskList">
+              <PrimaryButton label="View All Opportunities"></PrimaryButton>
+            </Link>
+          )}
+        </div>
+      </motion.div>
+    </div>
   );
 };
 

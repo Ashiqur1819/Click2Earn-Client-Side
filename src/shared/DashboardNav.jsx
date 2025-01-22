@@ -27,7 +27,6 @@ const DashboardNav = () => {
       return res.data;
     },
   });
-  console.log(notifications);
 
   return (
     <div className="navbar bg-white px-3 md:px-4 lg:px-8">

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "https://click-2-earn-server-side.vercel.app",
+  baseURL: "http://localhost:3000",
 });
 
 const useAxios = () => {

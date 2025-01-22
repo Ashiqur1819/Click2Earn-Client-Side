@@ -28,12 +28,14 @@ const BuyerHome = () => {
     },
   });
 
-  const { data: payments = [] } = useQuery({
-    queryKey: ["payments"],
+  const { data: payments} = useQuery({
+    queryKey: ["payments", user?.email],
     queryFn: async () => {
       const res = await axiosInstance.get(`/payments/${user?.email}`);
+      return res.data
     },
   });
+  console.log(payments)
 
   const pendingTasks = tasks.reduce(
     (total, current) => total + current.workers,
@@ -149,7 +151,7 @@ const BuyerHome = () => {
         <div className="bg-green-200 p-6 text-center rounded-sm min-w-52">
           <h3 className="text-lg font-semibold">Total Payment</h3>
           <h2 className="text-5xl text-pink-500 font-bold">
-            {payments.length}
+            {payments?.length}
           </h2>
         </div>
       </div>

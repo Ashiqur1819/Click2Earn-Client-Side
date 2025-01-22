@@ -7,7 +7,7 @@ const useUser = () => {
   const axiosInstance = useAxios();
 
   const { data: currentUser = {}, refetch } = useQuery({
-    queryKey: ["user"],
+    queryKey: ["user", user?.email],
     queryFn: async () => {
       const res = await axiosInstance.get(`/users/${user?.email}`);
       return res.data;

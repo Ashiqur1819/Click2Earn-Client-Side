@@ -2,10 +2,13 @@ import { Link } from "react-router-dom";
 import SecondaryButton from "../Buttons/SecondaryButton";
 import { FaCoins } from "react-icons/fa";
 import { motion } from "motion/react";
+import useUser from "../../hooks/useUser";
 
 const FeaturedJobCard = ({ task }) => {
   const { _id, title, photo, workers, amount, date, description, buyerName } =
     task;
+
+    const [currentUser] = useUser()
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0 }}
@@ -26,7 +29,7 @@ const FeaturedJobCard = ({ task }) => {
           </span>
           <span className="bg-red-50 px-2 py-1 rounded-md">Date: {date}</span>
         </p>
-        <h2 className="card-title mt-3">{title.substring(0, 35)}...</h2>
+        <h2 className="card-title mt-3">{title.substring(0, 20)}...</h2>
         <p className="text-justify text-sm text-gray-700 mt-2">
           {description.substring(0, 75)}...
         </p>
@@ -38,9 +41,11 @@ const FeaturedJobCard = ({ task }) => {
             <FaCoins></FaCoins>
             {amount}
           </h3>
-          <Link to={`/dashboard/taskDetails/${_id}`}>
-            <SecondaryButton label="View Details"></SecondaryButton>
-          </Link>
+          {currentUser.role === "Worker" && (
+            <Link to={`/dashboard/taskDetails/${_id}`}>
+              <SecondaryButton label="View Details"></SecondaryButton>
+            </Link>
+          )}
         </div>
       </div>
     </motion.div>

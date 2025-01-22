@@ -5,13 +5,14 @@ import useAuth from "../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../hooks/useAxios";
 import Footer from "../shared/Footer";
+import loadingImage from "../assets/loading.gif";
 
 const DashboardLayout = () => {
-  const { user } = useAuth();
+  const { user} = useAuth();
   const axiosInstance = useAxios();
 
-  const { data: currentUser = {} } = useQuery({
-    queryKey: ["user"],
+  const { data: currentUser = {}, isLoading } = useQuery({
+    queryKey: ["user", user?.email],
     queryFn: async () => {
       const res = await axiosInstance.get(`/users/${user?.email}`);
       return res.data;
@@ -19,6 +20,15 @@ const DashboardLayout = () => {
   });
 
   const { role } = currentUser;
+
+  
+    if (isLoading) {
+      return (
+        <div className="min-h-screen mx-auto flex items-center justify-center">
+          <img src={loadingImage} className="w-96 mx-auto" alt="" />
+        </div>
+      );
+    }
 
   return (
     <div className="font-roboto">
