@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import PrimaryButton from "../components/Buttons/PrimaryButton";
 import { FaCoins } from "react-icons/fa";
 import useAuth from "../hooks/useAuth";
@@ -43,7 +43,7 @@ const Navbar = () => {
             tabIndex={0}
             className=" menu-sm dropdown-content bg-white rounded-sm z-[1] mt-6 w-52 p-3 shadow"
           >
-            {user?.email && (
+            {user && user?.email && (
               <li>
                 <p className="flex items-center w-full gap-2 py-2 px-4 bg-gray-100 border-none rounded-none text-base font-medium">
                   <FaCoins className="text-text-primary"></FaCoins>{" "}
@@ -51,9 +51,9 @@ const Navbar = () => {
                 </p>
               </li>
             )}
-            {user?.email && (
+            {user && user?.email && (
               <li className=" bg-gray-100 border-none rounded-none text-base hover:bg-gray-200 font-medium py-2 px-4 mt-2">
-                <NavLink
+                <Link
                   to={
                     currentUser?.role === "Worker"
                       ? "/dashboard/workerHome"
@@ -61,11 +61,11 @@ const Navbar = () => {
                       ? "/dashboard/buyerHome"
                       : currentUser?.role === "Admin"
                       ? "/dashboard/adminHome"
-                      : "/"
+                      : null
                   }
                 >
                   Dashboard
-                </NavLink>
+                </Link>
               </li>
             )}
             <li>
@@ -98,29 +98,29 @@ const Navbar = () => {
         className="navbar-end hidden lg:flex"
       >
         <ul className="menu-horizontal gap-3 px-1 items-center">
-          {user?.email && (
+          {user && user?.email && (
             <li>
               <p className="flex items-center gap-2 py-2 px-4 bg-gray-100 border-none rounded-none text-base font-medium">
                 <FaCoins className="text-text-primary"></FaCoins>{" "}
-                {currentUser.coins}
+                {currentUser?.coins}
               </p>
             </li>
           )}
-          {user?.email && (
+          {user && user?.email && (
             <li className=" bg-gray-100 border-none rounded-none text-base hover:bg-gray-200 font-medium py-2 px-4 ">
-              <NavLink
+              <Link
                 to={
-                  currentUser.role === "Worker"
+                  currentUser?.role === "Worker"
                     ? "/dashboard/workerHome"
-                    : currentUser.role === "Buyer"
+                    : currentUser?.role === "Buyer"
                     ? "/dashboard/buyerHome"
-                    : currentUser.role === "Admin"
+                    : currentUser?.role === "Admin"
                     ? "/dashboard/adminHome"
-                    : "/"
+                    : null
                 }
               >
                 Dashboard
-              </NavLink>
+              </Link>
             </li>
           )}
           <li>
@@ -132,7 +132,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            {user?.email ? (
+            {user && user?.email ? (
               <Link to="/">
                 <button
                   onClick={logOut}
@@ -150,7 +150,7 @@ const Navbar = () => {
             )}
           </li>
           <li>
-            {user?.email ? (
+            {user && user?.email ? (
               <img
                 src={user?.photoURL}
                 className="w-12 h-12 object-cover rounded-full border-2 border-text-primary"
@@ -169,7 +169,7 @@ const Navbar = () => {
       </motion.div>
       <div className="navbar-end flex items-center gap-3 md:gap-6 lg:hidden">
         <div>
-          {user?.email ? (
+          {user && user?.email ? (
             <Link to="register">
               <img
                 src={user?.photoURL}
@@ -187,7 +187,7 @@ const Navbar = () => {
           )}
         </div>
         <div>
-          {user?.email ? (
+          {user && user?.email ? (
             <Link to="/">
               <button
                 onClick={logOut}

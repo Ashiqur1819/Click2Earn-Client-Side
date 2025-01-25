@@ -22,7 +22,7 @@ const BestWorkersCard = ({ bestWorker }) => {
         <img
           src={photo}
           referrerPolicy="no-referrer"
-          className="w-20 absolute -top-10 rounded-full"
+          className="w-20 h-20 object-cover absolute -top-10 rounded-full"
           alt=""
         />
         <div className="mt-10 flex items-center justify-between ">

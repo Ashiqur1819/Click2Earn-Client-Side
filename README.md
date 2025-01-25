@@ -25,7 +25,7 @@ https://github.com/Programming-Hero-Web-Course4/b10a12-server-side-Ashiqur1819
 2. **User Authentication**
    - Registration options: email/password or Google Sign-In.
    - Role selection during registration: Worker or Buyer.
-   <!-- - Secure token-based authentication. -->
+   - Secure token-based authentication.
 
 3. **Role-Based Dashboards**
    - **Worker:** View tasks, submit for review, withdraw earnings, and track approvals.
@@ -58,7 +58,6 @@ https://github.com/Programming-Hero-Web-Course4/b10a12-server-side-Ashiqur1819
 
 10. **Security**
     - Environment variables for Firebase config and MongoDB credentials.
-    <!-- - Middleware for role-based access control and token validation. -->
 
 11. **Homepage Animations**
     - Engaging animations on the homepage for a dynamic user experience.
@@ -76,46 +75,3 @@ https://github.com/Programming-Hero-Web-Course4/b10a12-server-side-Ashiqur1819
     - Admin reviews and approves withdrawal requests.
     - Coins deducted from the worker's balance upon successful withdrawal.
 
-<!-- 17. **Error Handling**
-    - Clear error messages for authentication and form validation.
-    - Fallback UI for 404 and forbidden access routes. -->
-
----
-
-## Installation and Setup
-
-1. Clone the repositories:
-   ```bash
-   git clone https://github.com/example-client
-   git clone https://github.com/example-server
-   ```
-
-2. Navigate to the respective directories and install dependencies:
-   ```bash
-   cd client
-   npm install
-
-   cd ../server
-   npm install
-   ```
-
-3. Create a `.env` file in the server directory:
-   ```env
-   MONGO_URI=your_mongo_uri
-   JWT_SECRET=your_jwt_secret
-   STRIPE_SECRET_KEY=your_stripe_secret
-   ```
-
-4. Start the client and server:
-   ```bash
-   # In the client directory
-   npm start
-
-   # In the server directory
-   npm run dev
-   ```
-
-5. Access the application at `http://localhost:3000`.
-
-
-I hope you enjoy exploring and using this platform! For any queries or issues, feel free to reach out via the provided GitHub repositories.

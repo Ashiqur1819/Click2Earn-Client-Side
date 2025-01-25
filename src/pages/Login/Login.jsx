@@ -40,8 +40,10 @@ const Login = () => {
         const res = await axiosInstance.get(`/users/${result?.user?.email}`);
         if (res.data?.role == "Worker") {
           navigate("/dashboard/workerHome");
-        } else {
+        } else if (res.data?.role == "Buyer") {
           navigate("/dashboard/buyerHome");
+        } else if (res.data?.role == "Admin") {
+          navigate("/dashboard/adminHome");
         }
         toast.success("Login successful! Welcome back!");
         setLoading(false);
