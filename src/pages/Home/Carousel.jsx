@@ -8,8 +8,13 @@ import slideImage2 from "../../assets/slide2.jpg";
 import slideImage3 from "../../assets/slide3.jpg";
 import SecondaryButton from "../../components/Buttons/SecondaryButton";
 import { motion } from "motion/react";
+import { Link } from "react-router-dom";
+import useUser from "../../hooks/useUser";
 
 const Carousel = () => {
+
+  const [currentUser] = useUser()
+
   return (
     <div className="relative z-0">
       <Swiper
@@ -52,7 +57,19 @@ const Carousel = () => {
                 everyone’s talking about!
               </p>
               <div className="md:mt-12">
-                <SecondaryButton label=" Start Earning Now"></SecondaryButton>
+                <Link
+                  to={
+                    currentUser?.role === "Worker"
+                      ? "/dashboard/workerHome"
+                      : currentUser?.role === "Buyer"
+                      ? "/dashboard/buyerHome"
+                      : currentUser?.role === "Admin"
+                      ? "/dashboard/adminHome"
+                      : "/login"
+                  }
+                >
+                  <SecondaryButton label=" Start Earning Now"></SecondaryButton>
+                </Link>
               </div>
             </motion.div>
           </div>
@@ -80,7 +97,19 @@ const Carousel = () => {
                 away!
               </p>
               <div className="md:mt-12">
-                <SecondaryButton label=" Start Earning Now"></SecondaryButton>
+                <Link
+                  to={
+                    currentUser?.role === "Worker"
+                      ? "/dashboard/workerHome"
+                      : currentUser?.role === "Buyer"
+                      ? "/dashboard/buyerHome"
+                      : currentUser?.role === "Admin"
+                      ? "/dashboard/adminHome"
+                      : "/login"
+                  }
+                >
+                  <SecondaryButton label=" Start Earning Now"></SecondaryButton>
+                </Link>
               </div>
             </div>
           </div>
@@ -108,7 +137,19 @@ const Carousel = () => {
                 with tasks designed for efficiency and quick payouts.
               </p>
               <div className="md:mt-12">
-                <SecondaryButton label=" Start Earning Now"></SecondaryButton>
+                <Link
+                  to={
+                    currentUser?.role === "Worker"
+                      ? "/dashboard/workerHome"
+                      : currentUser?.role === "Buyer"
+                      ? "/dashboard/buyerHome"
+                      : currentUser?.role === "Admin"
+                      ? "/dashboard/adminHome"
+                      : "/login"
+                  }
+                >
+                  <SecondaryButton label=" Start Earning Now"></SecondaryButton>
+                </Link>
               </div>
             </div>
           </div>
