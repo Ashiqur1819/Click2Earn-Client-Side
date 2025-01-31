@@ -42,18 +42,8 @@ const WorkerWithDrawals = () => {
     };
 
     // Send data to database
-    const res = await axiosInstance.post("withdraws", withDrawInfo);
+    const res = await axiosInstance.post("/withdraws", withDrawInfo);
     if (res.data.insertedId) {
-      const notification = {
-        workerName,
-        workerEmail,
-        withdrawlAmount,
-      };
-      const result = await axiosInstance.post(
-        "/withdrawRequests",
-        notification
-      );
-
       Swal.fire({
         position: "center",
         icon: "success",
@@ -61,9 +51,9 @@ const WorkerWithDrawals = () => {
         showConfirmButton: false,
         timer: 1500,
       });
+      form.reset(setCoin(""));
     }
   };
-
   return (
     <div className="bg-gray-100 mt-12 rounded-sm">
       <div className="card w-11/12 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 items-center bg-white p-4 md:p-6 lg:p-12 rounded-sm col-span-3">
@@ -97,7 +87,7 @@ const WorkerWithDrawals = () => {
                 <span className="label-text font-medium mt-1">Amount:</span>
               </label>
               <input
-                value={validAmount}
+                value={coin > 0 ? validAmount : 0}
                 type="number"
                 name="amount"
                 placeholder="Amount"
