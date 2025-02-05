@@ -3,7 +3,7 @@
 
 ![Click2Earn Screenshot](https://i.ibb.co.com/Vp5J68Wx/click2earn.png)
 
-Welcome to the **Click2Earn** project! This platform allows users to complete small tasks and earn rewards. It supports three types of users: **Workers**, **Buyers**, and **Admins**.
+Welcome to Click2Earn! This application allows users to earn money by completing small tasks, managing tasks as buyers, and overseeing operations as administrators. Built using the MERN stack, this platform ensures a seamless and secure experience for all roles.
 
 ## Website Details
 
