@@ -1,22 +1,23 @@
-# Click2Earn
 
-Welcome to Click2Earn! This application allows users to earn money by completing small tasks, manage tasks as buyers, and oversee operations as administrators. Built using the MERN stack, this platform ensures a seamless and secure experience for all roles.
+# Click2Earn -  Complete Tasks, Earn Reward
+
+![Click2Earn Screenshot](https://i.ibb.co.com/Vp5J68Wx/click2earn.png)
+
+Welcome to the **Click2Earn** project! This platform allows users to complete small tasks and earn rewards. It supports three types of users: **Workers**, **Buyers**, and **Admins**.
 
 ## Website Details
 
-- **Website Name:** Click2Earn
+- **Website Name:** Click2Earn - Complete Tasks, Earn Reward
 - **Admin Credentials:**
   - **Username:** ashiqur@rahman.com
   - **Password:** 123456aA
 - **Live Site URL:** https://click2earn12.web.app
-- **Client-Side GitHub Repository:** 
-https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-Ashiqur1819
-- **Server-Side GitHub Repository:** 
-https://github.com/Programming-Hero-Web-Course4/b10a12-server-side-Ashiqur1819
+- **GitHub Repository:** https://github.com/Ashiqur1819/Click2Earn-Client-Side
+
 
 ---
 
-## Key Features
+## 🎯 Key Features
 
 1. **Responsive Design**
    - Fully responsive across mobile, tablet, and desktop.
@@ -51,7 +52,7 @@ https://github.com/Programming-Hero-Web-Course4/b10a12-server-side-Ashiqur1819
    - Clickable pop-ups for easy access to updates.
 
 8. **Image Uploading**
-   - Utilizes imgBB for uploading profile pictures and task images.
+   - Utilizes imgBB to upload profile pictures and task images.
 
 9. **Pagination**
    - My Submissions and task views include pagination for better data handling.
@@ -74,4 +75,64 @@ https://github.com/Programming-Hero-Web-Course4/b10a12-server-side-Ashiqur1819
 14. **Withdrawal Management**
     - Admin reviews and approves withdrawal requests.
     - Coins deducted from the worker's balance upon successful withdrawal.
+
+
+## 📁 Tech Stack
+- **Frontend:** React, Tailwind CSS, React Router, 
+- **Backend:** Node.js, Express.js, REST API
+- **Database:** MongoDB
+- **Authentication:** Firebase Auth, JWT
+- **Payments:** Stripe integration
+- **Hosting:** Vercel, Firebase
+
+## 📦 Dependencies
+- "@stripe/react-stripe-js": "^3.1.1"
+- "@tanstack/react-query": "^5.64.1"
+- "axios": "^1.7.9"
+- "firebase": "^11.1.0"
+- "localforage": "^1.10.0"
+- "match-sorter": "^8.0.0"
+- "motion": "^11.18.1"
+- "react": "^18.3.1"
+- "react-dom": "^18.3.1"
+- "react-icons": "^5.4.0"
+- "react-paginate": "^8.2.0"
+- "react-rating": "^2.0.5"
+- "react-router-dom": "^7.1.1"
+- "react-simple-star-rating": "^5.1.7"
+- "react-toastify": "^11.0.2"
+- "sort-by": "^1.2.0"
+- "sweetalert2": "^11.15.10"
+- "swiper": "^11.2.1"
+
+## 📜 Installation & Setup
+
+1. Clone the repositories:
+   ```bash
+   git clone https://github.com/Ashiqur1819/Click2Earn-Client-Side.git
+   ```
+
+2. Install dependencies:
+   ```bash
+   cd Click2Earn-Client-Side && npm install
+   ```
+
+3. Set up environment variables (`.env`):
+
+    FIREBASE_API_KEY=your_firebase_key <br/>
+     REACT_APP_STRIPE_PUBLIC_KEY=your_stripe_key <br/>
+     REACT_APP_IMAGE_API_KEY=your_image_key
+
+
+2. Run the project:
+   ```bash
+   npm run dev 
+   ```
+## 🛠 Future Enhancements
+- Automated email notifications
+- Advanced search and filter functionality
+- Reporting system for invalid submissions
+
+
+
 
