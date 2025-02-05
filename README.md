@@ -3,7 +3,9 @@
 
 ![Click2Earn Screenshot](https://i.ibb.co.com/Vp5J68Wx/click2earn.png)
 
-Welcome to Click2Earn! This application allows users to earn money by completing small tasks, managing tasks as buyers, and overseeing operations as administrators. Built using the MERN stack, this platform ensures a seamless and secure experience for all roles.
+## Overview
+
+Click2Earn enables users to complete small tasks and earn rewards. It provides **secure authentication, task creation and management, payment processing, and withdrawal options**. Users can register as **Workers** to complete tasks, **Buyers** to create and manage tasks, or **Admins** to oversee the platform. The system ensures a smooth and efficient experience with a structured reward system and role-based access control.
 
 ## Website Details
 
