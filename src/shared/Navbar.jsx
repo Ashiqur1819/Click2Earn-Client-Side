@@ -70,7 +70,7 @@ const Navbar = () => {
             )}
             <li>
               <Link
-                to="https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-Ashiqur1819"
+                to="https://github.com/Ashiqur1819/Click2Earn-Client-Side"
                 target="_blank"
               >
                 <button className=" bg-yellow-400 w-full border-none rounded-none text-base hover:bg-gray-200 font-medium py-2 px-4 mt-2 -ml-3">

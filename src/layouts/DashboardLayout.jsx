@@ -35,8 +35,8 @@ const DashboardLayout = () => {
       <header className="sticky top-0 z-10">
         <DashboardNav></DashboardNav>
       </header>
-      <main className="md:grid grid-cols-12 ">
-        <aside className="bg-gray-50 col-span-2  lg:min-h-screen">
+      <main className="md:grid md:grid-cols-2">
+        <aside className="bg-gray-50 md:w-52  md:min-h-screen md:fixed z-10">
           <ul className="flex flex-col gap-3 w-full">
             {user && user.email && (
               <>
@@ -165,7 +165,7 @@ const DashboardLayout = () => {
             )}
           </ul>
         </aside>
-        <div className="bg-gray-100 col-span-10 flex flex-col">
+        <div className="bg-gray-100 col-span-10 flex flex-col md:ml-60">
           <div className="flex-grow">
             <Outlet></Outlet>
           </div>

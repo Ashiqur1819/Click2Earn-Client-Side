@@ -3,6 +3,7 @@ import Carousel from "./Carousel";
 import ContactUs from "./ContactUs";
 import FAQs from "./FAQs";
 import FeaturedJobs from "./FeaturedJobs";
+import HowItWorks from "./HowItWorks";
 import Testimonials from "./Testimonials";
 
 const Home = () => {
@@ -21,6 +22,9 @@ const Home = () => {
         <div className="mt-20">
           <Testimonials></Testimonials>
         </div>
+      </div>
+      <div className="mt-20 px-4 md:px-6 lg:px-8">
+        <HowItWorks></HowItWorks>
       </div>
       <div className="mt-20">
         <FAQs></FAQs>
