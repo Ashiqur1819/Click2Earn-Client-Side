@@ -67,7 +67,7 @@ const Navbar = () => {
                 target="_blank"
               >
                 <button className=" bg-yellow-400 w-full border-none rounded-none text-base hover:bg-gray-200 font-medium py-2 px-4 mt-2 -ml-3">
-                  Join As Developer
+                  Join as A Developer
                 </button>
               </Link>
             </li>
@@ -76,7 +76,7 @@ const Navbar = () => {
         <Link to="/">
           <img
             src={logo}
-            className="w-36 md:w-44 lg:w-52 object-cover ml-2"
+            className="w-32 md:w-44 lg:w-52 object-cover ml-2"
             alt=""
           />
         </Link>
@@ -121,7 +121,7 @@ const Navbar = () => {
               to="https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-Ashiqur1819"
               target="_blank"
             >
-              <PrimaryButton label="Join as Developer"></PrimaryButton>
+              <PrimaryButton label="Join as A Developer"></PrimaryButton>
             </Link>
           </li>
           <li>

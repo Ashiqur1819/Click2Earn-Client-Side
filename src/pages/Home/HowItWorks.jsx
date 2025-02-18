@@ -9,7 +9,7 @@ const HowItWorks = () => {
   const steps = [
     {
       id: 1,
-      icon: <FaUserPlus className="text-blue-500 text-4xl" />,
+      icon: <FaUserPlus className="text-text-primary text-4xl" />,
       title: "Sign Up & Log In",
       description:
         "Create an account and log in to start completing tasks. Get a welcome bonus!",
