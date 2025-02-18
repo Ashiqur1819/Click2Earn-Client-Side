@@ -5,7 +5,6 @@ import useAuth from "../hooks/useAuth";
 import SecondaryButton from "../components/Buttons/SecondaryButton";
 import useUser from "../hooks/useUser";
 import logo from "../assets/logo.png";
-import { motion } from "motion/react";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
@@ -13,13 +12,7 @@ const Navbar = () => {
 
   return (
     <div className="navbar bg-white px-4 md:px-6 lg:px-8 py-5">
-      <motion.div
-        initial={{ transform: "translateX(-500px)" }}
-        animate={{ transform: "translateX(0px)" }}
-        transition={{
-          ease: "easeOut",
-          duration: 1,
-        }}
+      <div
         className="navbar-start"
       >
         <div className="dropdown">
@@ -87,8 +80,8 @@ const Navbar = () => {
             alt=""
           />
         </Link>
-      </motion.div>
-      <motion.div
+      </div>
+      <div
         initial={{ transform: "translateX(500px)" }}
         animate={{ transform: "translateX(0px)" }}
         transition={{
@@ -166,7 +159,7 @@ const Navbar = () => {
             )}
           </li>
         </ul>
-      </motion.div>
+      </div>
       <div className="navbar-end flex items-center gap-3 md:gap-6 lg:hidden">
         <div>
           {user && user?.email ? (

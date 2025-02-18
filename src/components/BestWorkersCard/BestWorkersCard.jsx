@@ -1,18 +1,12 @@
 import { FaCoins } from "react-icons/fa";
 import winingImage from "../../assets/wining.webp";
-import { motion } from "motion/react";
+
 
 const BestWorkersCard = ({ bestWorker }) => {
   const { name, email, photo, coins } = bestWorker || {};
 
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      transition={{
-        duration: 1,
-      }}
-      viewport={{ once: true, amount: 0.5 }}
+    <div
       className="shadow-sm bg-white"
     >
       <div className="h-24 bg-black flex items-center justify-end">
@@ -38,7 +32,7 @@ const BestWorkersCard = ({ bestWorker }) => {
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

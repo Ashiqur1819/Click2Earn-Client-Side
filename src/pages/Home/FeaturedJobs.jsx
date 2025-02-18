@@ -3,7 +3,6 @@ import PrimaryButton from "../../components/Buttons/PrimaryButton";
 import FeaturedJobCard from "../../components/FeaturedJobCard/FeaturedJobCard";
 import useAxios from "../../hooks/useAxios";
 import { Link } from "react-router-dom";
-import { motion } from "motion/react";
 import useUser from "../../hooks/useUser";
 
 const FeaturedJobs = () => {
@@ -21,7 +20,7 @@ const FeaturedJobs = () => {
 
   return (
     <div>
-      <motion.div
+      <div
         initial={{ transform: "translateY(300px)" }}
         animate={{ transform: "translateY(0px)" }}
         transition={{
@@ -49,7 +48,7 @@ const FeaturedJobs = () => {
             </Link>
           )}
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 };

@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import SecondaryButton from "../Buttons/SecondaryButton";
 import { FaCoins } from "react-icons/fa";
-import { motion } from "motion/react";
 import useUser from "../../hooks/useUser";
 
 const FeaturedJobCard = ({ task }) => {
@@ -10,7 +9,7 @@ const FeaturedJobCard = ({ task }) => {
 
     const [currentUser] = useUser()
   return (
-    <motion.div
+    <div
       initial={{ opacity: 0, scale: 0 }}
       whileInView={{ opacity: 1, scale: 1 }}
       transition={{
@@ -48,7 +47,7 @@ const FeaturedJobCard = ({ task }) => {
           )}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
