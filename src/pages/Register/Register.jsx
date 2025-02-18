@@ -39,7 +39,6 @@ const Register = () => {
       },
     });
     const photo = result?.data?.data?.url;
-    console.log(photo);
     const password = form.password.value;
     const role = selected;
     let coins = null;

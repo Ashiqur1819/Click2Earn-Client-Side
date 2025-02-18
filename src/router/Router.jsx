@@ -24,6 +24,7 @@ import BuyerRoute from "./BuyerRoute";
 import WorkerRoute from "./WorkerRoute";
 import WorkerSubmissions from "../pages/dashboard/Worker/WorkerSubmission/WorkerSubmissions";
 import Error from "../pages/Error/Error";
+import Profile from "../pages/dashboard/profile/Profile";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
     ),
     errorElement: <Error></Error>,
     children: [
+      {
+        path: "profile",
+        element: <Profile></Profile>
+      },
       // For admin
       {
         path: "adminHome",

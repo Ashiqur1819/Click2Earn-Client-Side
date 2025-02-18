@@ -38,6 +38,18 @@ const DashboardLayout = () => {
       <main className="md:grid grid-cols-12 ">
         <aside className="bg-gray-50 col-span-2  lg:min-h-screen">
           <ul className="flex flex-col gap-3 w-full">
+            {user && user.email && (
+              <>
+                <li className="btn bg-gray-100 border-none rounded-none text-base hover:bg-gray-200 p-0">
+                  <NavLink
+                    className="w-full h-full flex items-center justify-center"
+                    to="/dashboard/profile"
+                  >
+                    Profile
+                  </NavLink>
+                </li>
+              </>
+            )}
             {/* For Worker */}
             {role === "Worker" && (
               <>

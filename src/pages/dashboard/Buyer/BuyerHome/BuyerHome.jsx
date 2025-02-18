@@ -35,7 +35,7 @@ const BuyerHome = () => {
       return res.data
     },
   });
-  console.log(payments)
+
 
   const pendingTasks = tasks.reduce(
     (total, current) => total + current.workers,

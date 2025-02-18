@@ -64,7 +64,6 @@ const TaskDetails = () => {
         "/submitTaskNotification",
         notification
       );
-      console.log(result.data);
 
       Swal.fire({
         title: "Submission Successful!",
