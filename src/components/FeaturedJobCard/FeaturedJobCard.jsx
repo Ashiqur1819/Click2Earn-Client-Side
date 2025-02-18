@@ -7,17 +7,9 @@ const FeaturedJobCard = ({ task }) => {
   const { _id, title, photo, workers, amount, date, description, buyerName } =
     task;
 
-    const [currentUser] = useUser()
+  const [currentUser] = useUser();
   return (
-    <div
-      initial={{ opacity: 0, scale: 0 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      transition={{
-        duration: 1,
-      }}
-      viewport={{ once: true, amount: 0.5 }}
-      className="card bg-white rounded-sm"
-    >
+    <div className="card bg-white rounded-sm">
       <figure>
         <img src={photo} className="h-52 w-full object-cover" alt={title} />
       </figure>
@@ -40,7 +32,7 @@ const FeaturedJobCard = ({ task }) => {
             <FaCoins></FaCoins>
             {amount}
           </h3>
-          {(currentUser.role === "Worker" || currentUser == '' )&& (
+          {(currentUser.role === "Worker" || currentUser == "") && (
             <Link to={`/dashboard/taskDetails/${_id}`}>
               <SecondaryButton label="View Details"></SecondaryButton>
             </Link>

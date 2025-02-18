@@ -14,20 +14,11 @@ const FeaturedJobs = () => {
       return res.data;
     },
   });
-  const [currentUser] = useUser()
-
-  
+  const [currentUser] = useUser();
 
   return (
     <div>
-      <div
-        initial={{ transform: "translateY(300px)" }}
-        animate={{ transform: "translateY(0px)" }}
-        transition={{
-          ease: "easeOut",
-          duration: 1,
-        }}
-      >
+      <div>
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black text-center">
           Featured Opportunities
         </h2>

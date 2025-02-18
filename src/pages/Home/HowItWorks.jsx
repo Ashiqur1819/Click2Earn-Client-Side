@@ -44,14 +44,12 @@ const HowItWorks = () => {
           How It Works
         </h2>
         <p className="max-w-3xl mx-auto text-center mt-3 text-gray-800">
-          Follow these simple steps to start earning rewards.
+        Just sign up, browse available tasks, complete them, and get paid instantly. The more tasks you complete, the more you earn. Start today and maximize your income
+        effortlessly!
         </p>
         <div className="grid md:grid-cols-4 gap-6 mt-12">
           {steps.map((step) => (
-            <div
-              key={step.id}
-              className="bg-white p-6 rounded-sm shadow-sm"
-            >
+            <div key={step.id} className="bg-white p-6 rounded-sm shadow-sm">
               <div className="mb-4">{step.icon}</div>
               <h3 className="text-xl font-semibold text-gray-800 mb-2">
                 {step.title}

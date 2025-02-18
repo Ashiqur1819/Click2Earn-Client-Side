@@ -34,14 +34,18 @@ const BlogSection = () => {
   return (
     <section className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black text-center">
           From Our Blog
         </h2>
-        <div className="grid md:grid-cols-3 gap-8">
+        <p className="max-w-3xl mx-auto text-center mt-3 text-gray-800">
+          Stay updated with the latest insights, tips, and trends from our blog.
+          Learn how to maximize your earnings and make the most of Click2Earn!
+        </p>
+        <div className="grid md:grid-cols-3 gap-6 mt-12">
           {blogPosts.map((post) => (
             <div
               key={post.id}
-              className="bg-white rounded-lg shadow-md overflow-hidden"
+              className="bg-white rounded-sm shadow-sm overflow-hidden"
             >
               <img
                 src={post.image}
@@ -53,12 +57,6 @@ const BlogSection = () => {
                   {post.title}
                 </h3>
                 <p className="text-gray-600 mb-4">{post.description}</p>
-                <a
-                  href={post.link}
-                  className="text-blue-600 font-semibold hover:underline"
-                >
-                  Read More
-                </a>
               </div>
             </div>
           ))}
