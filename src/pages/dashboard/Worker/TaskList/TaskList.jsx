@@ -6,6 +6,7 @@ import { useState } from "react";
 const TaskList = () => {
   const axiosInstance = useAxios();
   const [searchTerm, setSearchTerm] = useState("");
+  const [sortOrder, setSortOrder] = useState("asc");
   const { data: tasks = [] } = useQuery({
     queryKey: ["tasks"],
     queryFn: async () => {
@@ -18,6 +19,14 @@ const TaskList = () => {
   const filteredTasks2 = filteredTasks.filter((task) =>
     task.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const sortedTasks = [...filteredTasks2].sort((a, b) => {
+    if (sortOrder === "asc") {
+      return a.amount - b.amount;
+    } else {
+      return b.amount - a.amount;
+    }
+  });
 
   return (
     <div className="p-4 md:p-6 mt-6">
@@ -38,13 +47,17 @@ const TaskList = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
           className="grow text-gray-700 text-base input border border-gray-200 rounded-none focus:border-pink-300 focus:outline-none"
         />
-        <select className="select grow text-gray-700 text-base input border border-gray-200 rounded-none focus:border-pink-300 focus:outline-none">
-          <option>Sort by Ascending Price</option>
-          <option>Sort by Descending Price</option>
+        <select
+          value={sortOrder}
+          onChange={(e) => setSortOrder(e.target.value)}
+          className="select grow text-gray-700 text-base input border border-gray-200 rounded-none focus:border-pink-300 focus:outline-none"
+        >
+          <option value={"asc"}>Sort by Ascending Price</option>
+          <option value={"dsc"}>Sort by Descending Price</option>
         </select>
       </div>
       <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-        {filteredTasks2.map((task) => (
+        {sortedTasks.map((task) => (
           <FeaturedJobCard task={task} key={task._id}></FeaturedJobCard>
         ))}
       </div>
