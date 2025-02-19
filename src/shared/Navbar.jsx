@@ -5,6 +5,7 @@ import useAuth from "../hooks/useAuth";
 import SecondaryButton from "../components/Buttons/SecondaryButton";
 import useUser from "../hooks/useUser";
 import logo from "../assets/logo.png";
+import logo2 from "../assets/logo2.png";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
@@ -12,9 +13,7 @@ const Navbar = () => {
 
   return (
     <div className="navbar bg-white px-4 md:px-6 lg:px-8 py-5">
-      <div
-        className="navbar-start"
-      >
+      <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="lg:hidden">
             <svg
@@ -76,7 +75,12 @@ const Navbar = () => {
         <Link to="/">
           <img
             src={logo}
-            className="w-32 md:w-44 lg:w-52 object-cover ml-2"
+            className="hidden md:inline md:w-44 lg:w-52 object-cover ml-2"
+            alt=""
+          />
+          <img
+            src={logo2}
+            className="w-10 object-cover ml-2 lg:hidden"
             alt=""
           />
         </Link>
