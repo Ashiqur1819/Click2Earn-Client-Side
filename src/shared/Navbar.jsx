@@ -96,11 +96,12 @@ const Navbar = () => {
       >
         <ul className="menu-horizontal gap-3 px-1 items-center">
           {user && user?.email && (
-            <li>
-              <p className="flex items-center gap-2 py-2 px-4 bg-gray-100 border-none rounded-none text-base font-medium">
+            <li className=" bg-gray-100 border-none rounded-none text-base hover:bg-gray-200 font-medium py-2 px-4 ">
+              {/* <p className="flex items-center gap-2 py-2 px-4 bg-gray-100 border-none rounded-none text-base font-medium">
                 <FaCoins className="text-text-primary"></FaCoins>{" "}
                 {currentUser?.coins}
-              </p>
+              </p> */}
+              <Link to="/about_us">About Us</Link>
             </li>
           )}
           {user && user?.email && (
