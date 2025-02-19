@@ -26,6 +26,7 @@ import WorkerSubmissions from "../pages/dashboard/Worker/WorkerSubmission/Worker
 import Error from "../pages/Error/Error";
 import Profile from "../pages/dashboard/profile/Profile";
 import AboutUs from "../pages/aboutUs/AboutUs";
+import ContactUs from "../pages/contactUs/ContactUs";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: "/about_us",
         element: <AboutUs></AboutUs>
+      },
+      {
+        path: "/contact_us",
+        element: <ContactUs></ContactUs>
       },
       {
         path: "login",

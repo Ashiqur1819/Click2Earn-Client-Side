@@ -2,7 +2,7 @@ import contactImage from "../../assets/contact.png";
 
 const ContactUs = () => {
   return (
-    <div id="contactUs" className="max-w-5xl mx-auto">
+    <div className="max-w-5xl mx-auto mt-12">
       <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black text-center">
         Contact Us
       </h2>

@@ -13,7 +13,7 @@ const Navbar = () => {
 
   return (
     <div className="navbar bg-white px-4 md:px-6 lg:px-8 py-5">
-      <div className="navbar-start">
+      <div className="navbar-start w-1/3">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="lg:hidden">
             <svg
@@ -92,15 +92,11 @@ const Navbar = () => {
           ease: "easeOut",
           duration: 1,
         }}
-        className="navbar-end hidden lg:flex"
+        className="navbar-end w-2/3 hidden lg:flex"
       >
         <ul className="menu-horizontal gap-3 px-1 items-center">
           {user && user?.email && (
             <li className=" bg-gray-100 border-none rounded-none text-base hover:bg-gray-200 font-medium py-2 px-4 ">
-              {/* <p className="flex items-center gap-2 py-2 px-4 bg-gray-100 border-none rounded-none text-base font-medium">
-                <FaCoins className="text-text-primary"></FaCoins>{" "}
-                {currentUser?.coins}
-              </p> */}
               <Link to="/about_us">About Us</Link>
             </li>
           )}
@@ -119,6 +115,11 @@ const Navbar = () => {
               >
                 Dashboard
               </Link>
+            </li>
+          )}
+          {user && user?.email && (
+            <li className=" bg-gray-100 border-none rounded-none text-base hover:bg-gray-200 font-medium py-2 px-4 ">
+              <Link to="/contact_us">Contact Us</Link>
             </li>
           )}
           <li>
